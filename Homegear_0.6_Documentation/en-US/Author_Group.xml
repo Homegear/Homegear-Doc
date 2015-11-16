@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE authorgroup PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Homegear_0.6_Documentation.ent">
+%BOOK_ENTITIES;
+]>
+<authorgroup>
+	<author>
+		<firstname>Sathya</firstname>
+		<surname>Laufer</surname>
+		<affiliation>
+			<orgname>Homegear UG (haftungsbeschränkt)</orgname>
+			<orgdiv>Software-Entwicklungsteam</orgdiv>
+		</affiliation>
+		<email>sathya@homegear.email</email>
+	</author>
+	<author>
+		<firstname>Christian</firstname>
+		<surname>Mallas</surname>
+		<affiliation>
+			<orgname>Homegear UG (haftungsbeschränkt)</orgname>
+			<orgdiv>Hardware-Entwicklungsteam</orgdiv>
+		</affiliation>
+		<email>christian@homegear.email</email>
+	</author>
+</authorgroup>
