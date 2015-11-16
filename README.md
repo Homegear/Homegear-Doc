@@ -1,7 +1,7 @@
 Homegear Documentation
 ======================
 
-This repository contains the official Homegear documentation.
+This repository contains the source of the official Homegear documentation. The documentation is hosted at https://homegear.eu/doc.
 
 ## Building the Homegear documentation
 
@@ -22,3 +22,4 @@ Where path is the path to the Publican Common Content files. On Linux the path t
 ```
 publican build
 ```
+* The documentation can now be found in the directory "tmp".

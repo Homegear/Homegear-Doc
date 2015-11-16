@@ -1,5 +1,5 @@
 %define brand Homegear
-%define wwwdir /var/www/html/docs
+%define wwwdir /var/www/html/doc
 
 Name:		publican-homegear
 Summary:	Common documentation files for %{brand}
@@ -9,7 +9,7 @@ License:	LGPL
 Group:		Applications/Text
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Buildarch:	noarch
-Source:		https://homegear.eu/docs/source/%{name}-%{version}.tgz
+Source:		https://homegear.eu/doc/source/%{name}-%{version}.tgz
 Requires:	publican
 BuildRequires:	publican
 URL:		https://homegaer.eu
