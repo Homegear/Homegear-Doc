@@ -10,8 +10,42 @@
 	<productnumber>0.6</productnumber>
 	<pubsnumber>0</pubsnumber>
 	<abstract>
+		<title>Abstract</title>
 		<para>
-			A short overview and summary of the book's subject and purpose, traditionally no more than one paragraph long. Note: the abstract will appear in the front matter of your book and will also be placed in the description field of the book's RPM spec file.
+			Homegear is a free and open source program to interface your home automation devices or services with your home automation software or scripts. It features the following interfaces - all with SSL support:
+			<itemizedlist spacing="compact">
+				<listitem><para>XML-RPC</para></listitem>
+				<listitem><para>Binary-RPC</para></listitem>
+				<listitem><para>JSON-RPC</para></listitem>
+				<listitem><para>MQTT</para></listitem>
+				<listitem><para>WebSockets with PHP session authentication</para></listitem>
+				<listitem><para>HTTP (GET and POST)</para></listitem>
+			</itemizedlist>
+			If necessary new interfaces can easily be added to the source code.
+			Homegear also features:
+			<itemizedlist spacing="compact">
+				<listitem><para>A built-in rich featured web server with PHP 7 and IP cam proxy support. Together with WebSockets and the script engine you can easily create web pages to bidirectionally interact with all devices known to Homegear.</para></listitem>
+				<listitem>
+					<para>A built-in script engine using PHP 7:</para>
+					<itemizedlist spacing="compact">
+						<listitem><para>All devices and device functions are directly accessible.</para></listitem>
+						<listitem><para>All PHP modules can be used.</para></listitem>
+						<listitem><para>Thread support using the PHP module "pthreads".</para></listitem>
+						<listitem>
+							<para>Low level peripheral support:</para>
+							<itemizedlist spacing="compact">
+								<listitem><para>Directly access serial devices, I²C devices and GPIOs.</para></listitem>
+								<listitem><para>You immediately get notified on new data and GPIO state changes. No polling is necessary.</para></listitem>
+								<listitem><para>Using threads you can implement bidirectional and event driven communication.</para></listitem>
+							</itemizedlist>
+						</listitem>
+					</itemizedlist>
+				</listitem>
+				<listitem><para>A base library to easily implement your own device families</para></listitem>
+				<listitem><para>XML device description files with PHP script support to easily implement individual devices</para></listitem>
+				<listitem><para>Support for customized licensing modules supporting module online activation, license verification and script encryption</para></listitem>
+			</itemizedlist>
+			Homegear is written to make it as easy as possible to integrate new devices making them accessible through all the above interfaces.
 		</para>
 	</abstract>
 	<corpauthor>

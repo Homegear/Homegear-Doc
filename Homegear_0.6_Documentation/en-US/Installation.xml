@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Homegear_0.6_Documentation.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-Homegear-Homegear_0.6_Documentation-Installation">
+	<title>Installation</title>
+	<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_System-Requirements">
+		<title>System Requirements</title>
+		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_System-Requirements_Hardware-Recommendations">
+			<title>Hardware Recommendations</title>
+			<para>Homegear runs on pretty much any computer running GNU/Linux. The only requirement is a minimum memory size of 256 MB. Recommended is 1 GB. The memory limits the number of threads that can run simultaneously. Some devices don't need threads and some devices do. So depending on what you want to do, you need more or less memory. 1 GB should be more than enough for all normal installations though.</para>
+			<note>
+				<para>It is recommended to use a battery backup for your system so there is no data corruption in case of a power blackout.</para>
+			</note>
+		</section>
+		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_System-Requirements_Software-Requirements">
+			<title>Software Requirements</title>
+			<para>Homegear should run on all current GNU/Linux distributions. With small changes it can also run on BSD and Mac OS systems.</para>
+			<warning>
+				<para>Do not run Homegear in a virtual machine as packet timing is very inaccurate.</para>
+			</warning>
+		</section>
+	</section>
+	<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository">
+		<title>Installing from Repository</title>
+		<para>If you are using Debian, Raspbian or Ubuntu you can install Homegear from repository. Please follow the instructions for your system.</para>
+		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian">
+			<title>Debian</title>
+			<para>Packages are provided for Debian 7 (Wheezy) and Debian 8 (Jessie). Supported architectures are i386, amd64, armel and armhf.</para>
+			<warning>
+				<para>Don't use the Debian repositories for Raspbian. Use the Raspbian repository instead.</para>
+			</warning>
+			<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian_Debian-7">
+				<title>Debian 7 (Wheezy)</title>
+				<para>Please run the following commands as root:</para>
+				<programlisting language="Bash">wget https://homegear.eu/packages/Release.key &amp;&amp; apt-key add Release.key &amp;&amp; rm Release.key
+echo 'deb https://homegear.eu/packages/Debian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
+apt-get update
+apt-get install homegear</programlisting>
+				<para>After installing Homegear, install any family modules you like. To install all family modules available, run:</para>
+				<programlisting language="Bash">apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos</programlisting>
+			</section>
+			<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian_Debian-8">
+				<title>Debian 8 (Jessie)</title>
+				<para>Please run the following commands as root:</para>
+				<programlisting language="Bash">wget https://homegear.eu/packages/Release.key &amp;&amp; apt-key add Release.key &amp;&amp; rm Release.key
+echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
+apt-get update
+apt-get install homegear</programlisting>
+				<para>After installing Homegear, install any family modules you like. To install all family modules available, run:</para>
+				<programlisting language="Bash">apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos</programlisting>
+			</section>
+		</section>
+		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Raspbian">
+			<title>Raspbian</title>
+			<para>Packages are provided for Raspbian 7 (Wheezy) and Raspbian 8 (Jessie).</para>
+			<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian_Raspbian-7">
+				<title>Raspbian 7 (Wheezy)</title>
+				<para>Please run the following commands as root:</para>
+				<programlisting language="Bash">wget https://homegear.eu/packages/Release.key &amp;&amp; apt-key add Release.key &amp;&amp; rm Release.key
+echo 'deb https://homegear.eu/packages/Raspbian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
+apt-get update
+apt-get install homegear</programlisting>
+				<para>After installing Homegear, install any family modules you like. To install all family modules available, run:</para>
+				<programlisting language="Bash">apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos</programlisting>
+			</section>
+			<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian_Raspbian-8">
+				<title>Raspbian 8 (Jessie)</title>
+				<para>Please run the following commands as root:</para>
+				<programlisting language="Bash">wget https://homegear.eu/packages/Release.key &amp;&amp; apt-key add Release.key &amp;&amp; rm Release.key
+echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
+apt-get update
+apt-get install homegear</programlisting>
+				<para>After installing Homegear, install any family modules you like. To install all family modules available, run:</para>
+				<programlisting language="Bash">apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos</programlisting>
+			</section>
+		</section>
+		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Ubuntu">
+			<title>Ubuntu</title>
+			<para>Packages are provided for Ubuntu 14.04 (Trusty Tahr) and Ubuntu 15.10 (Wily Werewolf).</para>
+			<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian_Ubuntu-14-04">
+				<title>Ubuntu 14.04 (Trusty Tahr)</title>
+				<para>Please run the following commands as root:</para>
+				<programlisting language="Bash">wget https://homegear.eu/packages/Release.key &amp;&amp; apt-key add Release.key &amp;&amp; rm Release.key
+echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list 
+apt-get update
+apt-get install homegear</programlisting>
+				<para>After installing Homegear, install any family modules you like. To install all family modules available, run:</para>
+				<programlisting language="Bash">apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos</programlisting>
+			</section>
+			<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_Installing-from-Repository_Debian_Ubuntu-15-10">
+				<title>Ubuntu 15.10 (Wily Werewolf)</title>
+				<para>Please run the following commands as root:</para>
+				<programlisting language="Bash">wget https://homegear.eu/packages/Release.key &amp;&amp; apt-key add Release.key &amp;&amp; rm Release.key
+echo 'deb https://homegear.eu/packages/Ubuntu/ wily/' >> /etc/apt/sources.list.d/homegear.list 
+apt-get update
+apt-get install homegear</programlisting>
+				<para>After installing Homegear, install any family modules you like. To install all family modules available, run:</para>
+				<programlisting language="Bash">apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos</programlisting>
+			</section>
+		</section>
+	</section>
+	<section id="sect-Homegear-Homegear_0.6_Documentation-Manually_Install_Debian_Raspbian_Ubuntu_Package">
+		<title>Manually Install Debian/Raspbian/Ubuntu Package</title>
+		<para>Download the correct packages from the <ulink url="https://www.homegear.eu/index.php/Downloads">Homegear download page</ulink>. You need at least the packages "libhomegear-base" and "homegear". Additionally download all family module packages you want to use. Then as root install the packages using dpkg:</para>
+		<programlisting language="Bash">dpkg -i libhomegear-base_XXX.deb
+dpkg -i homegear_XXX.deb
+dpkg -i homegear-MODULENAME_XXX.deb</programlisting>
+	</section>
+	<section id="sect-Homegear-Homegear_0.6_Documentation-Raspbian-Image">
+		<title>Raspbian Image</title>
+		<para>If you want to use Homegear on a Raspberry Pi, the easiest way is to <ulink url="https://www.homegear.eu/index.php/Downloads">download the Raspberry Pi image</ulink> and write it to a SD card.</para>
+		<para>Follow the instructions on <ulink url="http://elinux.org/RPi_Easy_SD_Card_Setup#Flashing_the_SD_Card_using_Windows">http://elinux.org/RPi_Easy_SD_Card_Setup#Flashing_the_SD_Card_using_Windows</ulink> (for Windows, Mac and GNU/Linux) to get the image onto your SD card.</para>
+		<para>Username is: "pi" Password is: "raspberry"</para>
+		<para>SSH is enabled on port 22, so you can use a SSH client (e. g. PuTTY) to login and you don't need to connect a display and keyboard. You can try logging in using the hostname "homegearpi" or you need to look the IP address up in your DHCP server (or router).
+When you first login, the Raspberry Pi configuration tool will start.</para>
+	</section>
+</chapter>
+
