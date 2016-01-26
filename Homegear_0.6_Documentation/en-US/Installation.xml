@@ -105,8 +105,12 @@ apt-get install homegear</programlisting>
 		<title>Manually Install Debian/Raspbian/Ubuntu Package</title>
 		<para>Download the correct packages from the <ulink url="https://www.homegear.eu/index.php/Downloads">Homegear download page</ulink>. You need at least the packages "libhomegear-base" and "homegear". Additionally download all family module packages you want to use. Then as root install the packages using dpkg:</para>
 		<programlisting language="Bash">dpkg -i libhomegear-base_XXX.deb
+apt-get -f install
 dpkg -i homegear_XXX.deb
-dpkg -i homegear-MODULENAME_XXX.deb</programlisting>
+apt-get -f install
+dpkg -i homegear-MODULENAME_XXX.deb
+apt-get -f install</programlisting>
+		<para>The "apt-get -f install" installs any missing dependencies.</para>
 	</section>
 	<section id="sect-Homegear-Homegear_0.6_Documentation-Raspbian-Image">
 		<title>Raspbian Image</title>
@@ -122,7 +126,7 @@ When you first login, the Raspberry Pi configuration tool will start.</para>
 			<title>Compiling Current GitHub Source Using Docker Image</title>
 			<para>The easiest way to compile Homegear from source is by using Docker. Docker images are provided for Debian 7 (Wheezy; amd64, i386, armhf, armel), Debian 8 (Jessie; amd64, i386, armhf, arm64, armel), Raspbian Wheezy, Raspbian Jessie, Ubuntu 14.04 (Trusty Tahr; amd64, i386, armhf, arm64) and Ubuntu 15.10 (Wily Werewolf; amd64, i386, armhf, arm64). Start the Docker image by running:</para>
 			<programlisting language="Bash">docker run -it -e HOMEGEARBUILD_SHELL=1 homegear/build:TAG</programlisting>
-			<para>Replace "TAG" with one of the tags from <ulink url="https://hub.docker.com/r/homegear/build/tags/">the repository</ulink> (e. g. debian-jessie-amd64). The environment variable needs to be set to avoid being asked for information about a server to upload the created packages to. To speed up compilation you can also set "HOMEGEARBUILD_THREADS" to the number of CPU cores of your system to speed up compilation.</para>
+			<para>Replace "TAG" with one of the tags from <ulink url="https://hub.docker.com/r/homegear/build/tags/">the repository</ulink> (e. g. debian-jessie-amd64). The environment variable needs to be set to avoid being asked for information about a server to upload the created packages to. To speed up compilation you can also set "HOMEGEARBUILD_THREADS" to the number of CPU cores of your system.</para>
 			<para>In the container execute:</para>
 			<programlisting language="Bash">/build/CreateDebianPackageNightly.sh</programlisting>
 			<para>When done, you can find the created Debian packages in the directory /build.</para>
@@ -150,16 +154,14 @@ mv pthreads-X.X.X pthreads</programlisting>
 				<para>Change into the parent directory and execute autoconf:</para>
 				<programlisting language="Bash">cd ..
 autoconf</programlisting>
-				<para>To fix a bug in the configure script run:</para>
-				<programlisting language="Bash">sed -i 's/enableval=$enable_embed;/enableval=static;/g' configure</programlisting>
 				<para>Execute the configure script. The lines before the script are needed to get the target system:</para>
 				<programlisting language="Bash">target="$(gcc -v 2>&amp;1)"
 strpos="${target%%--target=*}"
 strpos=${#strpos}
 target=${target:strpos}
 target=$(echo $target | cut -d "=" -f 2 | cut -d " " -f 1)
-./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --with-qdbm=/usr/include/qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --enable-mysqlnd --enable-mysqlnd-compression-support --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --enable-embed --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts</programlisting>
-				<para>If dependencies are missing, install them and run the configure script again until it finishes successfully. When done, run:</para>
+./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --with-qdbm=/usr/include/qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --enable-mysqlnd --enable-mysqlnd-compression-support --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts</programlisting>
+				<para>If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if not needed. When done, run:</para>
 				<programlisting language="Bash">make &amp;&amp; make install</programlisting>
 			</section>
 			<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear">
