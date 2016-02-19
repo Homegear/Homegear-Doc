@@ -175,7 +175,8 @@ target=${target:strpos}
 target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
 ./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --enable-mysqlnd --enable-mysqlnd-compression-support --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts</programlisting>
 					<para>If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if not needed. When done, run:</para>
-					<programlisting language="Bash">make &amp;&amp; make install</programlisting>
+					<programlisting language="Bash">make &amp;&amp; make install
+cp /usr/share/homegear/php/lib/libphp7.a /usr/lib/libphp7-homegear.a</programlisting>
 				</section>
 			</section>
 			<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear">
@@ -190,16 +191,17 @@ target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
 						<listitem><para>Libgpg-error devel</para></listitem>
 						<listitem><para>GnuTLS devel</para></listitem>
 						<listitem><para>Libgcrypt devel</para></listitem>
+						<listitem><para>Libxslt devel (needed by PHP)</para></listitem>
 					</itemizedlist>
 					<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Prerequisites_Debian">
 						<title>Debian / Raspbian / Ubuntu</title>
 						<para>On Debian, Raspbian or Ubuntu run:</para>
-						<programlisting language="Bash">apt-get install libsqlite3-dev libreadline6-dev libgpg-error-dev libgnutls28-dev (libgcrypt11-dev or libgcrypt20-dev)</programlisting>
+						<programlisting language="Bash">apt-get install libsqlite3-dev libreadline6-dev libgpg-error-dev libgnutls28-dev libxslt-dev (libgcrypt11-dev or libgcrypt20-dev)</programlisting>
 					</section>
 					<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Prerequisites_openSUSE">
 						<title>openSUSE Leap</title>
 						<para>On openSUSE Leap run:</para>
-						<programlisting language="Bash">zypper install libtool libgnutls-devel libgpg-error-devel sqlite3-devel libgcrypt-devel</programlisting>
+						<programlisting language="Bash">zypper install libtool libgnutls-devel libgpg-error-devel sqlite3-devel libgcrypt-devel libxslt-devel</programlisting>
 					</section>
 				</section>
 				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Compiling">
