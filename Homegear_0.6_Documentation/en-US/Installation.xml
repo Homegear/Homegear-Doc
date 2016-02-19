@@ -221,6 +221,37 @@ cd Homegear-master
 ./makeRelease.sh 4</programlisting>
 					<para>Repeat these steps for all family modules you want to compile.</para>
 				</section>
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Configuration">
+					<title>Configuration</title>
+					<para>First add a user named homegear:</para>
+					<programlisting language="Bash">useradd --system -U --no-create-home homegear</programlisting>
+					<para>Copy the default configuration files:</para>
+					<programlisting language="Bash">cp -R misc/Config\ Directory /etc/homegear</programlisting>
+					<para>Now setup all necessary directories</para>
+					<programlisting language="Bash">mkdir /var/log/homegear
+chmod 750 /var/log/homegear
+chown homegear:homegear /var/log/homegear
+chmod 750 /var/lib/homegear
+chown homegear:homegear /var/lib/homegear</programlisting>
+					<para>and create the certificates needed for SSL/TLS encryption:</para>
+					<programlisting language="Bash">openssl genrsa -out /etc/homegear/homegear.key 2048
+openssl req -batch -new -key /etc/homegear/homegear.key -out /etc/homegear/homegear.csr
+openssl x509 -req -in /etc/homegear/homegear.csr -signkey /etc/homegear/homegear.key -out /etc/homegear/homegear.crt
+rm /etc/homegear/homegear.csr
+chown homegear:homegear /etc/homegear/homegear.key
+chmod 400 /etc/homegear/homegear.key
+openssl dhparam -check -text -5 1024 -out /etc/homegear/dh1024.pem
+chown homegear:homegear /etc/homegear/dh1024.pem
+chmod 400 /etc/homegear/dh1024.pem</programlisting>
+				</section>
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_First-Start">
+					<title>First Start</title>
+					<para>Ńow try to start Homegear with:</para>
+					<programlisting language="Bash">homegear -u homegear -g homegear -d</programlisting>
+					<para>And watch the log file with</para>
+					<programlisting language="Bash">tail -n 1000 -f /var/log/homegear/homegear.log</programlisting>
+					<para>to see, if everything is working fine.</para>
+				</section>
 			</section>
 		</section>
 	</section>
