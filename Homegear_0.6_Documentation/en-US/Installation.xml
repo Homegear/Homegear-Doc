@@ -135,58 +135,90 @@ When you first login, the Raspberry Pi configuration tool will start.</para>
 			<title>Manually Compiling Homegear</title>
 			<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_PHP">
 				<title>Compiling PHP</title>
-				<para>For all systems Homegear is available as Debian package you can get the needed PHP library and header files by installing "php7-homegear-dev" using apt:</para>
-				<programlisting language="Bash">apt-get install php7-homegear-dev</programlisting>
-				<para>For all other systems you need to compile PHP 7 from source.</para>
-				<para>First of all download the PHP source code from the <ulink url="http://php.net/downloads.php">PHP download page</ulink>. Then extract the package:</para>
-				<programlisting language="Bash">tar -zxf php-7.X.X.tar.gz</programlisting>
-				<para>or</para>
-				<programlisting language="Bash">tar -jxf php-7.X.X.tar.bz2</programlisting>
-				<para>Change into the subdirectory "ext" within the extracted directory:</para>
-				<programlisting language="Bash">cd php-7.X.X/ext</programlisting>
-				<para>Download the current version of pthreads from <ulink url="https://github.com/krakjoe/pthreads/releases">GitHub</ulink>, extract it and rename the extracted folder into "pthreads":</para>
-				<programlisting language="Bash">wget https://github.com/krakjoe/pthreads/archive/vX.X.X.tar.gz
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_PHP_Debian">
+					<title>Debian / Ubuntu / Raspbian</title>
+					<para>For all systems Homegear is available as Debian package you can get the needed PHP library and header files by installing "php7-homegear-dev" using apt:</para>
+					<programlisting language="Bash">apt-get install php7-homegear-dev</programlisting>
+				</section>
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_PHP_Prerequisites">
+					<title>Prerequisites</title>
+					<para>For all other systems you need to compile PHP 7 from source. First of all, install the prerequisites.</para>
+					<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_PHP_Prerequisites_openSUSE">
+						<title>openSUSE Leap</title>
+						<para>Execute:</para>
+						<programlisting language="Bash">zypper install autoconf gcc gcc-c++ libxml2-devel libopenssl-devel enchant-devel gmp-devel libmcrypt-devel libedit-devel</programlisting>
+					</section>
+				</section>
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_PHP_Compiling">
+					<title>Compiling</title>
+					<para>Download the PHP source code from the <ulink url="http://php.net/downloads.php">PHP download page</ulink>. Then extract the package:</para>
+					<programlisting language="Bash">tar -zxf php-7.X.X.tar.gz</programlisting>
+					<para>or</para>
+					<programlisting language="Bash">tar -jxf php-7.X.X.tar.bz2</programlisting>
+					<para>Change into the subdirectory "ext" within the extracted directory:</para>
+					<programlisting language="Bash">cd php-7.X.X/ext</programlisting>
+					<para>Download the current version of pthreads from <ulink url="https://github.com/krakjoe/pthreads/releases">GitHub</ulink>, extract it and rename the extracted folder into "pthreads":</para>
+					<programlisting language="Bash">wget https://github.com/krakjoe/pthreads/archive/vX.X.X.tar.gz
 tar -zxf vX.X.X.tar.gz
 rm vX.X.X.tar.gz
 mv pthreads-X.X.X pthreads</programlisting>
-				<para>We need to allow pthreads to be loaded in Homegear:</para>
-				<programlisting language="Bash">sed -i 's/{ZEND_STRL("cli")}/{ZEND_STRL("homegear")}/g' pthreads/php_pthreads.c</programlisting>
-				<para>Change into the parent directory and execute autoconf:</para>
-				<programlisting language="Bash">cd ..
+					<para>We need to allow pthreads to be loaded in Homegear:</para>
+					<programlisting language="Bash">sed -i 's/{ZEND_STRL("cli")}/{ZEND_STRL("homegear")}/g' pthreads/php_pthreads.c</programlisting>
+					<para>Change into the parent directory and execute autoconf:</para>
+					<programlisting language="Bash">cd ..
 autoconf</programlisting>
-				<para>Execute the configure script. The lines before the script are needed to get the target system:</para>
-				<programlisting language="Bash">target="$(gcc -v 2>&amp;1)"
-strpos="${target%%--target=*}"
+					<para>Execute the configure script. The lines before the script are needed to get the target system:</para>
+					<programlisting language="Bash">target="$(gcc -v 2>&amp;1)"
+strpos="${target%%Target:*}"
 strpos=${#strpos}
 target=${target:strpos}
-target=$(echo $target | cut -d "=" -f 2 | cut -d " " -f 1)
-./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --with-qdbm=/usr/include/qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --enable-mysqlnd --enable-mysqlnd-compression-support --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts</programlisting>
-				<para>If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if not needed. When done, run:</para>
-				<programlisting language="Bash">make &amp;&amp; make install</programlisting>
+target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
+./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --enable-mysqlnd --enable-mysqlnd-compression-support --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts</programlisting>
+					<para>If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if not needed. When done, run:</para>
+					<programlisting language="Bash">make &amp;&amp; make install</programlisting>
+				</section>
 			</section>
 			<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear">
 				<title>Compiling Homegear</title>
-				<para>First install all dependencies:</para>
-				<itemizedlist spacing="compact">
-					<listitem><para>SQLite 3 devel (Debian package libsqlite3-dev)</para></listitem>
-					<listitem><para>Readline 6 devel  (Debian package libreadline6-dev)</para></listitem>
-					<listitem><para>Libgpg-error devel (Debian package libgpg-error-dev)</para></listitem>
-					<listitem><para>GnuTLS devel (Debian package libgnutls28-dev)</para></listitem>
-				</itemizedlist>
-				<para>Then download Homegear's base library and extract it:</para>
-				<programlisting language="Bash">wget https://github.com/Homegear/libhomegear-base/archive/master.zip
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Prerequisites">
+					<title>Prerequisites</title>
+					<para>First install all dependencies:</para>
+					<itemizedlist spacing="compact">
+						<listitem><para>PHP 7 devel and static library (see <xref linkend="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_PHP" />)</para></listitem>
+						<listitem><para>SQLite 3 devel</para></listitem>
+						<listitem><para>Readline 6 devel</para></listitem>
+						<listitem><para>Libgpg-error devel</para></listitem>
+						<listitem><para>GnuTLS devel</para></listitem>
+						<listitem><para>Libgcrypt devel</para></listitem>
+					</itemizedlist>
+					<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Prerequisites_Debian">
+						<title>Debian / Raspbian / Ubuntu</title>
+						<para>On Debian, Raspbian or Ubuntu run:</para>
+						<programlisting language="Bash">apt-get install libsqlite3-dev libreadline6-dev libgpg-error-dev libgnutls28-dev (libgcrypt11-dev or libgcrypt20-dev)</programlisting>
+					</section>
+					<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Prerequisites_openSUSE">
+						<title>openSUSE Leap</title>
+						<para>On openSUSE Leap run:</para>
+						<programlisting language="Bash">zypper install libtool libgnutls-devel libgpg-error-devel sqlite3-devel libgcrypt-devel</programlisting>
+					</section>
+				</section>
+				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_Compiling">
+					<title>Compiling</title>
+					<para>Then download Homegear's base library and extract it:</para>
+					<programlisting language="Bash">wget https://github.com/Homegear/libhomegear-base/archive/master.zip
 unzip master.zip
 rm master.zip</programlisting>
-				<para>Change into the extracted directory and run "makeRelease.sh" or "makeDebug.sh". You can pass the number of build threads to the script to speed up compilation:</para>
-				<programlisting language="Bash">cd libhomegear-base-master
+					<para>Change into the extracted directory and run "makeRelease.sh" or "makeDebug.sh". You can pass the number of build threads to the script to speed up compilation:</para>
+					<programlisting language="Bash">cd libhomegear-base-master
 ./makeRelease.sh 4</programlisting>
-				<para>The same for Homegear:</para>
-				<programlisting language="Bash">wget https://github.com/Homegear/Homegear/archive/master.zip
+					<para>The same for Homegear:</para>
+					<programlisting language="Bash">wget https://github.com/Homegear/Homegear/archive/master.zip
 unzip master.zip
 rm master.zip
 cd Homegear-master
 ./makeRelease.sh 4</programlisting>
-				<para>Repeat these steps for all family modules you want to compile.</para>
+					<para>Repeat these steps for all family modules you want to compile.</para>
+				</section>
 			</section>
 		</section>
 	</section>
