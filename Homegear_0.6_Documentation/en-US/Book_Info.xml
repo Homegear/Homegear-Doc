@@ -21,7 +21,7 @@
 				<listitem><para>WebSockets with PHP session authentication</para></listitem>
 				<listitem><para>HTTP (GET and POST)</para></listitem>
 			</itemizedlist>
-			If necessary new interfaces can easily be added to the source code.
+			If needed new interfaces can easily be added to the source code.
 			Homegear also features:
 			<itemizedlist spacing="compact">
 				<listitem><para>A built-in rich featured web server with PHP 7 and IP cam proxy support. Together with WebSockets and the script engine you can easily create web pages to bidirectionally interact with all devices known to Homegear.</para></listitem>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Homegear-HomeMaticBidCoS_0.6_Documentation.ent">
+%BOOK_ENTITIES;
+]>
+<bookinfo id="book-Homegear-HomeMaticBidCoS_0.6_Documentation-Homegear_0.6_Documentation">
+	<title>Documentation</title>
+	<subtitle>Interface your home</subtitle>
+	<productname>Homegear HomeMatic BidCoS</productname>
+	<productnumber>0.6</productnumber>
+	<pubsnumber>0</pubsnumber>
+	<abstract>
+		<title>Abstract</title>
+		<para>HomeMatic BidCoS is a wireless home automation system by eQ-3. It features a good portfolio of devices and supports AES signing of packets to prevent unauthorized control of the system.</para>
+		<para>
+			Homegear fully supports HomeMatic BidCoS and in contrast to most implementations available directly communicates with HomeMatic devices. Like this, you can do stuff you can't with the official central:
+			<itemizedlist spacing="compact">
+				<listitem><para>Support for third-party communication modules</para></listitem>
+				<listitem><para>Better wireless range, because the third-party modules have better antennas</para></listitem>
+				<listitem><para>Better latency and less packet loss with some communication modules</para></listitem>
+				<listitem><para>Devices (particularly remotes and motion detectors) communicate bidirectional with Homegear directly after pairing (signaled by the green LED) - no additional steps are needed</para></listitem>
+				<listitem><para>Homegear supports roaming. It can automatically select the interface with the best reception.</para></listitem>
+				<listitem><para>Smoke detectors can be switched on and off</para></listitem>
+			</itemizedlist>
+		</para>
+	</abstract>
+	<corpauthor>
+		<inlinemediaobject>
+			<imageobject>
+				<imagedata fileref="Common_Content/images/title_logo.svg" format="SVG" />
+			</imageobject>
+		</inlinemediaobject>
+	</corpauthor>
+	<xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Author_Group.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+</bookinfo>
+

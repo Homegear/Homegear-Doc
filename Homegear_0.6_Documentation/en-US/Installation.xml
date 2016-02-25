@@ -8,11 +8,11 @@
 	<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_System-Requirements">
 		<title>System Requirements</title>
 		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_System-Requirements_Hardware-Recommendations">
-			<title>Hardware Recommendations</title>
-			<para>Homegear runs on pretty much any computer running GNU/Linux. The only requirement is a minimum memory size of 256 MB. Recommended is 1 GB. The memory limits the number of threads that can run simultaneously. Some devices don't need threads and some devices do. So depending on what you want to do, you need more or less memory. 1 GB should be more than enough for all normal installations though.</para>
 			<note>
 				<para>It is recommended to use a battery backup for your system so there is no data corruption in case of a power blackout.</para>
 			</note>
+			<title>Hardware Recommendations</title>
+			<para>Homegear runs on pretty much any computer running GNU/Linux. The only requirement is a minimum memory size of 256 MB. Recommended is 1 GB. The memory limits the number of threads that can run simultaneously. Some devices don't need threads and some devices do. So depending on what you want to do, you need more or less memory. 1 GB should be more than enough for all normal installations though.</para>
 		</section>
 		<section id="sect-Homegear-Homegear_0.6_Documentation-Installation_System-Requirements_Software-Requirements">
 			<title>Software Requirements</title>
@@ -246,7 +246,7 @@ chmod 400 /etc/homegear/dh1024.pem</programlisting>
 				</section>
 				<section id="sect-Homegear-Homegear_0.6_Documentation-Compiling-from-Source_Manual_Homegear_First-Start">
 					<title>First Start</title>
-					<para>Ńow try to start Homegear with:</para>
+					<para>Now try to start Homegear with:</para>
 					<programlisting language="Bash">homegear -u homegear -g homegear -d</programlisting>
 					<para>And watch the log file with</para>
 					<programlisting language="Bash">tail -n 1000 -f /var/log/homegear/homegear.log</programlisting>
