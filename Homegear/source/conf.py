@@ -156,7 +156,7 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+html_sidebars = {}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -202,6 +202,15 @@ html_static_path = ['_static']
 # The name of a javascript file (relative to the configuration directory) that
 # implements a search results scorer. If empty, the default will be used.
 #html_search_scorer = 'scorer.js'
+
+html_context = {
+	"display_github": True,
+	"github_user": "Homegear",
+	"github_repo": "homegear-doc",
+	"github_version": "master",
+	"conf_py_path": "/Homegear/source/",
+	"source_suffix": source_suffix,	
+}
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Homegeardoc'
@@ -286,3 +295,6 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+edit_on_github_project = 'Homegear/Homegear-Doc'
+edit_on_github_branch = 'master'
