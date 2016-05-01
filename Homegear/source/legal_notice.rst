@@ -1,5 +1,5 @@
 Legal Notice
-============
+############
 
 Copyright © 2016 Homegear UG (haftungsbeschränkt).
 

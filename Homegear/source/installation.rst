@@ -1,13 +1,14 @@
 Installation
-============
+############
 
 .. highlight:: bash
 
 System Requirements
--------------------
+*******************
+
 
 Hardware Recommendations
-^^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 Homegear runs on pretty much any computer running GNU/Linux. The only requirement is a minimum memory size of 256 MB. Recommended is 1 GB. The memory limits the number of threads that can run simultaneously. Some devices don't need threads and some devices do. So depending on what you want to do, you need more or less memory. 1 GB should be more than enough for all normal installations though.
 
@@ -15,7 +16,7 @@ Homegear runs on pretty much any computer running GNU/Linux. The only requiremen
 
 
 Software Requirements
-^^^^^^^^^^^^^^^^^^^^^
+=====================
 
 Homegear should run on all current GNU/Linux distributions. With small changes it can also run on BSD and Mac OS systems.
 
@@ -23,13 +24,13 @@ Homegear should run on all current GNU/Linux distributions. With small changes i
 
 
 Installing from Repository
---------------------------
+**************************
 
 If you are using Debian, Raspbian or Ubuntu you can install Homegear from repository. Please follow the instructions for your system.
 
 
 Debian
-^^^^^^
+======
 
 Packages are provided for Debian 7 (Wheezy) and Debian 8 (Jessie). Supported architectures are i386, amd64, armel and armhf.
 
@@ -37,7 +38,7 @@ Packages are provided for Debian 7 (Wheezy) and Debian 8 (Jessie). Supported arc
 
 
 Debian 7 (Wheezy)
-"""""""""""""""""
+-----------------
 
 Please run the following commands as root::
 
@@ -52,7 +53,7 @@ After installing Homegear, install any family modules you like. To install all f
 
 
 Debian 8 (Jessie)
-"""""""""""""""""
+-----------------
 
 Please run the following commands as root::
 
@@ -67,13 +68,13 @@ After installing Homegear, install any family modules you like. To install all f
 
 
 Raspbian
-^^^^^^^^
+========
 
 Packages are provided for Raspbian 7 (Wheezy) and Raspbian 8 (Jessie).
 
 
 Raspbian 7 (Wheezy)
-"""""""""""""""""""
+-------------------
 
 Please run the following commands as root::
 
@@ -88,7 +89,7 @@ After installing Homegear, install any family modules you like. To install all f
 
 
 Raspbian 8 (Jessie)
-"""""""""""""""""""
+-------------------
 
 Please run the following commands as root::
 
@@ -103,13 +104,13 @@ After installing Homegear, install any family modules you like. To install all f
 
 
 Ubuntu
-^^^^^^
+======
 
 Packages are provided for Ubuntu 14.04 (Trusty Tahr) and Ubuntu 15.10 (Wily Werewolf).
 
 
 Ubuntu 14.04 (Trusty Tahr)
-""""""""""""""""""""""""""
+--------------------------
 
 Please run the following commands as root::
 
@@ -124,7 +125,7 @@ After installing Homegear, install any family modules you like. To install all f
 
 
 Ubuntu 15.10 (Wily Werewolf)
-""""""""""""""""""""""""""""
+----------------------------
 
 Please run the following commands as root::
 
@@ -139,7 +140,7 @@ After installing Homegear, install any family modules you like. To install all f
 
 
 Manually Install Debian/Raspbian/Ubuntu Package
------------------------------------------------
+***********************************************
 
 Download the correct packages from the `Homegear download page <https://www.homegear.eu/index.php/Downloads>`_. You need at least the packages ``libhomegear-base`` and ``homegear``. Additionally download all family module packages you want to use. Then as root install the packages using dpkg::
 
@@ -154,7 +155,7 @@ The "apt-get -f install" installs any missing dependencies.
 
 
 Raspbian Image
---------------
+**************
 
 If you want to use Homegear on a Raspberry Pi, the easiest way is to `download the Raspberry Pi image <https://www.homegear.eu/index.php/Downloads>`_ and write it to a SD card.
 
@@ -164,11 +165,13 @@ Follow the instructions on `elinux.org <http://elinux.org/RPi_Easy_SD_Card_Setup
 
 SSH is enabled on port 22, so you can use a SSH client (e. g. PuTTY) to login and you don't need to connect a display and keyboard. You can try logging in using the hostname ``homegearpi`` or you need to look the IP address up in your DHCP server (or router). When you first login, the Raspberry Pi configuration tool will start.
 
+
 Compiling from Source
----------------------
+*********************
+
 
 Compiling Current GitHub Source Using Docker Image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================================
 
 The easiest way to compile Homegear from source is by using Docker. Docker images are provided for Debian 7 (Wheezy; amd64, i386, armhf, armel), Debian 8 (Jessie; amd64, i386, armhf, arm64, armel), Raspbian Wheezy, Raspbian Jessie, Ubuntu 14.04 (Trusty Tahr; amd64, i386, armhf, arm64) and Ubuntu 15.10 (Wily Werewolf; amd64, i386, armhf, arm64). Start the Docker image by running::
 
@@ -184,33 +187,38 @@ When done, you can find the created Debian packages in the directory ``/build``.
 
 
 Manually Compiling Homegear
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================
 
 .. _compiling-php:
 
 Compiling PHP
-"""""""""""""
+-------------
 
-**Debian / Ubuntu / Raspbian**
+
+Debian / Ubuntu / Raspbian
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For all systems Homegear is available as Debian package you can get the needed PHP library and header files by installing "php7-homegear-dev" using apt::
 
 	apt-get install php7-homegear-dev
 
 
-**Prerequisites**
+Prerequisites
+^^^^^^^^^^^^^
 
 For all other systems you need to compile PHP 7 from source. First of all, install the prerequisites.
 
 
-*openSUSE Leap*
+openSUSE Leap
+"""""""""""""
 
 Execute::
 
 	zypper install autoconf gcc gcc-c++ libxml2-devel libopenssl-devel enchant-devel gmp-devel libmcrypt-devel libedit-devel
 
 
-**Compiling**
+Compiling
+^^^^^^^^^
 
 Download the PHP source code from the `PHP download page <http://php.net/downloads.php>`_. Then extract the package::
 
@@ -254,10 +262,13 @@ If dependencies are missing, install them and run the configure script again unt
 	make && make install
 	cp /usr/share/homegear/php/lib/libphp7.a /usr/lib/libphp7-homegear.a
 
-Compiling Homegear
-""""""""""""""""""
 
-**Prerequisites**
+Compiling Homegear
+------------------
+
+
+Prerequisites
+^^^^^^^^^^^^^
 
 First install all dependencies:
 
@@ -270,21 +281,24 @@ First install all dependencies:
 * Libxslt devel (needed by PHP)
 
 
-*Debian / Raspbian / Ubuntu*
+Debian / Raspbian / Ubuntu
+""""""""""""""""""""""""""
 
 On Debian, Raspbian or Ubuntu run::
 
 	apt-get install libsqlite3-dev libreadline6-dev libgpg-error-dev libgnutls28-dev libxslt-dev (libgcrypt11-dev or libgcrypt20-dev)
 
 
-*openSUSE Leap*
+openSUSE Leap
+"""""""""""""
 
 On openSUSE Leap run::
 
 	zypper install libtool libgnutls-devel libgpg-error-devel sqlite3-devel libgcrypt-devel libxslt-devel
 
 
-**Compiling**
+Compiling
+^^^^^^^^^
 
 Then download Homegear's base library and extract it::
 
@@ -308,7 +322,8 @@ The same for Homegear::
 Repeat these steps for all family modules you want to compile.
 
 
-**Configuration**
+Configuration
+^^^^^^^^^^^^^
 
 First add a user named homegear::
 
@@ -338,7 +353,9 @@ and create the certificates needed for SSL/TLS encryption::
 	​chown homegear:homegear /etc/homegear/dh1024.pem
 	​chmod 400 /etc/homegear/dh1024.pem
 
-**First Start**
+
+First Start
+^^^^^^^^^^^
 
 Now try to start Homegear with ::
 
