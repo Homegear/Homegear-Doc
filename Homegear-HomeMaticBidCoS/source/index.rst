@@ -15,4 +15,5 @@ Table of Contents
    abstract
    feedback
    installation
+   configuration
    legal_notice

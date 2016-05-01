@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Homegear Manual'
+project = u'Homegear HomeMatic BidCoS Manual'
 copyright = u'2016, Sathya Laufer'
 author = u'Sathya Laufer'
 
@@ -209,7 +209,7 @@ html_context = {
 	"github_user": "Homegear",
 	"github_repo": "homegear-doc",
 	"github_version": "master",
-	"conf_py_path": "/Homegear/source/",
+	"conf_py_path": "/Homegear-HomeMaticBidCoS/source/",
 	"source_suffix": source_suffix,	
     'css_files': [
         '_static/custom.css',
@@ -239,7 +239,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Homegear.tex', u'Homegear Manual',
+    (master_doc, 'Homegear.tex', u'Homegear HomeMatic BidCoS Manual',
      u'Sathya Laufer', 'manual'),
 ]
 
@@ -269,7 +269,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'homegear', u'Homegear Manual',
+    (master_doc, 'homegear', u'Homegear HomeMatic BidCoS Manual',
      [author], 1)
 ]
 
@@ -283,7 +283,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Homegear', u'Homegear Manual',
+    (master_doc, 'Homegear', u'Homegear HomeMatic BidCoS Manual',
      author, 'Homegear', 'One line description of project.',
      'Miscellaneous'),
 ]

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Homegear Documentation documentation build configuration file, created by
-# sphinx-quickstart on Tue Apr 26 17:19:07 2016.
+# Homegear documentation build configuration file, created by
+# sphinx-quickstart on Wed Apr 20 16:44:29 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -30,8 +30,7 @@ import os
 # ones.
 extensions = [
     'sphinx.ext.todo',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.intersphinx',
+    'sphinx.ext.intersphinx',    
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -124,14 +123,14 @@ html_theme = 'sphinx_rtd_theme'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = u'Homegear Documentation v0.6'
+#html_title = u'Homegear v0.6'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = 'logo.png'
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -158,7 +157,7 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {'**': ['sidebar.html']}
+html_sidebars = {}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -205,8 +204,20 @@ html_sidebars = {'**': ['sidebar.html']}
 # implements a search results scorer. If empty, the default will be used.
 #html_search_scorer = 'scorer.js'
 
+html_context = {
+	"display_github": True,
+	"github_user": "Homegear",
+	"github_repo": "homegear-doc",
+	"github_version": "master",
+	"conf_py_path": "/Overview/source/",
+	"source_suffix": source_suffix,	
+    'css_files': [
+        '_static/custom.css',
+    ],
+}
+
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'HomegearDocumentationdoc'
+htmlhelp_basename = 'Homegeardoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -228,7 +239,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'HomegearDocumentation.tex', u'Homegear Documentation Documentation',
+    (master_doc, 'Homegear.tex', u'Homegear Documentation',
      u'Sathya Laufer', 'manual'),
 ]
 
@@ -258,7 +269,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'homegeardocumentation', u'Homegear Documentation Documentation',
+    (master_doc, 'homegear', u'Homegear Documentation',
      [author], 1)
 ]
 
@@ -272,8 +283,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'HomegearDocumentation', u'Homegear Documentation Documentation',
-     author, 'HomegearDocumentation', 'One line description of project.',
+    (master_doc, 'Homegear', u'Homegear Documentation',
+     author, 'Homegear', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -289,4 +300,7 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
-intersphinx_mapping = {'homegear_core': ('https://doc.homegear.eu/data/homegear', None)}
+add_stylesheet = 'custom.css'
+
+edit_on_github_project = 'Homegear/Homegear-Doc'
+edit_on_github_branch = 'master'
