@@ -24,9 +24,9 @@ The HomeMatic BidCoS module supports the following communication modules:
 	* CC1101 (Texas Instruments)
 	* CC1101 with CC1190 (Texas Instruments)
 
-If you just want a working system without a lot of work, buy the CUL stick. It is probably the easiest to use device in the list, can be connected to a good antenna and supports AES handshakes and firmware updates.
+If you just want a system that works without you having to invest a lot of time, buy the CUL stick. Of the devices in the list, it is probably the easiest to use. Additionally, it can be connected to a good antenna and supports AES handshakes and firmware updates.
 
-.. note:: Of course you can use multiple communication modules at the same time.
+.. note:: Of course, you can use multiple communication modules at the same time.
 
 
 HomeMatic Wireless Module for Raspberry Pi (HM-MOD-RPI-PCB)
