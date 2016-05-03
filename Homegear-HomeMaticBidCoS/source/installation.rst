@@ -6,7 +6,7 @@ Installation
 Installing from Repository
 **************************
 
-If you are using Debian, Raspbian or Ubuntu you can install the HomeMatic BidCoS module from repository. Please run the following command as root::
+If you are using Debian, Raspbian, or Ubuntu, you can install the HomeMatic BidCoS module from the repository. Please run the following command as root::
 
 	apt-get install homegear-homematicbidcos
 
@@ -14,12 +14,12 @@ If you are using Debian, Raspbian or Ubuntu you can install the HomeMatic BidCoS
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the HomeMatic BidCoS package (homegear-homematicbidcos) from the `Homegear download page <https://www.homegear.eu/index.php/Downloads>`_. Then as root install the package using dpkg::
+Download the HomeMatic BidCoS package (homegear-homematicbidcos) from the `Homegear download page <https://www.homegear.eu/index.php/Downloads>`_. Then install the package as root using dpkg::
 
 	dpkg -i homegear-homematicbidcos_XXX.deb
 	apt-get -f install
 
-The ``apt-get -f install`` installs any missing dependencies.
+The command ``apt-get -f install`` installs any missing dependencies.
 
 
 Compiling from Source
@@ -29,7 +29,7 @@ Compiling from Source
 Compiling Current GitHub Source Using Docker Image
 ==================================================
 
-See Homegear documentation.
+See the Homegear documentation.
 
 
 Manually Compiling Homegear-HomeMaticBidCoS
@@ -47,10 +47,10 @@ First install all dependencies:
 	* Libgcrypt devel
 
 
-Debian / Raspbian / Ubuntu
+Debian/Raspbian/Ubuntu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On Debian, Raspbian or Ubuntu run::
+Run the following on Debian, Raspbian, or Ubuntu::
 
 	apt-get install libgpg-error-dev libgnutls28-dev (libgcrypt11-dev or libgcrypt20-dev)
 
@@ -58,7 +58,7 @@ On Debian, Raspbian or Ubuntu run::
 openSUSE Leap
 ^^^^^^^^^^^^^
 
-On openSUSE Leap run::
+On openSUSE Leap, run the following::
 
 	zypper install libtool libgnutls-devel libgpg-error-devel libgcrypt-devel
 
@@ -66,13 +66,13 @@ On openSUSE Leap run::
 Compiling
 ---------
 
-Then download Homegear-HomeMaticBidCoS and extract it::
+Next, you need to download Homegear-HomeMaticBidCoS and extract it::
 
 	wget https://github.com/Homegear/HomeGear-HomeMaticBidCoS/archive/master.zip
 	unzip master.zip
 	rm master.zip
 
-Change into the extracted directory and run ``makeRelease.sh`` or ``makeDebug.sh``. You can pass the number of build threads to the script to speed up compilation::
+Change into the extracted directory and run ``makeRelease.sh`` or ``makeDebug.sh``. You can pass the number of build threads to the script to speed up the compilation process::
 
 	cd Homegear-HomeMaticBidCoS-master
 	./makeRelease.sh 4
@@ -94,7 +94,7 @@ Install the device description files::
 	mkdir /etc/homegear/devices/0
 	cp misc/Device\ Description\ Files/* /etc/homegear/devices/0
 
-Install the firmare update download script and execute it::
+Install the firmware update download script and execute it::
 
 	mkdir -p /usr/share/homegear/firmware
 	cp Data\ Directory/firmware/* /usr/share/homegear/firmware
@@ -111,12 +111,10 @@ See :ref:`communication-modules` for instructions on how to configure communicat
 First Start
 -----------
 
-Now restart Homegear. On Debian, Raspbian or Ubuntu with::
+Now you need to restart Homegear. On Debian, Raspbian, or Ubuntu, you do this with::
 
 	service homegear restart
 
-And watch the log file with ::
+And watch the log file with the following command to make sure that everything is working properly::
 
 	tail -n 1000 -f /var/log/homegear/homegear.log
-
-to see, if everything is working fine.
