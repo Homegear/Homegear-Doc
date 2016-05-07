@@ -151,7 +151,7 @@ Download the correct packages from the `Homegear download page <https://www.home
 	​dpkg -i homegear-MODULENAME_XXX.deb
 	​apt-get -f install
 
-The "apt-get -f install" installs any missing dependencies.
+``apt-get -f install`` installs any missing dependencies.
 
 
 Raspbian Image
@@ -185,6 +185,7 @@ In the container execute::
 
 When done, you can find the created Debian packages in the directory ``/build``.
 
+.. _compiling-homegear:
 
 Manually Compiling Homegear
 ===========================
@@ -366,3 +367,18 @@ and watch the log file with ::
 	tail -n 1000 -f /var/log/homegear/homegear.log
 
 to see, if everything is working fine.
+
+Clients Without SSL Support
+***************************
+
+If you want to connect a client that doesn't support SSL, I strongly recommend to set up a SSH tunnel or use a VPN (i. e. OpenVPN) to encrypt your connection.
+
+
+Install a User Interface
+************************
+
+Homegear does not have a web user interface yet. Until it has, you can use:
+
+* `HomeMatic Manager <https://github.com/hobbyquaker/homematic-manager>`_
+* `HomeMatic Configuration Tool coming with the BidCoS Service (in German only)  <http://www.eq-3.de/Downloads/Software/Konfigurationsadapter/Konfigurationsadapter_LAN/HM-CFG-LAN_Usersoftware_V1_520_eQ-3_151207.zip>`_
+* `HomegearLib.NET Test Application <https://github.com/Homegear/HomegearLib.NET/releases>`_
