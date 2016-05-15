@@ -302,7 +302,7 @@ To tell Homegear to use the HM-CFG-USB place these lines into ``homematicbidcos.
 
 .. _config-ticc1101:
 
-Texes Instruments CC1101
+Texas Instruments CC1101
 ========================
 
 See the figure on how to connect the CC1101 to the Raspberry Pi. Of course you can use the module on other computers, too. There are just two requirements:
