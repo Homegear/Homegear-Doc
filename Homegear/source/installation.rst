@@ -42,10 +42,11 @@ Debian 7 (Wheezy)
 
 Please run the following commands as root::
 
+	apt-get install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	​echo 'deb https://homegear.eu/packages/Debian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
-	​apt-get update
-	​apt-get install homegear
+	echo 'deb https://homegear.eu/packages/Debian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
+	apt-get update
+	apt-get install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -57,10 +58,11 @@ Debian 8 (Jessie)
 
 Please run the following commands as root::
 
+	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	​echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
-	​apt-get update
-	​apt-get install homegear
+	echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
+	apt update
+	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -78,10 +80,11 @@ Raspbian 7 (Wheezy)
 
 Please run the following commands as root::
 
+	apt-get install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	​echo 'deb https://homegear.eu/packages/Raspbian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
-	​apt-get update
-	​apt-get install homegear
+	echo 'deb https://homegear.eu/packages/Raspbian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
+	apt-get update
+	apt-get install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -93,10 +96,11 @@ Raspbian 8 (Jessie)
 
 Please run the following commands as root::
 
+	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	​echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
-	​apt-get update
-	​apt-get install homegear
+	echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
+	apt update
+	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -114,10 +118,11 @@ Ubuntu 14.04 (Trusty Tahr)
 
 Please run the following commands as root::
 
+	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	​echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list 
-	​apt-get update
-	​apt-get install homegear
+	echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list 
+	apt update
+	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -129,10 +134,11 @@ Ubuntu 15.10 (Wily Werewolf)
 
 Please run the following commands as root::
 
+	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	​echo 'deb https://homegear.eu/packages/Ubuntu/ wily/' >> /etc/apt/sources.list.d/homegear.list 
-	​apt-get update
-	​apt-get install homegear
+	echo 'deb https://homegear.eu/packages/Ubuntu/ wily/' >> /etc/apt/sources.list.d/homegear.list 
+	apt update
+	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 

@@ -16,4 +16,8 @@ Table of Contents
    feedback
    installation
    updating
+   first_steps
+   cli
+   events
+   scripting
    legal_notice
