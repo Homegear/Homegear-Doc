@@ -180,7 +180,7 @@ Then execute (just copy and paste the commands)::
 
 
 Configuring Homegear to Use the COC/CCD/CSM/SCC
--------------------------------------------
+-----------------------------------------------
 
 To tell Homegear to use the CUL place these lines into ``homematicbidcos.conf``::
 
@@ -363,4 +363,4 @@ Follow the instructions for the CC1101 above. Then place these lines into ``home
 	# Set to 0x27, if high gain mode is enabled. That is the maximum legally allowed setting.
 	txPowerSetting = 0x27
 
-.. note:: See `this forum post <https://forum.homegear.eu/viewtopic.php?f=16&t=499>`_ for more detailed information.
+.. note:: See the `Homegear forum <https://forum.homegear.eu/viewtopic.php?f=16&t=499>`_ for more detailed information.

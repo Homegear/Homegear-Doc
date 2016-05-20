@@ -46,7 +46,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Debian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
 	apt-get update
-	apt-get install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt-get install homegear
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -62,7 +62,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
 	apt update
-	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -84,7 +84,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Raspbian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
 	apt-get update
-	apt-get install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt-get install homegear
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -100,7 +100,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
 	apt update
-	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -122,23 +122,23 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list 
 	apt update
-	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
 	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
 
 
-Ubuntu 15.10 (Wily Werewolf)
+Ubuntu 16.04 (Xenial Xerus)
 ----------------------------
 
 Please run the following commands as root::
 
 	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Ubuntu/ wily/' >> /etc/apt/sources.list.d/homegear.list 
+	echo 'deb https://homegear.eu/packages/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear
 
 After installing Homegear, install any family modules you like. To install all family modules available, run::
 
@@ -279,6 +279,8 @@ Prerequisites
 
 First install all dependencies:
 
+* Libtool
+* Automake
 * PHP 7 devel and static library (see :ref:`compiling-php`)
 * SQLite 3 devel
 * Readline 6 devel
@@ -286,6 +288,9 @@ First install all dependencies:
 * GnuTLS devel
 * Libgcrypt devel
 * Libxslt devel (needed by PHP)
+* OpenSSL devel (needed by PHP)
+* Libmysqlclient devel (needed by PHP)
+* Unzip (for extracting the source code)
 
 
 Debian / Raspbian / Ubuntu
@@ -293,7 +298,7 @@ Debian / Raspbian / Ubuntu
 
 On Debian, Raspbian or Ubuntu run::
 
-	apt-get install libsqlite3-dev libreadline6-dev libgpg-error-dev libgnutls28-dev libxslt-dev (libgcrypt11-dev or libgcrypt20-dev)
+	apt-get install libsqlite3-dev libreadline6-dev libgpg-error-dev libgnutls28-dev libxslt-dev libssl-dev libmysqlclient-dev unzip libtool automake (libgcrypt11-dev or libgcrypt20-dev)
 
 
 openSUSE Leap
