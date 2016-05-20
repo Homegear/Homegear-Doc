@@ -15,11 +15,11 @@ Just run::
 Manual Update with Package
 **************************
 
-First make a backup of your database in "/var/lib/homegear/db.sql" and your configuration files.
+First, make a backup of your database in "/var/lib/homegear/db.sql" and of your configuration files.
 
-Download the current version of Homegear, the base library (libhomegear-base) and all installed modules from the `download page <https://www.homegear.eu/index.php/Downloads>`_.
+Download the current version of Homegear, the base library (libhomegear-base), and all installed modules from the `download page <https://www.homegear.eu/index.php/Downloads>`_.
 
-Install the packages::
+Install the following packages::
 	
 	dpkg -i libhomegear-base_XXX.deb
 	​apt-get -f install
@@ -36,4 +36,4 @@ That's it!
 Update From Source
 ******************
 
-Follow the installation instructions under ":ref:`compiling-homegear`". Before doing anything, you should backup your database in "/var/lib/homegear/db.sql" and your settings in "/etc/homegear"!
+Follow the installation instructions under ":ref:`compiling-homegear`". Before doing anything, you should back up your database in "/var/lib/homegear/db.sql" and your settings in "/etc/homegear".
