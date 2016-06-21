@@ -89,7 +89,7 @@ Download the firmware from `culfw.de <http://culfw.de/>`_ and extract it::
 	wget http://culfw.de/culfw-1.58.tar.gz
 	tar -zxf culfw-1.58.tar.gz
 
-Change to the directory with the CUL firmware::
+Switch to the directory with the CUL firmware::
 
 	cd CUL_VER_*/culfw/Devices/CUL
 
@@ -133,7 +133,7 @@ In order to be able to flash the COC, you need to install avrdude. In Debian, ju
 	apt-get install avrdude
 
 
-Free Up Serial Line and Enable UART
+Free up Serial Line and Enable UART
 -----------------------------------
 
 Remove any references to ttyAMA0 from /etc/inittab (removed in Raspbian Jessie) and /boot/cmdline.txt.
@@ -167,11 +167,11 @@ Download the firmware from culfw.de and extract it::
 	wget http://culfw.de/culfw-1.58.tar.gz
 	tar -zxf culfw-1.58.tar.gz
 
-Change to the directory with the COC firmware::
+Switch to the directory with the COC firmware::
 
 	cd CUL_VER_*/culfw/Devices/COC
 
-Then execute  the following commands (just copy and paste them)::
+Then execute the following commands (just copy and paste them)::
 
 	if test ! -d /sys/class/gpio/gpio17; then echo 17 > /sys/class/gpio/export; fi
 	if test ! -d /sys/class/gpio/gpio18; then echo 18 > /sys/class/gpio/export; fi

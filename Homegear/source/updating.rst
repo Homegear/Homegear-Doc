@@ -3,7 +3,7 @@ Updating Homegear
 
 .. highlight:: bash
 
-Updating From Repository
+Updating from Repository
 ************************
 
 Just run::
@@ -33,7 +33,7 @@ Install the following packages::
 That's it!
 
 
-Update From Source
+Updating from Source
 ******************
 
 Follow the installation instructions under ":ref:`compiling-homegear`". Before doing anything, you should back up your database in "/var/lib/homegear/db.sql" and your settings in "/etc/homegear".
