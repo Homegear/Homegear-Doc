@@ -18,6 +18,7 @@ Table of Contents
    updating
    first_steps
    cli
+   communication_protocols
    events
    scripting
    legal_notice
