@@ -7,6 +7,7 @@ MQTT
 MQTT is a publish-subscribe-based communication protocol. For it to work you need to install a MQTT broker like ``mosquitto``. Homegear's MQTT interface features:
 
 * Notification on device variable changes
+* Setting variables and configuration parameters
 * Call of all RPC methods
 * TLS support
 * Support for authentication with user name password

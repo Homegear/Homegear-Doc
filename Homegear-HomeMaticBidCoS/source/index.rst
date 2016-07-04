@@ -1,5 +1,5 @@
 Homegear HomeMatic BidCoS Manual
-===============
+================================
 
 **Edition 0.6 - The Homegear Team**
 
