@@ -16,6 +16,8 @@ Table of Contents
    feedback
    installation
    updating
+   backup
+   files
    first_steps
    cli
    communication_protocols

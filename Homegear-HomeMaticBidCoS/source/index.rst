@@ -14,6 +14,7 @@ Table of Contents
 
    abstract
    feedback
+   supported_devices
    installation
    configuration
    legal_notice
