@@ -34,6 +34,6 @@ That's it!
 
 
 Updating from Source
-******************
+********************
 
 Follow the installation instructions under ":ref:`compiling-homegear`". Before doing anything, you should back up your database in "/var/lib/homegear/db.sql" and your settings in "/etc/homegear".

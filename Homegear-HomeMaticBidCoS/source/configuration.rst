@@ -133,24 +133,30 @@ In order to be able to flash the COC, you need to install avrdude. In Debian, ju
 	apt-get install avrdude
 
 
-Free up Serial Line
--------------------
+Free up Serial Line and Enable UART
+-----------------------------------
 
-Remove any references to ttyAMA0 from /etc/inittab and /boot/cmdline.txt.
+Remove any references to ttyAMA0 from /etc/inittab (removed in Raspbian Jessie) and /boot/cmdline.txt.
 
 Our /boot/cmdline.txt looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
-And the last lines of our /etc/inittab look like this (we just added the comment in front of the last line)::
+Disable the serial interface in Raspbian Jessie::
 
-	#T3:23:respawn:/sbin/mgetty -x0 -s 57600 ttyS3
-	 
-	 
-	#Spawn a getty on Raspberry Pi serial line
-	#T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+	systemctl disable serial-getty@ttyAMA0.service
 
-Reboot the Raspberry Pi. 
+Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
+
+	arm_freq=900
+	core_freq=250
+	sdram_freq=450
+	over_voltage=2
+	enable_uart=1
+	dtparam=spi=on
+	dtparam=i2c_arm=on
+
+Reboot the Raspberry Pi.
 
 
 Flashing the Firmware
@@ -224,6 +230,35 @@ Of course, you can use multiple CUNXs.
 HomeMatic Wireless Module for Raspberry Pi (HM-MOD-RPI-PCB)
 ===========================================================
 
+Free Up Serial Line and Enable UART
+-----------------------------------
+
+Remove any references to ttyAMA0 from /etc/inittab (removed in Raspbian Jessie) and /boot/cmdline.txt.
+
+Our /boot/cmdline.txt looks like this::
+
+	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+
+Disable the serial interface in Raspbian Jessie::
+
+	systemctl disable serial-getty@ttyAMA0.service
+
+Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
+
+	arm_freq=900
+	core_freq=250
+	sdram_freq=450
+	over_voltage=2
+	enable_uart=1
+	dtparam=spi=on
+	dtparam=i2c_arm=on
+
+Reboot the Raspberry Pi.
+
+
+Configuring Homegear to Use the HM-MOD-RPI-PCB
+----------------------------------------------
+
 To tell Homegear to use the HM-MOD-RPI-PCB, insert these lines into ``homematicbidcos.conf``::
 
 	[HomeMatic Wireless Module for Raspberry Pi]
@@ -234,6 +269,7 @@ To tell Homegear to use the HM-MOD-RPI-PCB, insert these lines into ``homematicb
 	device = /dev/ttyAMA0
 	responseDelay = 95
 	gpio1 = 18
+	
 
 .. _config-hm-cfg-lan:
 
@@ -365,4 +401,4 @@ Follow the instructions for the CC1101 above. Then insert these lines into ``hom
 	# Set to 0x27, if high gain mode is enabled. That is the maximum legally allowed setting.
 	txPowerSetting = 0x27
 
-.. note:: See `this forum post <https://forum.homegear.eu/viewtopic.php?f=16&t=499>`_ for more detailed information.
+.. note:: See the `Homegear forum <https://forum.homegear.eu/viewtopic.php?f=16&t=499>`_ for more detailed information.

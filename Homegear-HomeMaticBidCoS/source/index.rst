@@ -1,5 +1,5 @@
 Homegear HomeMatic BidCoS Manual
-===============
+================================
 
 **Edition 0.6 - The Homegear Team**
 
@@ -14,6 +14,7 @@ Table of Contents
 
    abstract
    feedback
+   supported_devices
    installation
    configuration
    legal_notice
