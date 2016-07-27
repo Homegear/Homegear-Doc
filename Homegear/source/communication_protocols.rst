@@ -56,17 +56,29 @@ Variable Changes
 
 Variable state changes are published to::
 
-	homegear/HOMEGEAR_ID/event/PEERID/CHANNEL/VARIABLE_NAME
+	homegear/HOMEGEAR_ID/event_plain/PEERID/CHANNEL/VARIABLE_NAME
+	homegear/HOMEGEAR_ID/event_json1/PEERID/CHANNEL/VARIABLE_NAME
+	homegear/HOMEGEAR_ID/event_json2/PEERID/CHANNEL/VARIABLE_NAME
 
-``HOMEGEAR_ID`` is replaced with the value of ``homegearId`` set in ``mqtt.conf``. PEERID, CHANNEL and VARIABLE_NAME are replaced with the data of the changed variable. The payload is the JSON-encoded value of the variable.
+The three topics differ in the way the payload is encoded:
 
-Let's say ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and the value is ``true``. Then the topic is::
+* ``event_plain`` contains the value as is. E. g.: ``43.7``.
+* ``event_json1`` puts the value in a JSON array to be JSON-compliant: ``[43.7]``.
+* ``event_json2`` puts the value into a JSON object. The key is ``value``: ``{ "value": 43.7 }``.
 
-	homegear/0123-4567/155/3/STATE
+``HOMEGEAR_ID`` is replaced with the value of ``homegearId`` set in ``mqtt.conf``. PEERID, CHANNEL and VARIABLE_NAME are replaced with the data of the changed variable.
 
-and the value is::
+Let's say ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and the value is ``true``. Then the topics are::
 
-	[true]
+	1. homegear/0123-4567/event_plain/155/3/STATE
+	2. homegear/0123-4567/event_json1/155/3/STATE
+	3. homegear/0123-4567/event_json2/155/3/STATE
+
+and the payloads are::
+
+	1. true
+	2. [true]
+	3. { "value": true }
 
 
 Set Variable
@@ -76,13 +88,15 @@ The topic to set a variable is::
 
 	homegear/HOMEGEAR_ID/value/PEERID/CHANNEL/VARIABLE_NAME
 
-The payload needs to be the JSON-encoded value. Let's say ``homegearId`` again is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and you want to change the value to ``true``. Then the topic you need to publish to is::
+Let's say ``homegearId`` again is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and you want to change the value to ``true``. Then the topic you need to publish to is::
 
 	homegear/0123-4567/value/155/3/STATE
 
-and the payload needs to be::
+The payload can have three different formats:
 
-	[true]
+#. Plain value: ``43.7``
+#. JSON array with a single entry (to be JSON-compliant): ``[43.7]``
+#. JSON object with a single entry. The key needs to be ``value``: ``{ "value": 43.7 }``
 
 
 Set Configuration Parameters
@@ -102,6 +116,7 @@ and the payload is::
 		"LANGUAGE_CODE": "EN",
 		"CITY_ID": "London"
 	}
+
 
 RPC Methods
 -----------
