@@ -355,6 +355,8 @@ See the figure explaining how to connect the CC1101 to the Raspberry Pi. You can
 
 .. note:: See `this forum post <https://forum.homegear.eu/viewtopic.php?f=16&t=10>`_ for more detailed information.
 
+.. warning:: On the raspberry pi make sure SPI is enabled. You can enable SPI with ``raspi-config`` under ``Advanced Options => SPI`` or by setting ``dtparam=spi=on`` in ``/boot/config.txt``.
+
 To tell Homegear to use the CC1101, insert these lines into ``homematicbidcos.conf``::
 
 	[TI CC1101 Module]
