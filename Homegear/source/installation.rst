@@ -50,7 +50,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff
 
 
 Debian 8 (Jessie)
@@ -66,7 +66,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff
 
 
 Raspbian
@@ -88,7 +88,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff
 
 
 Raspbian 8 (Jessie)
@@ -104,7 +104,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff
 
 
 Ubuntu
@@ -126,7 +126,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff
 
 
 Ubuntu 16.04 (Xenial Xerus)
@@ -142,7 +142,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	​apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos
+	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff
 
 
 Manually Install Debian/Raspbian/Ubuntu Package
