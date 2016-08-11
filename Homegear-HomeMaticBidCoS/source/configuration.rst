@@ -158,6 +158,8 @@ Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this
 
 Reboot the Raspberry Pi.
 
+.. warning:: If you're using the official Raspbian, you need to delete the file ``/etc/udev/rules.d/99-com.rules`` for Homegear to be able to access the GPIOs.
+
 
 Flashing the Firmware
 ---------------------
@@ -255,6 +257,8 @@ Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this
 
 Reboot the Raspberry Pi.
 
+.. warning:: If you're using the official Raspbian, you need to delete the file ``/etc/udev/rules.d/99-com.rules`` for Homegear to be able to access the GPIOs.
+
 
 Configuring Homegear to Use the HM-MOD-RPI-PCB
 ----------------------------------------------
@@ -269,7 +273,6 @@ To tell Homegear to use the HM-MOD-RPI-PCB, insert these lines into ``homematicb
 	device = /dev/ttyAMA0
 	responseDelay = 95
 	gpio1 = 18
-	
 
 .. _config-hm-cfg-lan:
 
