@@ -136,7 +136,12 @@ In order to be able to flash the COC, you need to install avrdude. In Debian, ju
 Free up Serial Line and Enable UART
 -----------------------------------
 
-Remove any references to ttyAMA0 from /etc/inittab (removed in Raspbian Jessie) and /boot/cmdline.txt.
+Raspberry Pi 1 and 2
+^^^^^^^^^^^^^^^^^^^^
+
+On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following. On the Raspberry Pi 3 ttyAMA0 is used by Bluetooth and UART now is available over ttyS0.
+
+Remove any references to ttyAMA0 from /etc/inittab and /boot/cmdline.txt.
 
 Our /boot/cmdline.txt looks like this::
 
@@ -145,6 +150,9 @@ Our /boot/cmdline.txt looks like this::
 Disable the serial interface in Raspbian Jessie::
 
 	systemctl disable serial-getty@ttyAMA0.service
+
+All Raspberry Pis
+^^^^^^^^^^^^^^^^^
 
 Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
 
@@ -186,7 +194,9 @@ Then execute the following commands (just copy and paste them)::
 	sleep 1
 	echo 1 > /sys/class/gpio/gpio18/value
 	 
-	avrdude -p atmega1284p -P /dev/ttyAMA0 -b 38400 -c avr109 -U flash:w:COC.hex
+	avrdude -p atmega1284p -P /dev/ttyS0 -b 38400 -c avr109 -U flash:w:COC.hex
+
+.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth.
 
 
 Configuring Homegear to Use the COC/CCD/CSM/SCC
@@ -199,7 +209,7 @@ To tell Homegear to use the CUL, insert these lines into ``homematicbidcos.conf`
 	# Uncomment this if you want this device to be your default communication module.
 	#default = true
 	deviceType = coc
-	device = /dev/ttyAMA0
+	device = /dev/ttyS0
 	responseDelay = 95
 	gpio1 = 17
 	gpio2 = 18
@@ -207,6 +217,8 @@ To tell Homegear to use the CUL, insert these lines into ``homematicbidcos.conf`
 	# stackPosition = 1
 
 If you want to stack multiple SCCs, you need to set "stackPosition". Use "1" for the SCC at the bottom, "2" for the second SCC, "3" for the next one, and so on.
+
+.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth.
 
 .. _config-cunx:
 
@@ -235,6 +247,11 @@ HomeMatic Wireless Module for Raspberry Pi (HM-MOD-RPI-PCB)
 Free Up Serial Line and Enable UART
 -----------------------------------
 
+Raspberry Pi 1 and 2
+^^^^^^^^^^^^^^^^^^^^
+
+On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following. On the Raspberry Pi 3 ttyAMA0 is used by Bluetooth and UART now is available over ttyS0.
+
 Remove any references to ttyAMA0 from /etc/inittab (removed in Raspbian Jessie) and /boot/cmdline.txt.
 
 Our /boot/cmdline.txt looks like this::
@@ -244,6 +261,9 @@ Our /boot/cmdline.txt looks like this::
 Disable the serial interface in Raspbian Jessie::
 
 	systemctl disable serial-getty@ttyAMA0.service
+
+All Raspberry Pis
+^^^^^^^^^^^^^^^^^
 
 Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
 
@@ -270,9 +290,11 @@ To tell Homegear to use the HM-MOD-RPI-PCB, insert these lines into ``homematicb
 	# Uncomment this if you want the HM-MOD-RPI-PCB to be your default communication module.
 	#default = true
 	deviceType = hm-mod-rpi-pcb
-	device = /dev/ttyAMA0
+	device = /dev/ttyS0
 	responseDelay = 95
 	gpio1 = 18
+
+.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth.
 
 .. _config-hm-cfg-lan:
 
@@ -377,7 +399,7 @@ To tell Homegear to use the CC1101, insert these lines into ``homematicbidcos.co
 	# you connected the interrupt pin to below.
 	interruptPin = 2
 	# The GPIO GDO0 or GDO2 is connected to. Specify which GDO to use above.
-	gpio1 = 23
+	gpio1 = 25
 
 .. _config-ticc1101-cc1190:
 
@@ -398,7 +420,7 @@ Follow the instructions for the CC1101 above. Then insert these lines into ``hom
 	# you connected the interrupt pin to below.
 	interruptPin = 2
 	# The GPIO GDO0 or GDO2 is connected to. Specify which GDO to use above.
-	gpio1 = 23
+	gpio1 = 25
 
 	### Additional TI CC1190 Config ###
 	# The GPIO high gain mode of the CC1190 is connected to.

@@ -23,4 +23,5 @@ Table of Contents
    communication_protocols
    events
    scripting
+   troubleshooting
    legal_notice
