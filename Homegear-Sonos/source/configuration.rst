@@ -4,7 +4,7 @@ Configuration
 .. highlight:: bash
 
 sonos.conf
-********
+**********
 
 The configuration file for the Sonos module, ``sonos.conf``, can be found in Homegear's family configuration directory (default: /etc/homegear/families). In this file, you can configure the event server listening for packets from the Sonos speakers and Ivona TTS.
 
