@@ -32,6 +32,9 @@ CUL
 
 .. image:: images/cul.jpg
 
+The `CUL from busware <http://busware.de/tiki-index.php?page=CUL>`_ is an easy to use USB stick to communicate with smart home devices.
+
+
 Downloading the Prerequisites
 -----------------------------
 
@@ -81,7 +84,7 @@ COC/CCD/SCC
 
 .. image:: images/coc.jpg
 
-The COC from `busware <http://busware.de/tiki-index.php?page=COC>`_ is a Raspberry Pi extension that is used to communicate with wireless home automation devices.
+The `COC from busware <http://busware.de/tiki-index.php?page=COC>`_ is a Raspberry Pi extension that is used to communicate with wireless home automation devices.
 
 
 Downloading the Prerequisites

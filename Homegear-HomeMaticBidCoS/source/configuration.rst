@@ -70,7 +70,7 @@ CUL
 
 .. image:: images/cul.jpg
 
-The CUL from `busware <http://busware.de/tiki-index.php?page=CUL>`_ is the hardware that is easiest to use to communicate with HomeMatic BidCoS devices. The only disadvantage of the CUL is that there is poor control over the packet timing because USB is used.
+The `CUL from busware <http://busware.de/tiki-index.php?page=CUL>`_ is the hardware that is easiest to use to communicate with HomeMatic BidCoS devices. The only disadvantage of the CUL is that there is poor control over the packet timing because USB is used.
 
 Downloading the Prerequisites
 -----------------------------
@@ -121,7 +121,7 @@ COC/CCD/SCC
 
 .. image:: images/coc.jpg
 
-The COC from `busware <http://busware.de/tiki-index.php?page=COC>`_ is a Raspberry Pi extension that is used to communicate with wireless home automation devices. Because the communication between the COC and the Raspberry Pi is serial, the packet timing is much better with them than with a CUL.
+The `COC from busware <http://busware.de/tiki-index.php?page=COC>`_ is a Raspberry Pi extension that is used to communicate with wireless home automation devices. Because the communication between the COC and the Raspberry Pi is serial, the packet timing is much better with them than with a CUL.
 
 Downloading the Prerequisites
 -----------------------------
