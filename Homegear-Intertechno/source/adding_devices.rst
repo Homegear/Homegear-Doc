@@ -12,20 +12,20 @@ To add a switching actuator, you need to know three things:
 2. The type ID of the switching actuator to add.
 3. The Intertechno address of the switching actuator.
 
-1. Communication Module ID
-==========================
+Communication Module ID (1)
+===========================
 
 Open the configuration file "intertechno.conf" and search for the line starting with "id =". Write down the ID of the module.
 
 
-2. Switching Actuator Type ID
-=============================
+Switching Actuator Type ID (2)
+==============================
 
 The type ID of all switching actuators is "1".
 
 
-3. Intertechno Address
-======================
+Intertechno Address (3)
+=======================
 
 Getting the address is the most tricky part.
 
@@ -91,14 +91,14 @@ As with switching actuators to add a remote, you need to know three things:
 2. The type ID of the switching actuator to add.
 3. The Intertechno address of the switching actuator.
 
-1. Communication Module ID
-==========================
+Communication Module ID (1)
+===========================
 
 Open the configuration file "intertechno.conf" and search for the line starting with "id =". Write down the ID of the module.
 
 
-2. Remote Type ID
-=================
+Remote Type ID (2)
+==================
 
 New Intertechno Remotes
 -----------------------
@@ -142,8 +142,8 @@ Find your type ID in the following table. If your remote is missing, please cont
 +------------------------------+---------+
 
 
-3. Intertechno Address
-======================
+Intertechno Address (3)
+=======================
 
 As with the switching actuators getting the address is the most tricky part.
 
