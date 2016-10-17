@@ -82,7 +82,7 @@ The first parameter is the family ID, the second the type ID, the fourth is the 
 Of course you can use all other RPC protocols supported by Homegear to call this method.
 
 
-Remoted
+Remotes
 *******
 
 As with switching actuators to add a remote, you need to know three things:
