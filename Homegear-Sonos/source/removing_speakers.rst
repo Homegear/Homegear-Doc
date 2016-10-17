@@ -1,5 +1,5 @@
 Removing Sonos Speakers
-=======================
+#######################
 
 .. highlight:: bash
 

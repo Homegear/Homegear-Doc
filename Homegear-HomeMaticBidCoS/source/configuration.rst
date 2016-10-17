@@ -70,8 +70,6 @@ CUL
 
 .. image:: images/cul.jpg
 
-The CUL from `busware <http://busware.de/tiki-index.php?page=CUL>`_ is the most easy to use hardware to communicate with HomeMatic BidCoS devices. The only disadvantage is the bad control over the packet timing due to the use of USB.
-
 The CUL from `busware <http://busware.de/tiki-index.php?page=CUL>`_ is the hardware that is easiest to use to communicate with HomeMatic BidCoS devices. The only disadvantage of the CUL is that there is poor control over the packet timing because USB is used.
 
 Downloading the Prerequisites
@@ -123,7 +121,7 @@ COC/CCD/SCC
 
 .. image:: images/coc.jpg
 
-The COC from `busware <http://busware.de/tiki-index.php?page=CUL>`_ is a Raspberry Pi extension that is used to communicate with wireless home automation devices. Because the communication between the COC and the Raspberry Pi is serial, the packet timing is much better with them than with a CUL.
+The COC from `busware <http://busware.de/tiki-index.php?page=COC>`_ is a Raspberry Pi extension that is used to communicate with wireless home automation devices. Because the communication between the COC and the Raspberry Pi is serial, the packet timing is much better with them than with a CUL.
 
 Downloading the Prerequisites
 -----------------------------
@@ -202,7 +200,7 @@ Then execute the following commands (just copy and paste them)::
 Configuring Homegear to Use the COC/CCD/CSM/SCC
 -----------------------------------------------
 
-To tell Homegear to use the CUL, insert these lines into ``homematicbidcos.conf``::
+To tell Homegear to use the COC, insert these lines into ``homematicbidcos.conf``::
 
 	[COC/CCD/CSM/SCC]
 	id = My-COC
