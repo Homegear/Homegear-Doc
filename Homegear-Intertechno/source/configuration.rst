@@ -38,7 +38,7 @@ The `CUL from busware <http://busware.de/tiki-index.php?page=CUL>`_ is an easy t
 Downloading the Prerequisites
 -----------------------------
 
-.. warning:: To receive Intertechno packets you need to flash the `"Alternative culfw (a-culfw)" <https://github.com/heliflieger/a-culfw>`.
+.. warning:: To receive Intertechno packets you need to flash the `"Alternative culfw (a-culfw)" <https://github.com/heliflieger/a-culfw>`_.
 
 In order to be able to flash the CUL, you need to install dfu-programmer. In Debian, just run::
 

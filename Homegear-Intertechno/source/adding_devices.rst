@@ -163,7 +163,7 @@ Old Intertechno Remotes
 The old Intertechno switching actuators (with DIP switch or address wheels) are a little more complicated. The address to set depends on the type of the remote. First of all determine the 10-digit address with the help of the `fhem Wiki <http://www.fhemwiki.de/wiki/Intertechno_Code_Berechnung>`_.
 
 
-Original Intertechno remote
+Original Intertechno Remote
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The address has 8 digits. The first 4 are the first 4 digits of your 10-digit code. The last 4 digits depend on the group code:

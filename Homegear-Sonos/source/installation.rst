@@ -89,9 +89,10 @@ Install the default configuration file::
 
 	cp -R misc/Config\ Directory/sonos.conf /etc/homegear/families
 
-Create the device description directory::
+Install the device description files::
 
 	mkdir /etc/homegear/devices/6
+	cp misc/Device\ Description\ Files/* /etc/homegear/devices/6
 
 
 First Start
