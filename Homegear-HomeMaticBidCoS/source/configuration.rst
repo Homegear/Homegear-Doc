@@ -145,22 +145,34 @@ Our /boot/cmdline.txt looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
-Disable the serial interface in Raspbian Jessie::
 
-	systemctl disable serial-getty@ttyAMA0.service
+Raspberry Pi 3
+^^^^^^^^^^^^^^
+
+On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt::
+
+Our /boot/cmdline.txt looks like this::
+
+	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+
 
 All Raspberry Pis
 ^^^^^^^^^^^^^^^^^
 
 Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
 
-	arm_freq=900
-	core_freq=250
-	sdram_freq=450
-	over_voltage=2
+	.
+	.
+	.
 	enable_uart=1
 	dtparam=spi=on
 	dtparam=i2c_arm=on
+
+Disable the serial interface in Raspbian Jessie::
+
+	systemctl disable serial-getty@ttyAMA0.service
+	systemctl disable serial-getty@serial0.service
+	systemctl disable serial-getty@ttyS0.service
 
 Reboot the Raspberry Pi.
 
@@ -250,28 +262,40 @@ Raspberry Pi 1 and 2
 
 On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following. On the Raspberry Pi 3 ttyAMA0 is used by Bluetooth and UART now is available over ttyS0.
 
-Remove any references to ttyAMA0 from /etc/inittab (removed in Raspbian Jessie) and /boot/cmdline.txt.
+Remove any references to ttyAMA0 from /etc/inittab and /boot/cmdline.txt.
 
 Our /boot/cmdline.txt looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
-Disable the serial interface in Raspbian Jessie::
 
-	systemctl disable serial-getty@ttyAMA0.service
+Raspberry Pi 3
+^^^^^^^^^^^^^^
+
+On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt::
+
+Our /boot/cmdline.txt looks like this::
+
+	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+
 
 All Raspberry Pis
 ^^^^^^^^^^^^^^^^^
 
 Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
 
-	arm_freq=900
-	core_freq=250
-	sdram_freq=450
-	over_voltage=2
+	.
+	.
+	.
 	enable_uart=1
 	dtparam=spi=on
 	dtparam=i2c_arm=on
+
+Disable the serial interface in Raspbian Jessie::
+
+	systemctl disable serial-getty@ttyAMA0.service
+	systemctl disable serial-getty@serial0.service
+	systemctl disable serial-getty@ttyS0.service
 
 Reboot the Raspberry Pi.
 
