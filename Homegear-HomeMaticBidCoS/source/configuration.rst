@@ -149,9 +149,7 @@ Our /boot/cmdline.txt looks like this::
 Raspberry Pi 3
 ^^^^^^^^^^^^^^
 
-On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt::
-
-Our /boot/cmdline.txt looks like this::
+On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt. Our /boot/cmdline.txt looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
@@ -272,9 +270,7 @@ Our /boot/cmdline.txt looks like this::
 Raspberry Pi 3
 ^^^^^^^^^^^^^^
 
-On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt::
-
-Our /boot/cmdline.txt looks like this::
+On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt. Our /boot/cmdline.txt looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
