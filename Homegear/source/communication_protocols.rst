@@ -1,6 +1,8 @@
 Communication Protocols
 #######################
 
+.. _mqtt:
+
 MQTT
 ****
 
@@ -10,7 +12,7 @@ MQTT is a publish-subscribe-based communication protocol. For it to work you nee
 * Setting variables and configuration parameters
 * Call of all RPC methods
 * TLS support
-* Support for authentication with user name password
+* Support for authentication with username and password
 * Support for certificate authentication
 
 Configuration
@@ -144,3 +146,14 @@ Then the result Homegear publishes to ``homegear/HOMEGEAR_ID/rpcResult`` is::
 	{"id":124,"method":"logLevel","result":3}
 
 As you can see, ``id`` is set to ``124`` as defined in the request.
+
+
+Binary RPC
+**********
+
+Homegear supports a Binary RPC protocol originally used by software systems from eQ-3. The Binary RPC protocol is the fastest of the protocols supported by Homegear. It is used by HomegearLib.NET, the OpenHAB binding, ioBroker and other systems. Homegear uses an improved version of the Binary RPC protocol and features:
+
+* Call of all RPC methods and reception of all RPC events
+* TLS support
+* Support for authentication with username and password
+

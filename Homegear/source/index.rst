@@ -19,6 +19,7 @@ Table of Contents
    backup
    files
    first_steps
+   configuration
    cli
    communication_protocols
    events

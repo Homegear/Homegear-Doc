@@ -30,7 +30,8 @@ import os
 # ones.
 extensions = [
     'sphinx.ext.todo',
-    'sphinx.ext.intersphinx',    
+    'sphinx.ext.intersphinx',
+    'cloud_sptheme.ext.table_styling'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
