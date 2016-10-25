@@ -23,13 +23,16 @@ Switching Actuator Type ID (2)
 
 The type ID of most switching actuators is "1". The only exception are the switching actuators from "REV Ritter". Their type ID is "2".
 
-+--------------------+---------+
-| Switching Actuator | Type ID |
-+====================+=========+
-| REV Ritter         | 2       |
-+--------------------+---------+
-| All other          | 1       |
-+--------------------+---------+
+.. table::
+	:column-wrapping: false false
+
+	+--------------------+---------+
+	| Switching Actuator | Type ID |
+	+====================+=========+
+	| REV Ritter         | 2       |
+	+--------------------+---------+
+	| All other          | 1       |
+	+--------------------+---------+
 
 
 Intertechno Address (3)
