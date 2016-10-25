@@ -21,7 +21,15 @@ Open the configuration file "intertechno.conf" and search for the line starting 
 Switching Actuator Type ID (2)
 ==============================
 
-The type ID of all switching actuators is "1".
+The type ID of most switching actuators is "1". The only exception are the switching actuators from "REV Ritter". Their type ID is "2".
+
++--------------------+---------+
+| Switching Actuator | Type ID |
++====================+=========+
+| REV Ritter         | 2       |
++--------------------+---------+
+| All other          | 1       |
++--------------------+---------+
 
 
 Intertechno Address (3)
@@ -43,6 +51,7 @@ The old Intertechno switching actuators (with DIP switch or address wheels) are 
 
 * Replace all "F" with "1": F0FF0FF00F => 1011011001
 * Convert this binary number into decimal format: 1011011001 => 729
+* For switching actuators from REV Ritter additionally replace all "1" with "0": 1FFF1FF0FF => 0111011011 => 475
 
 In this case 729 is your address.
 
