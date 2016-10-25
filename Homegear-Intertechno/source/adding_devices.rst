@@ -54,9 +54,10 @@ The old Intertechno switching actuators (with DIP switch or address wheels) are 
 
 * Replace all "F" with "1": F0FF0FF00F => 1011011001
 * Convert this binary number into decimal format: 1011011001 => 729
-* For switching actuators from REV Ritter additionally replace all "1" with "0": 1FFF1FF0FF => 0111011011 => 475
 
 In this case 729 is your address.
+
+For switching actuators from REV Ritter additionally replace all "1" with "0": 1FFF1FF0FF => 0111011011 => 475
 
 
 .. _adding-device:
