@@ -144,6 +144,127 @@ After installing Homegear, you can install any family modules you like. To insta
 
 	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
 
+Arch Linux
+==========
+
+Packages for Arch Linux are provided in the `Arch User Repository (AUR) <https://aur.archlinux.org>`_. Use wget or your preferred `AUR helper <https://wiki.archlinux.org/index.php/AUR_helpers>`_ for downloading these base packages:
+
+* homegear-git
+* php7-homegear
+* libhomegear-base-git
+* termcap
+
+Download also the packages for the family modules you want to use:
+
+* homegear-homematicbidcos-git
+* homegear-enocean-git
+
+Arch Linux for Raspberry Pi
+---------------------------
+
+Preparing the PKGBUILD-files
+    Many of the PKGBUILD-files contain an explicit declaration of the possile architectures like ``arch=('i686' 'x86_64')``. However, the above listed packages are working also at the ARM architecture of a Raspberry Pi. Edit the related PKBUILD-files and insert ``'armv6h'`` to the list of architectures.
+    
+**Compile the sources**
+
+Your Raspberry should have at least 512 MB of RAM for compiling the sources. Use the command ``makepkg`` to build the packages. 
+
+**Install the packages**
+
+Install the packages the common way with the command ``pacman -U`` . The packages may also be installed on a Raspberry Pi of the first generation with only 256MB of RAM.
+
+**Configure the System**
+
+You have to create a homegear user and some directories. Just run the following commands::
+
+   useradd –system -U –no-create-home homegear
+   mkdir /var/log/homegear
+   chmod 750 /var/log/homegear
+   chown homegear:homegear /var/log/homegear
+   chmod 750 /var/lib/homegear
+   chown homegear:homegear /var/lib/homegear
+
+uncomment the following line in /etc/php/php.ini::
+
+    extension=xmlrpc.so
+    
+Create keys for SSL/TLS encryption::
+
+    openssl genrsa -out /etc/homegear/homegear.key 2048
+    ​openssl req -batch -new -key /etc/homegear/homegear.key -out /etc/homegear/homegear.csr
+    ​openssl x509 -req -in /etc/homegear/homegear.csr -signkey /etc/homegear/homegear.key -out /etc/homegear/homegear.crt
+    ​rm /etc/homegear/homegear.csr
+    ​chown homegear:homegear /etc/homegear/homegear.key
+    ​chmod 400 /etc/homegear/homegear.key
+    ​openssl dhparam -check -text -5 1024 -out /etc/homegear/dh1024.pem
+    ​chown homegear:homegear /etc/homegear/dh1024.pem
+    ​chmod 400 /etc/homegear/dh1024.pem
+
+Insert the following lines in /etc/homegear/main.conf in the section [Service]::
+
+    runAsUser = homegear
+    runAsGroup = homegear
+
+**Create a suitable systemd service file**
+
+copy the default service file with::
+
+    cp /usr/lib/systemd/system/homegear.service /etc/systemd/system/myhomegear.service
+
+and insert the following content in myhomegear.service::
+
+    User=homegear
+    Group=homegear
+    RuntimeDirectory=homegear
+
+With these lines, the homegear server will run by the user homegear and they provide a directory under /var/run owned and writable by the user homegear.
+
+**Configure the communication hardware**
+
+Follow the instructions described here: `<https://doc.homegear.eu/data/homegear-homematicbidcos/configuration.html#config-coc>`_
+
+If you are planning to use a COC device, some further configurations are necessary in Arch Linux. The user homegear has to be member of the group uucp to use /dev/ttyAMA0::
+
+    gpasswd -a homegear uucp 
+
+Install the package wiringpi-git from AUR to provide user access to the GPIO hardware. Then add the following lines to the [Service] section in /etc/systemd/system/myhomegear.service::
+
+    ExecStartPre=/usr/bin/gpio export 17 out
+    ExecStartPre=/usr/bin/gpio export 18 out
+    ExecStop=/usr/bin/gpio unexport 17
+    ExecStop=/usr/bin/gpio unexport 18
+
+The full /etc/systemd/system/myhomegear.service file may look like::
+
+    [Unit]
+    Description=Homegear server
+    After=network.target 
+    
+    [Service]
+    Type=simple
+    User=homegear
+    Group=homegear
+    UMask=002
+    LimitRTPRIO=100
+    ExecStartPre=/usr/bin/gpio export 17 out
+    ExecStartPre=/usr/bin/gpio export 18 out
+    RuntimeDirectory=homegear
+    ExecStart=/usr/bin/homegear
+    ExecStop=/usr/bin/gpio unexport 17
+    ExecStop=/usr/bin/gpio unexport 18
+    
+    [Install]
+    WantedBy=multi-user.target
+    
+**Start the server**
+
+Run the following commands to start and enable the homegear server with systemd::
+
+    systemctl daemon-reload
+    systemctl start myhomegear
+    systemctl enable myhomegear
+
+
 
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
