@@ -9,7 +9,7 @@ Make sure the KNX module is up and running before you continue reading this chap
 Map Each Group Address to One Homegear Device
 *********************************************
 
-The following steps show you how to add KNX group addresses to Homegear. Each group address is mapped to one Homegear device. To learn how to group multiple KNX group addresses together into one Homegear device follow the steps in section :ref:`grouped-addresses`.
+The following steps show you how to add KNX group addresses to Homegear. Each group address is mapped to one Homegear device. It is mandatory to assign a data type to each group address. Otherwise Homegear can't import the variable as there is no safe way to detect it's type. To learn how to group multiple KNX group addresses together into one Homegear device follow the steps in section :ref:`grouped-addresses`.
 
 1. Export your KNX project file (file ending .knxproj).
 2. Place this file in Homegear's KNX device description directory. By default this is ``/etc/homegear/devices/14/``.
@@ -50,6 +50,7 @@ You can also search for devices by calling the RPC method ``searchDevices()``. T
 
 Of course you can use all other RPC protocols supported by Homegear to call this method.
 
+.. important:: It is necessary to assign a type to each group variable Homegear should import. Otherwise the group variable won't be imported as there is no safe way to detect it's data type.
 
 .. _grouped-addresses:
 
