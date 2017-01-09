@@ -204,7 +204,7 @@ Then execute the following commands (just copy and paste them)::
 	 
 	avrdude -p atmega1284p -P /dev/ttyS0 -b 38400 -c avr109 -U flash:w:COC.hex
 
-.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth.
+.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth. If you disabled Bluetooth (e. g. with ``dtoverlay=pi3-disable-bt`` in ``/boot/config.txt``) ``/dev/ttyAMA0`` needs to be used.
 
 
 Configuring Homegear to Use the COC/CCD/CSM/SCC
@@ -226,7 +226,7 @@ To tell Homegear to use the COC, insert these lines into ``homematicbidcos.conf`
 
 If you want to stack multiple SCCs, you need to set "stackPosition". Use "1" for the SCC at the bottom, "2" for the second SCC, "3" for the next one, and so on.
 
-.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth.
+.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth. If you disabled Bluetooth (e. g. with ``dtoverlay=pi3-disable-bt`` in ``/boot/config.txt``) ``/dev/ttyAMA0`` needs to be used.
 
 .. _config-cunx:
 
@@ -312,7 +312,7 @@ To tell Homegear to use the HM-MOD-RPI-PCB, insert these lines into ``homematicb
 	responseDelay = 95
 	gpio1 = 18
 
-.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth.
+.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth. If you disabled Bluetooth (e. g. with ``dtoverlay=pi3-disable-bt`` in ``/boot/config.txt``) ``/dev/ttyAMA0`` needs to be used.
 
 .. _config-hm-cfg-lan:
 
