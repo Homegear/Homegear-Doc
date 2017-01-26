@@ -63,7 +63,7 @@ Insert these lines into ``homematicwired.conf``::
   oneWay = true
 
 
-.. _config-rs485-usb:
+.. _config-rs485-serial:
 
 RS485 Serial Module
 ===================
