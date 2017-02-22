@@ -137,7 +137,7 @@ Free up Serial Line and Enable UART
 Raspberry Pi 1 and 2
 ^^^^^^^^^^^^^^^^^^^^
 
-On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following. On the Raspberry Pi 3 ttyAMA0 is used by Bluetooth and UART now is available over ttyS0.
+On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following.
 
 Remove any references to ttyAMA0 from /etc/inittab and /boot/cmdline.txt.
 
@@ -149,7 +149,11 @@ Our /boot/cmdline.txt looks like this::
 Raspberry Pi 3
 ^^^^^^^^^^^^^^
 
-On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt. Our /boot/cmdline.txt looks like this::
+On the Raspberry Pi 3 /dev/ttyAMA0 is used by the Wifi and Bluetooth module. There is a "mini UART" available on /dev/ttyS0 by default. It is better though, to use the hardware UART and switch the Wifi/Bluetooth module to mini UART. To do that, add this line at the end of ``/boot/config.txt``::
+
+	dtoverlay=pi3-miniuart-bt
+
+Additionally remove any references to ttyAMA0 from ``/boot/cmdline.txt``. Our file looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
@@ -201,10 +205,8 @@ Then execute the following commands (just copy and paste them)::
 	echo 1 > /sys/class/gpio/gpio17/value
 	sleep 1
 	echo 1 > /sys/class/gpio/gpio18/value
-	 
-	avrdude -p atmega1284p -P /dev/ttyS0 -b 38400 -c avr109 -U flash:w:COC.hex
 
-.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth. If you disabled Bluetooth (e. g. with ``dtoverlay=pi3-disable-bt`` in ``/boot/config.txt``) ``/dev/ttyAMA0`` needs to be used.
+	avrdude -p atmega1284p -P /dev/ttyAMA0 -b 38400 -c avr109 -U flash:w:COC.hex
 
 
 Configuring Homegear to Use the COC/CCD/CSM/SCC
@@ -217,7 +219,7 @@ To tell Homegear to use the COC, insert these lines into ``homematicbidcos.conf`
 	# Uncomment this if you want this device to be your default communication module.
 	#default = true
 	deviceType = coc
-	device = /dev/ttyS0
+	device = /dev/ttyAMA0
 	responseDelay = 95
 	gpio1 = 17
 	gpio2 = 18
@@ -226,7 +228,6 @@ To tell Homegear to use the COC, insert these lines into ``homematicbidcos.conf`
 
 If you want to stack multiple SCCs, you need to set "stackPosition". Use "1" for the SCC at the bottom, "2" for the second SCC, "3" for the next one, and so on.
 
-.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth. If you disabled Bluetooth (e. g. with ``dtoverlay=pi3-disable-bt`` in ``/boot/config.txt``) ``/dev/ttyAMA0`` needs to be used.
 
 .. _config-cunx:
 
@@ -258,7 +259,7 @@ Free Up Serial Line and Enable UART
 Raspberry Pi 1 and 2
 ^^^^^^^^^^^^^^^^^^^^
 
-On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following. On the Raspberry Pi 3 ttyAMA0 is used by Bluetooth and UART now is available over ttyS0.
+On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following.
 
 Remove any references to ttyAMA0 from /etc/inittab and /boot/cmdline.txt.
 
@@ -270,7 +271,11 @@ Our /boot/cmdline.txt looks like this::
 Raspberry Pi 3
 ^^^^^^^^^^^^^^
 
-On the Raspberry Pi 3 /dev/serial0 might be used by the serial console. To free it, remove any references to /dev/serial0 and /dev/ttyS0 from /boot/cmdline.txt. Our /boot/cmdline.txt looks like this::
+On the Raspberry Pi 3 /dev/ttyAMA0 is used by the Wifi and Bluetooth module. There is a "mini UART" available on /dev/ttyS0 by default. It is better though, to use the hardware UART and switch the Wifi/Bluetooth module to mini UART. To do that, add this line at the end of ``/boot/config.txt``::
+
+	dtoverlay=pi3-miniuart-bt
+
+Additionally remove any references to ttyAMA0 from ``/boot/cmdline.txt``. Our file looks like this::
 
 	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
 
@@ -308,11 +313,10 @@ To tell Homegear to use the HM-MOD-RPI-PCB, insert these lines into ``homematicb
 	# Uncomment this if you want the HM-MOD-RPI-PCB to be your default communication module.
 	#default = true
 	deviceType = hm-mod-rpi-pcb
-	device = /dev/ttyS0
+	device = /dev/ttyAMA0
 	responseDelay = 95
 	gpio1 = 18
 
-.. warning:: If you're not using a Raspberry Pi 3 replace ``ttyS0`` with ``ttyAMA0``. On the Raspberry Pi 3 ``ttyAMA0`` is used by Bluetooth. If you disabled Bluetooth (e. g. with ``dtoverlay=pi3-disable-bt`` in ``/boot/config.txt``) ``/dev/ttyAMA0`` needs to be used.
 
 .. _config-hm-cfg-lan:
 
@@ -374,7 +378,7 @@ To tell Homegear to use the HM-CFG-USB, insert these lines into ``homematicbidco
 	id = hmland
 	# Uncomment this if you want this HM-CFG-USB to be your default communication module.
 	#default = true
-	deviceType = hmcfglan 
+	deviceType = hmcfglan
 	# IP address running the hmland service
 	host = 127.0.0.1
 	# Port number of the hmland service
