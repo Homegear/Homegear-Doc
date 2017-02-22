@@ -360,29 +360,24 @@ Switch to the subdirectory "ext" within the extracted directory::
 
 	cd php-7.X.X/ext
 
-Download the current version of pthreads from `GitHub <https://github.com/krakjoe/pthreads/releases>`_, extract it, and rename the extracted folder "pthreads"::
+Clone the current version of pthreads from `GitHub <https://github.com/krakjoe/pthreads/releases>`_::
 
-	wget https://github.com/krakjoe/pthreads/archive/vX.X.X.tar.gz
-	​tar -zxf vX.X.X.tar.gz
-	​rm vX.X.X.tar.gz
-	​mv pthreads-X.X.X pthreads
+	git clone https://github.com/krakjoe/pthreads.git
 
-You must allow pthreads to be loaded into Homegear::
-
-	sed -i 's/{ZEND_STRL("cli")}/{ZEND_STRL("homegear")}/g' pthreads/php_pthreads.c
-
-Switch to the parent directory and execute autoconf::
+Switch to the parent directory::
 
 	cd ..
+
+Apply the following patch to fix `bug #74149 <https://bugs.php.net/bug.php?id=74149>`_ until it is solved::
+
+	sed -i "s/void zend_signal_startup(void);/BEGIN_EXTERN_C()\nvoid zend_signal_startup(void);\nEND_EXTERN_C()/g" Zend/zend_signal.h
+
+Execute autoconf::
 	autoconf
 
-Execute the configure script. The lines before the script are also necessary; they get the target system::
+Execute the configure script. The line before the script is also necessary; they get the target system (e. g. ``x86_64-linux-gnu``)::
 
-	target="$(gcc -v 2>&1)"
-	​strpos="${target%%Target:*}"
-	​strpos=${#strpos}
-	​target=${target:strpos}
-	​target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
+	target="$(gcc -v 2>&1)" && strpos="${target%%Target:*}" && strpos=${#strpos} && target=${target:strpos} && target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
 	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
 
 If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if they are not needed. When this is done, run::
