@@ -31,6 +31,8 @@ The MQTT configuration file, ``mqtt.conf``, can be found in Homegear's configura
 +---------------------------+---------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **clientName**            | Homegear      | The name of the MQTT client.                                                                                                                                                        |
 +---------------------------+---------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **prefix**                | homegear      | The topic prefix to use. All topics start with this prefix. Can be empty.                                                                                                           |
++---------------------------+---------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **homegearId**            |               | The ID of this Homegear instance. Set this to an arbitrary value unique to the Homegear instance.                                                                                   |
 +---------------------------+---------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **retain**                | true          | Set to ``true`` to tell the MQTT broker to retain received messages. New clients then receive the last value of a topic on connection. Variables of type "Action" are not retained. |
@@ -57,7 +59,6 @@ The MQTT configuration file, ``mqtt.conf``, can be found in Homegear's configura
 +---------------------------+---------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **processingThreadCount** | 5             | The number of parallel threads to process incoming MQTT messages. If messages take to long to get processed, increase this number.                                                  |
 +---------------------------+---------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 Topics
 ======
 
@@ -66,9 +67,9 @@ Variable Changes
 
 Variable state changes are published to::
 
-	homegear/HOMEGEAR_ID/plain/PEERID/CHANNEL/VARIABLE_NAME
-	homegear/HOMEGEAR_ID/json/PEERID/CHANNEL/VARIABLE_NAME
-	homegear/HOMEGEAR_ID/jsonobj/PEERID/CHANNEL/VARIABLE_NAME
+	<prefix>/<homegearId>/plain/PEERID/CHANNEL/VARIABLE_NAME
+	<prefix>/<homegearId>/json/PEERID/CHANNEL/VARIABLE_NAME
+	<prefix>/<homegearId>/jsonobj/PEERID/CHANNEL/VARIABLE_NAME
 
 The three topics differ in the way the payload is encoded:
 
@@ -76,9 +77,9 @@ The three topics differ in the way the payload is encoded:
 * ``json`` puts the value in a JSON array to be JSON-compliant: ``[43.7]``.
 * ``jsonobj`` puts the value into a JSON object. The key is ``value``: ``{ "value": 43.7 }``.
 
-``HOMEGEAR_ID`` is replaced with the value of ``homegearId`` set in ``mqtt.conf``. PEERID, CHANNEL and VARIABLE_NAME are replaced with the data of the changed variable.
+``<prefix>`` is replaced with the value of ``prefix`` and ``<homegearId>`` with the value of ``homegearId`` set in ``mqtt.conf``. PEERID, CHANNEL and VARIABLE_NAME are replaced with the data of the changed variable.
 
-Let's say ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and the value is ``true``. Then the topics are::
+Let's say prefix is ``homegear``, ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and the value is ``true``. Then the topics are::
 
 	1. homegear/0123-4567/plain/155/3/STATE
 	2. homegear/0123-4567/json/155/3/STATE
@@ -96,9 +97,9 @@ Set Variable
 
 The topic to set a variable is::
 
-	homegear/HOMEGEAR_ID/set/PEERID/CHANNEL/VARIABLE_NAME
+	<prefix>/<homegearId>/set/PEERID/CHANNEL/VARIABLE_NAME
 
-Let's say ``homegearId`` again is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and you want to change the value to ``true``. Then the topic you need to publish to is::
+Let's say ``prefix`` is ``homegear``, ``homegearId`` again is ``0123-4567``, the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and you want to change the value to ``true``. Then the topic you need to publish to is::
 
 	homegear/0123-4567/set/155/3/STATE
 
@@ -114,11 +115,11 @@ Set Configuration Parameters
 
 The topic to set configuration parameters is::
 
-	homegear/HOMEGEAR_ID/config/PEERID/CHANNEL/PARAMETERSET_TYPE
+	<prefix>/<homegearId>/config/PEERID/CHANNEL/PARAMETERSET_TYPE
 
-The payload needs to be the JSON-encoded value object containing the key value pairs of the configuration parameters to set. Let's say ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``0``, the parameter set type is ``MASTER`` and you want to change the parameters ``LANGUAGE_CODE`` to ``EN`` and ``CITY_ID`` to ``London``. Then the topic you need to publish to is::
+The payload needs to be the JSON-encoded value object containing the key value pairs of the configuration parameters to set. Let's say ``prefix`` is ``homegear``, ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``0``, the parameter set type is ``MASTER`` and you want to change the parameters ``LANGUAGE_CODE`` to ``EN`` and ``CITY_ID`` to ``London``. Then the topic you need to publish to is::
 
-	homegear/0123-4567/config/155/0/MASTER
+	<prefix>/0123-4567/config/155/0/MASTER
 
 and the payload is::
 
@@ -133,7 +134,7 @@ RPC Methods
 
 The topic to call RPC methods is::
 
-	homegear/HOMEGEAR_ID/rpc
+	<prefix>/<homegearId>/rpc
 
 The payload needs to be the JSON-RPC encoded method call. Let's say you want to change the log level to ``3``, the payload would look like::
 
@@ -141,15 +142,15 @@ The payload needs to be the JSON-RPC encoded method call. Let's say you want to 
 
 The RPC response is published to::
 
-	homegear/HOMEGEAR_ID/rpcResult
+	<prefix>/<homegearId>/rpcResult
 
 ``id`` can be used to identify the result.
 
-Let's say you want to get the current Homegear version, then the payload to publish to ``homegear/HOMEGEAR_ID/rpc`` would look like::
+Let's say you want to get the current Homegear version, then the payload to publish to ``<prefix>/<homegearId>/rpc`` would look like::
 
 	{ "jsonrpc": "2.0", "id": 123, "method": "logLevel", "params": []}
 
-Then the result Homegear publishes to ``homegear/HOMEGEAR_ID/rpcResult`` is::
+Then the result Homegear publishes to ``<prefix>/<homegearId>/rpcResult`` is::
 
 	{"id":124,"method":"logLevel","result":3}
 
@@ -164,4 +165,3 @@ Homegear supports a Binary RPC protocol originally used by software systems from
 * Call of all RPC methods and reception of all RPC events
 * TLS support
 * Support for authentication with username and password
-
