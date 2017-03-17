@@ -32,25 +32,9 @@ If you are using Debian, Raspbian, or Ubuntu, you can install Homegear from the 
 Debian
 ======
 
-Packages are provided for Debian 7 (Wheezy) and Debian 8 (Jessie). Supported architectures are i386, amd64, armel, and armhf.
+Packages are provided for Debian 8 (Jessie) and Debian 9 (Stretch). Supported architectures are i386, amd64, armel, and armhf.
 
 .. warning:: Don't use the Debian repositories for Raspbian. Use the Raspbian repository instead.
-
-
-Debian 7 (Wheezy)
------------------
-
-Please run the following commands as root::
-
-	apt-get install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Debian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
-	apt-get update
-	apt-get install homegear
-
-After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
-
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
 
 
 Debian 8 (Jessie)
@@ -60,35 +44,35 @@ Please run the following commands as root::
 
 	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
+	echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno
+
+
+Debian 9 (Stretch)
+-----------------
+
+Please run the following commands as root::
+
+	apt install apt-transport-https
+	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://homegear.eu/packages/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
+	apt update
+	apt install homegear
+
+After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
+
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno
 
 
 Raspbian
 ========
 
-Packages are provided for Raspbian 7 (Wheezy) and Raspbian 8 (Jessie).
-
-
-Raspbian 7 (Wheezy)
--------------------
-
-Please run the following commands as root::
-
-	apt-get install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Raspbian/ wheezy/' >> /etc/apt/sources.list.d/homegear.list 
-	apt-get update
-	apt-get install homegear
-
-After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
-
-	apt-get install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
+Packages are provided for Raspbian 8 (Jessie) and Raspbian 9 (Stretch).
 
 
 Raspbian 8 (Jessie)
@@ -98,13 +82,29 @@ Please run the following commands as root::
 
 	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list 
+	echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno
+
+
+Raspbian 9 (Stretch)
+-------------------
+
+Please run the following commands as root::
+
+	apt install apt-transport-https
+	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://homegear.eu/packages/Raspbian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
+	apt update
+	apt install homegear
+
+After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
+
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno
 
 
 Ubuntu
@@ -120,7 +120,7 @@ Please run the following commands as root::
 
 	apt install apt-transport-https
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list 
+	echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear
 
@@ -164,10 +164,10 @@ Arch Linux for Raspberry Pi
 
 Preparing the PKGBUILD-files
     Many of the PKGBUILD-files contain an explicit declaration of the possile architectures like ``arch=('i686' 'x86_64')``. However, the above listed packages are working also at the ARM architecture of a Raspberry Pi. Edit the related PKBUILD-files and insert ``'armv6h'`` to the list of architectures.
-    
+
 **Compile the sources**
 
-Your Raspberry should have at least 512 MB of RAM for compiling the sources. Use the command ``makepkg`` to build the packages. 
+Your Raspberry should have at least 512 MB of RAM for compiling the sources. Use the command ``makepkg`` to build the packages.
 
 **Install the packages**
 
@@ -187,7 +187,7 @@ You have to create a homegear user and some directories. Just run the following 
 uncomment the following line in /etc/php/php.ini::
 
     extension=xmlrpc.so
-    
+
 Create keys for SSL/TLS encryption::
 
     openssl genrsa -out /etc/homegear/homegear.key 2048
@@ -225,7 +225,7 @@ Follow the instructions described here: `<https://doc.homegear.eu/data/homegear-
 
 If you are planning to use a COC device, some further configurations are necessary in Arch Linux. The user homegear has to be member of the group uucp to use /dev/ttyAMA0::
 
-    gpasswd -a homegear uucp 
+    gpasswd -a homegear uucp
 
 Install the package wiringpi-git from AUR to provide user access to the GPIO hardware. Then add the following lines to the [Service] section in /etc/systemd/system/myhomegear.service::
 
@@ -238,8 +238,8 @@ The full /etc/systemd/system/myhomegear.service file may look like::
 
     [Unit]
     Description=Homegear server
-    After=network.target 
-    
+    After=network.target
+
     [Service]
     Type=simple
     User=homegear
@@ -252,10 +252,10 @@ The full /etc/systemd/system/myhomegear.service file may look like::
     ExecStart=/usr/bin/homegear
     ExecStop=/usr/bin/gpio unexport 17
     ExecStop=/usr/bin/gpio unexport 18
-    
+
     [Install]
     WantedBy=multi-user.target
-    
+
 **Start the server**
 
 Run the following commands to start and enable the homegear server with systemd::
@@ -300,7 +300,7 @@ Compiling from Source
 Compiling Current GitHub Source Using Docker Image
 ==================================================
 
-The easiest way to compile Homegear from the source is by using Docker. Docker images are provided for Debian 7 (Wheezy; amd64, i386, armhf, armel), Debian 8 (Jessie; amd64, i386, armhf, arm64, armel), Raspbian Wheezy, Raspbian Jessie, Ubuntu 14.04 (Trusty Tahr; amd64, i386, armhf, arm64), and Ubuntu 15.10 (Wily Werewolf; amd64, i386, armhf, arm64). Start the Docker image by running the following command::
+The easiest way to compile Homegear from the source is by using Docker. Docker images are provided for Debian 8 (Jessie; amd64, i386, armhf, arm64, armel), Debian 9 (Stretch; amd64, i386, armhf, arm64), Raspbian Jessie, Raspbian Stretch, Ubuntu 14.04 (Trusty Tahr; amd64, i386, armhf, arm64), and Ubuntu 15.10 (Wily Werewolf; amd64, i386, armhf, arm64). Start the Docker image by running the following command::
 
 	docker run -it -e HOMEGEARBUILD_SHELL=1 homegear/build:TAG
 
@@ -368,17 +368,18 @@ Switch to the parent directory::
 
 	cd ..
 
-Apply the following patch to fix `bug #74149 <https://bugs.php.net/bug.php?id=74149>`_ until it is solved::
+Apply the following patch to fix `bug #74149 <https://bugs.php.net/bug.php?id=74149>`_ until it is solved (probably solved in 7.1.4)::
 
 	sed -i "s/void zend_signal_startup(void);/BEGIN_EXTERN_C()\nvoid zend_signal_startup(void);\nEND_EXTERN_C()/g" Zend/zend_signal.h
 
 Execute autoconf::
+
 	autoconf
 
 Execute the configure script. The line before the script is also necessary; they get the target system (e. g. ``x86_64-linux-gnu``)::
 
 	target="$(gcc -v 2>&1)" && strpos="${target%%Target:*}" && strpos=${#strpos} && target=${target:strpos} && target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
-	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mcrypt --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
+	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
 
 If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if they are not needed. When this is done, run::
 
