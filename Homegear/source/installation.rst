@@ -22,6 +22,11 @@ You can run Homegear on all current GNU/Linux distributions. If you make some sm
 
 .. warning:: Do not run Homegear in a virtual machine because packet timing is very inaccurate.
 
+There are a few recommendations for production systems:
+
+* A readonly file system should be used. This reduces writes to the storage device and increases it's lifetime. Additionally it protects from file system corruption on power loss.
+* Processes with high CPU load should be isolated to a dedicated CPU core so Homegear and more importantly kernel modules are not effected by the high load.
+
 
 Installing from Repository
 **************************
@@ -126,7 +131,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno
 
 
 Ubuntu 16.04 (Xenial Xerus)
@@ -142,7 +147,7 @@ Please run the following commands as root::
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx
+	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno
 
 Arch Linux
 ==========

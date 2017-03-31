@@ -95,6 +95,16 @@ The first parameter is the family ID, the second the type ID, the fourth is the 
 Of course you can use all other RPC protocols supported by Homegear to call this method.
 
 
+Pairing the Switching Actuator
+==============================
+
+The new Intertechno switching actuators need to be paired after they are added to Homegear. To do that, you need to plug the actuator to pair in and immediately set ``PAIRING`` on channel 1 to ``true``. To ``PAIRING`` from the command line, execute::
+
+	homegear -e rc '$hg->setValue(<peer ID>, 1, "PAIRING", true);'
+
+Replace ``<peer ID>`` with the ID of the actuator.
+
+
 Remotes
 *******
 
