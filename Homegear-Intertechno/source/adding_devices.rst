@@ -98,7 +98,7 @@ Of course you can use all other RPC protocols supported by Homegear to call this
 Pairing the Switching Actuator
 ==============================
 
-The new Intertechno switching actuators need to be paired after they are added to Homegear. To do that, you need to plug the actuator to pair in and immediately set ``PAIRING`` on channel 1 to ``true``. To ``PAIRING`` from the command line, execute::
+The new Intertechno switching actuators need to be paired after they are added to Homegear. To do that, you need to plug the actuator to pair in and immediately set ``PAIRING`` on channel 1 to ``true``. To set ``PAIRING`` from the command line, execute::
 
 	homegear -e rc '$hg->setValue(<peer ID>, 1, "PAIRING", true);'
 
@@ -111,8 +111,8 @@ Remotes
 As with switching actuators to add a remote, you need to know three things:
 
 1. The ID of your communication module as configured in "intertechno.conf" (e. g. "My-CUL").
-2. The type ID of the switching actuator to add.
-3. The Intertechno address of the switching actuator.
+2. The type ID of the remote to add.
+3. The Intertechno address of the remote.
 
 Communication Module ID (1)
 ===========================
@@ -154,73 +154,31 @@ Old Intertechno Remotes
 
 Find your type ID in the following table. If your remote is missing, please contact us.
 
-+------------------------------+---------+
-| Remote                       | Type ID |
-+==============================+=========+
-| Original Intertechno remote  | 0x33    |
-+------------------------------+---------+
-| Elro AB440                   | 0x24    |
-+------------------------------+---------+
-| b1/Toom                      | 0x24    |
-+------------------------------+---------+
++---------------------------------------------------+---------+
+| Remote                                            | Type ID |
++===================================================+=========+
+| Original Intertechno remote or sensor (1 channel) | 0x33    |
++---------------------------------------------------+---------+
+| Original Intertechno remote (4 channels)          | 0x33    |
++---------------------------------------------------+---------+
+| Elro AB440                                        | 0x24    |
++---------------------------------------------------+---------+
+| b1/Toom                                           | 0x24    |
++---------------------------------------------------+---------+
 
 
 Intertechno Address (3)
 =======================
 
-As with the switching actuators getting the address is the most tricky part.
+As with the switching actuators getting the address is the most tricky part. The recommended method to find out the address is by pressing a button on the remote and watch the Homegear log. The possible addresses are logged there::
 
-New Intertechno Remotes
------------------------
+	10/17/16 16:37:31.228 Please use one of the following addresses for device creation (possible device types: 0x10 to 0x1F): 0x012EE0EA or 0x812EE0EA
 
-For the new Intertechno remotes, press a button and watch the Homegear log. The address is logged there::
+or for old Intertechno devices ::
 
-	10/17/16 16:37:31.228 Intertechno packet received from 012EE0EA (RSSI: -73 dBm): 01
+  10/17/16 16:37:31.228 Please use one of the following addresses for device creation: Intertechno multi-channel remote or sensor (use device type 0x33): 0x0080; Intertechno one channel remote or sensor (use device type 0x30): 0x0081; Elro (use device type 0x24): 0x0010
 
-In this case the address is 0x012EE0EA.
-
-
-Old Intertechno Remotes
------------------------
-
-The old Intertechno switching actuators (with DIP switch or address wheels) are a little more complicated. The address to set depends on the type of the remote. First of all determine the 10-digit address with the help of the `fhem Wiki <http://www.fhemwiki.de/wiki/Intertechno_Code_Berechnung>`_.
-
-
-Original Intertechno Remote
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The address has 8 digits. The first 4 are the first 4 digits of your 10-digit code. The last 4 digits depend on the group code:
-
-+---------------+------------------------+--------------------------+
-| Rotary Switch | Group Codes            | Last 4 Digits of Address |
-+===============+========================+==========================+
-| 01 - 04       | 0000, F000, 0F00, FF00 | 0000                     |
-+---------------+------------------------+--------------------------+
-| 05 - 08       | 00F0, F0F0, 0FF0, FFF0 | 00F0                     |
-+---------------+------------------------+--------------------------+
-| 09 - 12       | 000F, F00F, 0F0F, FF0F | 000F                     |
-+---------------+------------------------+--------------------------+
-| 13 - 16       | 00FF, F0FF, 0FFF, FFFF | 00FF                     |
-+---------------+------------------------+--------------------------+
-
-So if your 10-digit code is F0FF0FF00F, then the address is F0FF00F0.
-
-
-Elro AB440 and b1/Toom
-^^^^^^^^^^^^^^^^^^^^^^
-
-The address are the first five digits of the 10-digit code. If your 10-digit code is F0FF0FF00F, then the address is F0FF0.
-
-
-All Remotes
------------
-
-The address needs now to be converted to hexadecimal format. Let's say, your address is "F0FF00F0".
-
-* Replace all "F" with "1": F0FF00F0 => 10110010
-* Convert this binary number into decimal format: 10110010 => 178
-
-In this case 178 is your address.
+Pick the address matching your device. Using the log line above if your device is a 4 channel old intertechno remote, the address would be 0x80. If it is a 1 channel sensor (e. g. the ITM-100), use 0x81.
 
 
 Adding the Remote
