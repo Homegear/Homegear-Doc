@@ -69,13 +69,13 @@ Variable state changes are published to::
 
 	<prefix>/<homegearId>/plain/PEERID/CHANNEL/VARIABLE_NAME
 	<prefix>/<homegearId>/json/PEERID/CHANNEL/VARIABLE_NAME
-	<prefix>/<homegearId>/jsonobj/PEERID/CHANNEL/VARIABLE_NAME
+	<prefix>/<homegearId>/jsonobj/PEERID/CHANNEL
 
 The three topics differ in the way the payload is encoded:
 
 * ``plain`` contains the value as is. E. g.: ``43.7``.
 * ``json`` puts the value in a JSON array to be JSON-compliant: ``[43.7]``.
-* ``jsonobj`` puts the value into a JSON object. The key is ``value``: ``{ "value": 43.7 }``.
+* ``jsonobj`` puts the value into a JSON object. The key is the variable name. ``jsonobj`` contains all variables received from the device within one packet: ``{ "TEMPERATURE": 20.7, "HUMIDITY": 43 }``.
 
 ``<prefix>`` is replaced with the value of ``prefix`` and ``<homegearId>`` with the value of ``homegearId`` set in ``mqtt.conf``. PEERID, CHANNEL and VARIABLE_NAME are replaced with the data of the changed variable.
 
@@ -83,13 +83,13 @@ Let's say prefix is ``homegear``, ``homegearId`` is ``0123-4567``, the peer ID i
 
 	1. homegear/0123-4567/plain/155/3/STATE
 	2. homegear/0123-4567/json/155/3/STATE
-	3. homegear/0123-4567/jsonobj/155/3/STATE
+	3. homegear/0123-4567/jsonobj/155/3
 
 and the payloads are::
 
 	1. true
 	2. [true]
-	3. { "value": true }
+	3. { "STATE": true }
 
 
 Set Variable

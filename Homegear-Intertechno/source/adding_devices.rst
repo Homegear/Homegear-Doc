@@ -170,7 +170,7 @@ Find your type ID in the following table. If your remote is missing, please cont
 Intertechno Address (3)
 =======================
 
-As with the switching actuators getting the address is the most tricky part. The recommended method to find out the address is by pressing a button on the remote and watch the Homegear log. The possible addresses are logged there::
+As with the switching actuators getting the address is the most tricky part. The recommended method to find out the address is by pressing a button on the remote and watching the Homegear log. The possible addresses are logged there::
 
 	10/17/16 16:37:31.228 Please use one of the following addresses for device creation (possible device types: 0x10 to 0x1F): 0x012EE0EA or 0x812EE0EA
 
@@ -178,7 +178,7 @@ or for old Intertechno devices ::
 
   10/17/16 16:37:31.228 Please use one of the following addresses for device creation: Intertechno multi-channel remote or sensor (use device type 0x33): 0x0080; Intertechno one channel remote or sensor (use device type 0x30): 0x0081; Elro (use device type 0x24): 0x0010
 
-Pick the address matching your device. Using the log line above if your device is a 4 channel old intertechno remote, the address would be 0x80. If it is a 1 channel sensor (e. g. the ITM-100), use 0x81.
+Pick the address matching your device. If your device is a 4 channel old intertechno remote - using the log line above - the address would be 0x80. If it is a 1 channel sensor (e. g. the ITM-100), use 0x81.
 
 
 Adding the Remote
