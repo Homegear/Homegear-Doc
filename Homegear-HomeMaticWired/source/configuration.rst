@@ -5,6 +5,7 @@ Configuration
 
 homematicwired.conf
 ********************
+To use HomeMatic Wired devices, first install the homegear module, ``sudo apt-get install homegear-homematicwired`` 
 
 The configuration file for the HomeMatic Wired module, ``homematicwired.conf``, can be found in Homegear's family configuration directory (default: /etc/homegear/families). In this file you can configure the communication modules you want to use.
 
