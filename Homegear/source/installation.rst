@@ -59,7 +59,7 @@ After installing Homegear, you can install any family modules you like. To insta
 
 
 Debian 9 (Stretch)
------------------
+------------------
 
 Please run the following commands as root::
 
@@ -97,7 +97,7 @@ After installing Homegear, you can install any family modules you like. To insta
 
 
 Raspbian 9 (Stretch)
--------------------
+--------------------
 
 Please run the following commands as root::
 
