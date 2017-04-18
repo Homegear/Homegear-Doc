@@ -14,6 +14,7 @@ Alls of Homegear's configuration files are by default located in "/etc/homegear"
 +-----------------+-------------------------------------------------------------------------------------+
 | mqtt.conf       | MQTT configuration file                                                             |
 +-----------------+-------------------------------------------------------------------------------------+
+
 In addition each family modules places a configuration file in "/etc/homegear/families" with family specific configuration settings.
 
 
