@@ -51,7 +51,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear
+	apt install homegear homegear-nodes-core
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -67,7 +67,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear
+	apt install homegear homegear-nodes-core
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -89,7 +89,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear
+	apt install homegear homegear-nodes-core
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -105,7 +105,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Raspbian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear
+	apt install homegear homegear-nodes-core
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -127,7 +127,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear
+	apt install homegear homegear-nodes-core
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -143,7 +143,7 @@ Please run the following commands as root::
 	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://homegear.eu/packages/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear
+	apt install homegear homegear-nodes-core
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -279,6 +279,8 @@ Download the proper packages from the `Homegear download page <https://www.homeg
 	dpkg -i libhomegear-base_XXX.deb
 	​apt-get -f install
 	​dpkg -i homegear_XXX.deb
+	​apt-get -f install
+	dpkg -i homegear-nodes-core_XXX.deb
 	​apt-get -f install
 	​dpkg -i homegear-MODULENAME_XXX.deb
 	​apt-get -f install
@@ -451,6 +453,14 @@ Then do the same for Homegear::
 	​unzip master.zip
 	​rm master.zip
 	​cd Homegear-master
+	​./makeRelease.sh 4
+
+And the core nodes::
+
+	wget https://github.com/Homegear/homegear-nodes-core/archive/master.zip
+	​unzip master.zip
+	​rm master.zip
+	​cd homegear-nodes-core-master
 	​./makeRelease.sh 4
 
 Repeat these steps for all family modules you want to compile.
