@@ -375,10 +375,6 @@ Switch to the parent directory::
 
 	cd ..
 
-Apply the following patch to fix `bug #74149 <https://bugs.php.net/bug.php?id=74149>`_ until it is solved (probably solved in 7.1.4)::
-
-	sed -i "s/void zend_signal_startup(void);/BEGIN_EXTERN_C()\nvoid zend_signal_startup(void);\nEND_EXTERN_C()/g" Zend/zend_signal.h
-
 Execute autoconf::
 
 	autoconf
@@ -447,7 +443,15 @@ Switch to the extracted directory and run ``makeRelease.sh`` or ``makeDebug.sh``
 	cd libhomegear-base-master
 	./makeRelease.sh 4
 
-Then do the same for Homegear::
+Then do the same for Homegear's node library::
+
+	wget https://github.com/Homegear/libhomegear-node/archive/master.zip
+	​unzip master.zip
+	​rm master.zip
+	​cd libhomegear-node-master
+	​./makeRelease.sh 4
+
+For Homegear::
 
 	wget https://github.com/Homegear/Homegear/archive/master.zip
 	​unzip master.zip
