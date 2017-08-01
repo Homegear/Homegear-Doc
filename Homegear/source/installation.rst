@@ -355,6 +355,8 @@ Execute::
 Compiling
 ^^^^^^^^^
 
+.. warning:: Homegear requires at least PHP 7.2 as ZTS is broken in PHP 7.0 and 7.1.
+
 Download the PHP source code from the `PHP download page <http://php.net/downloads.php>`_. Then extract the package::
 
 	tar -zxf php-7.X.X.tar.gz
