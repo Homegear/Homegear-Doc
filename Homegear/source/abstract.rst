@@ -8,7 +8,8 @@ Homegear is a free and open source program that you can use to interface your ho
 * JSON-RPC
 * MQTT
 * WebSockets with PHP session authentication
-* HTTP (GET and POST) 
+* HTTP (GET and POST)
+* IPC Socket (Unix Domain Socket)
 
 If needed, new interfaces can easily be added to the source code. Homegear also features:
 
