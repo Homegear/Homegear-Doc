@@ -16,6 +16,7 @@ Restore
 	tar -zxf homegear-backup.tar.gz
 	cp -a etc/homegear /etc
 	cp -a var/lib/homegear /var/lib
+
 # If the Homegear version installed now is newer than the backed up one, reinstall Homegear with all modules. On Debian-like systems with::
 
     apt install --reinstall homegear homegear-module1 homegear-module2 ...
