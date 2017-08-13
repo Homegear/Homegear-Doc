@@ -10,19 +10,20 @@ To back up Homegear, just copy the directories ``/etc/homegear`` and ``/var/lib/
 Restore
 =======
 
-# Install Homegear with all modules previously installed. The Homegear version can be newer than the backed up one.
-# Restore your backup::
+1. Install Homegear with all modules previously installed. The Homegear version can be newer than the backed up one.
+2. Restore your backup::
 
 	tar -zxf homegear-backup.tar.gz
 	cp -a etc/homegear /etc
 	cp -a var/lib/homegear /var/lib
 
-# If the Homegear version installed now is newer than the backed up one, reinstall Homegear with all modules. On Debian-like systems with::
+3. If the Homegear version installed now is newer than the backed up one, reinstall Homegear with all modules. On Debian-like systems with::
 
     apt install --reinstall homegear homegear-module1 homegear-module2 ...
 
-# Reinstall all Node-BLUE nodes previously installed. For the core and extra nodes on Debian-like systems run::
+4. Reinstall all Node-BLUE nodes previously installed. For the core and extra nodes on Debian-like systems run::
 
     apt install --reinstall homegear-nodes-core homegear-nodes-extra
+
 
     * If you previously installed additional nodes, restore them as well.
