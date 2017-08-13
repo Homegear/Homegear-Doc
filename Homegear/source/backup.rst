@@ -1,5 +1,8 @@
+Backup and Restore
+##################
+
 Backup
-======
+******
 
 To back up Homegear, just copy the directories ``/etc/homegear`` and ``/var/lib/homegear`` (see :ref:`files-and-directories`). You can exclude the binary module files (ending with ".so"). This is mandatory if restoring to a system with a different CPU architecture or to a different distribution or distribution version::
 
@@ -8,7 +11,7 @@ To back up Homegear, just copy the directories ``/etc/homegear`` and ``/var/lib/
 .. note:: When the backup is meant to be restored on exactly the same system (same distribution, same distribution version, same CPU architecture), omit ``--exclude="*.so"``. This has the advantage that all manually installed additional Node-BLUE nodes are backed up as well.
 
 Restore
-=======
+*******
 
 1. Install Homegear with all modules previously installed. The Homegear version can be newer than the backed up one.
 2. Restore your backup::
