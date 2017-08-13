@@ -25,5 +25,4 @@ Restore
 
     apt install --reinstall homegear-nodes-core homegear-nodes-extra
 
-
-    * If you previously installed additional nodes, restore them as well.
+5. If you previously installed additional nodes, restore them as well.

@@ -14,6 +14,7 @@ Table of Contents
 
    abstract
    feedback
+   requirements
    installation
    updating
    backup
