@@ -1,7 +1,7 @@
 Homegear Sonos Manual
 =====================
 
-**Edition 0.6 - The Homegear Team**
+**Edition 0.8 - The Homegear Team**
 
 This document describes how to install, upgrade, configure, and maintain Homegear's Sonos module on your system.
 
