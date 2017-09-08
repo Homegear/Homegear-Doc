@@ -17,4 +17,5 @@ Table of Contents
    supported_devices
    installation
    configuration
+   adding_devices
    legal_notice
