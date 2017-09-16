@@ -187,7 +187,7 @@ and needs to be accessed using ``GET``. Let's say the peer ID is ``155``, the ch
 
 	api/v1/get/155/3/STATE
 
-There is no payload. Here's a cURL example:
+There is no payload. Here's a cURL example::
 
     curl -X GET http://localhost:2001/api/v1/get/155/3/STATE
 
@@ -203,7 +203,7 @@ and needs to be accessed using ``PUT``. Let's say the peer ID is ``155``, the ch
 
 	api/v1/set/155/3/STATE
 
-The payload needs to be a JSON object with the key ``value``: ``{ "value": true }``. Here's a cURL example:
+The payload needs to be a JSON object with the key ``value``: ``{ "value": true }``. Here's a cURL example::
 
     curl -H "Content-Type: application/json" -X PUT -d '{"value":true}' https://localhost:2001/api/v1/set/155/3/STATE
 
@@ -225,6 +225,10 @@ and the payload is::
 		"LANGUAGE_CODE": "EN",
 		"CITY_ID": "London"
 	}
+
+Here's a cURL example::
+
+    curl -H "Content-Type: application/json" -X PUT -d '{"LANGUAGE_CODE": "EN", "CITY_ID": "London"}' https://localhost:2001/api/v1/config/155/0/MASTER
 
 
 Binary RPC
