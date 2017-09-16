@@ -158,6 +158,75 @@ Then the result Homegear publishes to ``<prefix>/<homegearId>/rpcResult`` is::
 As you can see, ``id`` is set to ``124`` as defined in the request.
 
 
+.. _mqtt:
+
+REST
+****
+
+With Representational State Transfer (REST) you can easily access your Homegear devices using HTTP. Homegear's REST API features:
+
+* Setting variables and configuration parameters
+* TLS support
+* Support for authentication with username and password
+* Support for certificate authentication
+
+Configuration
+=============
+
+The configuration is done in ``rpcservers.conf`` in Homegear's configuration directory. To enable REST, set ``restServer`` to ``true``.
+
+
+Get Variable
+------------
+
+The URI path to get a variable is::
+
+	api/v1/get/PEERID/CHANNEL/VARIABLE_NAME
+
+and needs to be accessed using ``GET``. Let's say the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE``. Then the path is::
+
+	api/v1/get/155/3/STATE
+
+There is no payload. Here's a cURL example:
+
+    curl -X GET http://localhost:2001/api/v1/get/155/3/STATE
+
+
+Set Variable
+------------
+
+The URI path to set a variable is::
+
+	api/v1/set/PEERID/CHANNEL/VARIABLE_NAME
+
+and needs to be accessed using ``PUT``. Let's say the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and you want to change the value to ``true``. Then the path is::
+
+	api/v1/set/155/3/STATE
+
+The payload needs to be a JSON object with the key ``value``: ``{ "value": true }``. Here's a cURL example:
+
+    curl -H "Content-Type: application/json" -X PUT -d '{"value":true}' https://localhost:2001/api/v1/set/155/3/STATE
+
+
+Set Configuration Parameters
+----------------------------
+
+The URI path to set configuration parameters is::
+
+	api/v1/config/PEERID/CHANNEL/PARAMETERSET_TYPE
+
+The payload needs to be the JSON-encoded value object containing the key value pairs of the configuration parameters to set. Let's say ``prefix`` is ``homegear``, ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``0``, the parameter set type is ``MASTER`` and you want to change the parameters ``LANGUAGE_CODE`` to ``EN`` and ``CITY_ID`` to ``London``. Then path is::
+
+	api/v1/config/155/0/MASTER
+
+and the payload is::
+
+	{
+		"LANGUAGE_CODE": "EN",
+		"CITY_ID": "London"
+	}
+
+
 Binary RPC
 **********
 
