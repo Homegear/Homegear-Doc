@@ -205,7 +205,7 @@ and needs to be accessed using ``PUT``. Let's say the peer ID is ``155``, the ch
 
 The payload needs to be a JSON object with the key ``value``: ``{ "value": true }``. Here's a cURL example::
 
-    curl -H "Content-Type: application/json" -X PUT -d '{"value":true}' https://localhost:2001/api/v1/set/155/3/STATE
+    curl -H "Content-Type: application/json" -X PUT -d '{"value":true}' http://localhost:2001/api/v1/set/155/3/STATE
 
 
 Set Configuration Parameters
@@ -228,7 +228,7 @@ and the payload is::
 
 Here's a cURL example::
 
-    curl -H "Content-Type: application/json" -X PUT -d '{"LANGUAGE_CODE": "EN", "CITY_ID": "London"}' https://localhost:2001/api/v1/config/155/0/MASTER
+    curl -H "Content-Type: application/json" -X PUT -d '{"LANGUAGE_CODE": "EN", "CITY_ID": "London"}' http://localhost:2001/api/v1/config/155/0/MASTER
 
 
 Binary RPC
