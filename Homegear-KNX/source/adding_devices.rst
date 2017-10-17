@@ -58,7 +58,7 @@ Of course you can use all other RPC protocols supported by Homegear to call this
 Add KNX Devices to Homegear
 ***************************
 
-In addition to import the plain group variables, Homegear can import whole KNX devices with all group variables assigned. For that, a JSON object must be placed into the description field of the device. The JSON object has to start with ``$${``. Around the JSON object any other text is still allowed. 
+In addition to importing the plain group variables, Homegear can import whole KNX devices with all group variables assigned. For that, a JSON object must be placed into the description field of the device. The JSON object has to start with ``$${``. Around the JSON object any other text is still allowed. 
 
 .. important:: If there is at least one JSON object present, group addresses without JSON are ignored.
 
@@ -94,6 +94,8 @@ Readonly or writeonly are detected automatically. For a switching actuator with 
     }
 
 Parameter ``10`` (Output A, switch) will be mapped to the variable ``STATE`` on channel 1 in Homegear and parameter ``30`` (Output B, switch) to ``STATE`` on channel 2.
+
+.. note:: If the room name the KNX device is assigned to exists in Homegear (in any language), the device will automatically added to that room. Also the name of the KNX device is imported.
 
 
 .. _grouped-addresses-2:
