@@ -9,7 +9,7 @@ Make sure the KNX module is up and running before you continue reading this chap
 Map Each Group Address to One Homegear Device
 *********************************************
 
-The following steps show you how to add KNX group addresses to Homegear. Each group address is mapped to one Homegear device. It is mandatory to assign a data type to each group address. Otherwise Homegear can't import the variable as there is no safe way to detect it's type. To learn how to group multiple KNX group addresses together into one Homegear device follow the steps in section :ref:`grouped-addresses`.
+The following steps show you how to add KNX group addresses to Homegear. Each group address is mapped to one Homegear device. It is mandatory to assign a data type to each group address. Otherwise Homegear can't import the variable as there is no safe way to detect it's type. To learn how to group multiple KNX group addresses together into one Homegear device follow the steps in section :ref:`grouped-addresses-1` or :ref:`grouped-addresses-2`.
 
 1. Export your KNX project file (file ending .knxproj).
 2. Place this file in Homegear's KNX device description directory. By default this is ``/etc/homegear/devices/14/``.
@@ -52,12 +52,58 @@ Of course you can use all other RPC protocols supported by Homegear to call this
 
 .. important:: It is necessary to assign a type to each group variable Homegear should import. Otherwise the group variable won't be imported as there is no safe way to detect it's data type.
 
-.. _grouped-addresses:
 
-Multiple KNX Group Addresses in One Homegear Device
-***************************************************
+.. _grouped-addresses-1:
 
-The following steps show you how to add multiple KNX group addresses into one Homegear device. There is no way to group addresses together automatically in a way that makes sense, so this step needs to be done manually by adding meta information to the group variables in ETS. The meta data needs to be added in the description field of the group variables. It needs to be formatted as a JSON object starting with ``$${``. Around the JSON object any other text is still allowed in the description field.
+Add KNX Devices to Homegear
+***************************
+
+In addition to import the plain group variables, Homegear can import whole KNX devices with all group variables assigned. For that, a JSON object must be placed into the description field of the device. The JSON object has to start with ``$${``. Around the JSON object any other text is still allowed. 
+
+.. important:: If there is at least one JSON object present, group addresses without JSON are ignored.
+
+.. figure:: images/device-metadata.png
+	:width: 300px
+
+	Description field with a device's JSON metadata in ETS 5.
+
+.. figure:: images/parameter-index.png
+	:width: 300px
+
+	Device's parameters with index in the "Number" column.
+
+
+You need to add an entry to the JSON object for each parameter that should be available in Homegear. The parameter needs a group variable with selected data type assigned to it. Each parameter has an index visible in the "Number" column in ETS. This index is the key in the JSON object. The value again is an JSON object with the following possible keys:
+
++-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
+| Key       | JSON type | Description                                                                                                       | Example       | Default |
++===========+===========+===================================================================================================================+===============+=========+
++-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
+| channel   | integer   | The channel number the group variable should be placed in.                                                        | 1             | 1       |
++-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
+| variable  | string    | The name the group variable should have in Homegear.                                                              | "STATE"       | "VALUE" |
++-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
+| unit      | string    | The unit (m², l, h, °C, ...) that should be displayed in Homegear.                                                | "°C"          | ""      |
++-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
+
+Readonly or writeonly are detected automatically. For a switching actuator with two outputs used (= two channels), the JSON could look like::
+
+    $${
+      "10": {"channel": 1, "variable": "STATE"},
+      "30": {"channel": 2, "variable": "STATE"}
+    }
+
+Parameter ``10`` (Output A, switch) will be mapped to the variable ``STATE`` on channel 1 in Homegear and parameter ``30`` (Output B, switch) to ``STATE`` on channel 2.
+
+
+.. _grouped-addresses-2:
+
+Manually Group Multiple KNX Group Addresses in One Homegear Device
+******************************************************************
+
+The following steps show you how to manually add multiple KNX group addresses into one "virtual" Homegear device. This enables you to group variables any way you like. The meta data needs to be added in the description field of the group variables. It needs to be formatted as a JSON object starting with ``$${``. Around the JSON object any other text is still allowed in the description field. 
+
+.. important:: If there is at least one JSON object present, group addresses without JSON are ignored.
 
 .. figure:: images/group-variable-metadata.png
 	:width: 300px
