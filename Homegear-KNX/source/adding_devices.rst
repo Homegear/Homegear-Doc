@@ -137,17 +137,17 @@ Example
 
 Let's say you have two push buttons with two switchable status LEDs you want to group together into one Homegear device. The id of the device should be "My Push Buttons", the type number "4215" (you can choose any unique value you like). The names of the push button state variables should be "PRESS" and the name of the status LED variables should be "LED_STATE". "PRESS" should be read only. The variables of the first push button should be placed into channel 1 and the variables of the second push button into channel 2. Then the text you need to place into the ETS description fields of the four variables is:
 
-+---------------------------+--------------------------------------------------------------------------------------------------+
-| KNX group variable        | JSON object                                                                                      |
-+===========================+==================================================================================================+
-| Push button 1 "PRESS"     | $${"id": "My Push Buttons", "type": 4215, "channel": 1, "variable": "PRESS", "writeable": false} |
-+---------------------------+--------------------------------------------------------------------------------------------------+
-| Push button 1 "LED_STATE" | $${"id": "My Push Buttons", "channel": 1, "variable": "LED_STATE"}                               |
-+---------------------------+--------------------------------------------------------------------------------------------------+
-| Push button 2 "PRESS"     | $${"id": "My Push Buttons", "channel": 2, "variable": "PRESS", "writeable": false}               |
-+---------------------------+--------------------------------------------------------------------------------------------------+
-| Push button 2 "LED_STATE" | $${"id": "My Push Buttons", "channel": 2, "variable": "LED_STATE"}                               |
-+---------------------------+--------------------------------------------------------------------------------------------------+
++---------------------------+------------------------------------------------------------------------------------------------------+
+| KNX group variable        | JSON object                                                                                          |
++===========================+======================================================================================================+
+| Push button 1 "PRESS"     | ``$${"id": "My Push Buttons", "type": 4215, "channel": 1, "variable": "PRESS", "writeable": false}`` |
++---------------------------+------------------------------------------------------------------------------------------------------+
+| Push button 1 "LED_STATE" | ``$${"id": "My Push Buttons", "channel": 1, "variable": "LED_STATE"}``                               |
++---------------------------+------------------------------------------------------------------------------------------------------+
+| Push button 2 "PRESS"     | ``$${"id": "My Push Buttons", "channel": 2, "variable": "PRESS", "writeable": false}``               |
++---------------------------+------------------------------------------------------------------------------------------------------+
+| Push button 2 "LED_STATE" | ``$${"id": "My Push Buttons", "channel": 2, "variable": "LED_STATE"}``                               |
++---------------------------+------------------------------------------------------------------------------------------------------+
 
 Now follow the steps in section :ref:`search-devices`.
 
