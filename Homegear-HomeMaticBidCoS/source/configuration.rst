@@ -178,7 +178,7 @@ Disable the serial interface in Raspbian Jessie::
 
 Reboot the Raspberry Pi.
 
-.. warning:: If you're using the official Raspbian, you need to delete the file ``/etc/udev/rules.d/99-com.rules`` for Homegear to be able to access the GPIOs.
+.. warning:: If you're using the official Raspbian, you need to comment the lines containing "gpio" in file ``/etc/udev/rules.d/99-com.rules`` (place a "#" at the beginning of the lines) for Homegear to be able to access the GPIOs.
 
 
 Flashing the Firmware
