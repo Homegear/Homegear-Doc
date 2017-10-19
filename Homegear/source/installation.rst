@@ -255,7 +255,7 @@ Run the following commands to start and enable the homegear server with systemd:
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the proper packages from the `Homegear download page <https://www.homegear.eu/index.php/Downloads>`_. At the very least, you need the packages ``libhomegear-base`` and ``homegear``. Additionally, you should download all family module packages you want to use. Then, as root, install the packages using dpkg::
+Download the proper packages from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. At the very least, you need the packages ``libhomegear-base`` and ``homegear``. Additionally, you should download all family module packages you want to use. Then, as root, install the packages using dpkg::
 
 	dpkg -i libhomegear-base_XXX.deb
 	​apt-get -f install
@@ -272,7 +272,7 @@ Download the proper packages from the `Homegear download page <https://www.homeg
 Raspbian Image
 **************
 
-The easiest way to use Homegear on a Raspberry Pi is to `download the Raspberry Pi image <https://www.homegear.eu/index.php/Downloads>`_ and write it to an SD card.
+The easiest way to use Homegear on a Raspberry Pi is to `download the Raspberry Pi image <https://www.homegear.eu/downloads.html>`_ and write it to an SD card.
 
 Follow the instructions on `elinux.org <http://elinux.org/RPi_Easy_SD_Card_Setup#Flashing_the_SD_Card_using_Windows>`_ to transfer the image to your SD card (for Windows, Mac, and GNU/Linux).
 
