@@ -14,7 +14,7 @@ If you are using Debian, Raspbian, or Ubuntu, you can install the Sonos module f
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the Sonos package (homegear-sonos) from the `Homegear download page <https://www.homegear.eu/index.php/Downloads>`_. Then install the package as root using dpkg::
+Download the Sonos package (homegear-sonos) from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. Then install the package as root using dpkg::
 
 	dpkg -i homegear-sonos_*.deb
 	apt-get -f install

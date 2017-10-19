@@ -6,7 +6,7 @@ Configuration
 intertechno.conf
 ****************
 
-The configuration file for the Intertechon module, ``intertechno.conf``, can be found in Homegear's family configuration directory (default: /etc/homegear/families). In this file, you can configure the communication modules used to communicate with Intertechno devices.
+The configuration file for the Intertechno module, ``intertechno.conf``, can be found in Homegear's family configuration directory (default: /etc/homegear/families). In this file, you can configure the communication modules used to communicate with Intertechno devices.
 
 
 Communication Modules
@@ -15,7 +15,7 @@ Communication Modules
 Overview
 ========
 
-The HomeMatic BidCoS module supports the following communication modules:
+The Intertechno module supports the following communication modules:
 
 	* :ref:`CUL (busware) <config-cul>`
 	* :ref:`COC (busware) <config-coc>`

@@ -17,7 +17,7 @@ Manual Update with Package
 
 First, make a backup of your database in "/var/lib/homegear/db.sql" and of your configuration files.
 
-Download the current version of Homegear, the base library (libhomegear-base), and all installed modules from the `download page <https://www.homegear.eu/index.php/Downloads>`_.
+Download the current version of Homegear, the base library (libhomegear-base), and all installed modules from the `download page <https://www.homegear.eu/downloads.html>`_.
 
 Install the following packages::
 	

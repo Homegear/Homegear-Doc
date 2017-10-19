@@ -14,7 +14,7 @@ If you are using Debian, Raspbian, or Ubuntu, you can install the Intertechno mo
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the Intertechno package (homegear-intertechno) from the `Homegear download page <https://www.homegear.eu/index.php/Downloads>`_. Then install the package as root using dpkg::
+Download the Intertechno package (homegear-intertechno) from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. Then install the package as root using dpkg::
 
 	dpkg -i homegear-intertechno*.deb
 	apt-get -f install
@@ -68,7 +68,7 @@ Compiling
 
 Next, you need to download Homegear-Intertechno and extract it::
 
-	wget https://github.com/Homegear/HomeGear-Intertechno/archive/master.zip
+	wget https://github.com/Homegear/Homegear-Intertechno/archive/master.zip
 	unzip master.zip
 	rm master.zip
 
