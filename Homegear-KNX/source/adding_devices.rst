@@ -75,16 +75,15 @@ In addition to importing the plain group variables, Homegear can import whole KN
 
 You need to add an entry to the JSON object for each parameter that should be available in Homegear. The parameter needs a group variable with selected data type assigned to it. Each parameter has an index visible in the "Number" column in ETS. This index is the key in the JSON object. The value again is an JSON object with the following possible keys:
 
-+-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
-| Key       | JSON type | Description                                                                                                       | Example       | Default |
-+===========+===========+===================================================================================================================+===============+=========+
-+-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
-| channel   | integer   | The channel number the group variable should be placed in.                                                        | 1             | 1       |
-+-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
-| variable  | string    | The name the group variable should have in Homegear.                                                              | "STATE"       | "VALUE" |
-+-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
-| unit      | string    | The unit (m², l, h, °C, ...) that should be displayed in Homegear.                                                | "°C"          | ""      |
-+-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
++----------+-----------+------------------------------------------------------------------------------------------------------------------+---------+---------+
+| Key      | JSON type | Description                                                                                                      | Example | Default |
++==========+===========+==================================================================================================================+=========+=========+
+| channel  | integer   | The channel number the group variable should be placed in. The number ``0`` or negative numbers are not allowed. | 1       | 1       |
++----------+-----------+------------------------------------------------------------------------------------------------------------------+---------+---------+
+| variable | string    | The name the group variable should have in Homegear.                                                             | "STATE" | "VALUE" |
++----------+-----------+------------------------------------------------------------------------------------------------------------------+---------+---------+
+| unit     | string    | The unit (m², l, h, °C, ...) that should be displayed in Homegear.                                               | "°C"    | ""      |
++----------+-----------+------------------------------------------------------------------------------------------------------------------+---------+---------+
 
 Readonly or writeonly are detected automatically. For a switching actuator with two outputs used (= two channels), the JSON could look like::
 
@@ -121,7 +120,7 @@ The following keys are available:
 +-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
 | type      | integer   | The type ID of the device. Needs to unique per device. You only need to specify it once for each Homegear device. | 5             | 0       |
 +-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
-| channel   | integer   | The channel number the group variable should be placed in.                                                        | 1             | 1       |
+| channel   | integer   | The channel number the group variable should be placed in. The number ``0`` or negative numbers are not allowed.  | 1             | 1       |
 +-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
 | variable  | string    | The name the group variable should have in Homegear.                                                              | "STATE"       | "VALUE" |
 +-----------+-----------+-------------------------------------------------------------------------------------------------------------------+---------------+---------+
