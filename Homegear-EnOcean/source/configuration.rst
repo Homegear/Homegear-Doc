@@ -34,3 +34,9 @@ To tell Homegear to use the module, insert the following lines into ``enocean.co
     device = /dev/ttyS0
 
 Of course, you can use multiple communication modules with Homegear.
+
+
+Homegear Gateway
+================
+
+Coming soon.
