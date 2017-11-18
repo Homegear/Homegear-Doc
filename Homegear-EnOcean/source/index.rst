@@ -18,4 +18,5 @@ Table of Contents
    installation
    configuration
    adding_devices
+   encryption
    legal_notice
