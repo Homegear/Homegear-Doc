@@ -14,7 +14,7 @@ If you are using Debian, Raspbian, or Ubuntu, you can install the KNX module fro
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the KNX package (homegear-knx) from the `Homegear download page <https://homegear.eu/downloads/nightlies/>`_. Then install the package as root using dpkg::
+Download the KNX package (homegear-knx) from the `Homegear download page <https://downloads.homegear.eu/nightlies/>`_. Then install the package as root using dpkg::
 
 	dpkg -i homegear-knx_*.deb
 	apt-get -f install

@@ -29,8 +29,8 @@ Debian 8 (Jessie)
 Please run the following commands as root::
 
 	apt install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear homegear-nodes-core
 
@@ -45,8 +45,8 @@ Debian 9 (Stretch)
 Please run the following commands as root::
 
 	apt install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear homegear-nodes-core
 
@@ -67,8 +67,8 @@ Raspbian 8 (Jessie)
 Please run the following commands as root::
 
 	apt install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear homegear-nodes-core
 
@@ -83,8 +83,8 @@ Raspbian 9 (Stretch)
 Please run the following commands as root::
 
 	apt install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Raspbian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Raspbian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear homegear-nodes-core
 
@@ -105,8 +105,8 @@ Ubuntu 14.04 (Trusty Tahr)
 Please run the following commands as root::
 
 	apt install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear homegear-nodes-core
 
@@ -121,8 +121,8 @@ Ubuntu 16.04 (Xenial Xerus)
 Please run the following commands as root::
 
 	apt install apt-transport-https
-	wget https://homegear.eu/packages/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://homegear.eu/packages/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
 	apt install homegear homegear-nodes-core
 
