@@ -70,6 +70,27 @@ Insert these lines into ``homematicwired.conf``::
 RS485 Serial Module
 ===================
 
+Connecting the Module
+---------------------
+
+Connect the module to your computer like this:
+
++----------------------+--------------------------------------------------------------------+
+| RS485 Module         | PC                                                                 |
++======================+====================================================================+
+| DI (Driver Input)    | UART TXD                                                           |
++----------------------+--------------------------------------------------------------------+
+| DO (Receiver Output) | UART RXD                                                           |
++----------------------+--------------------------------------------------------------------+
+| DE (Driver Enable)   | Any GPIO (change the index in ``homematicwired.conf`` accordingly) |
++----------------------+--------------------------------------------------------------------+
+| RE (Receiver Enable) | Any GPIO (change the index in ``homematicwired.conf`` accordingly) |
++----------------------+--------------------------------------------------------------------+
+| VCC                  | 3.3V or 5V, depending on your module                               |
++----------------------+--------------------------------------------------------------------+
+| GND                  | Ground                                                             |
++----------------------+--------------------------------------------------------------------+
+
 .. image:: images/RS485_Serial_Module_Wiring.png
 
 Free up Serial Line and Enable UART
