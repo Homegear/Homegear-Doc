@@ -70,6 +70,8 @@ Insert these lines into ``homematicwired.conf``::
 RS485 Serial Module
 ===================
 
+.. image:: images/RS485_Serial_Module_Wiring.png
+
 Free up Serial Line and Enable UART
 -----------------------------------
 
