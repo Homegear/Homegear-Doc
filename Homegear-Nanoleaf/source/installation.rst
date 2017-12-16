@@ -6,17 +6,17 @@ Installation
 Installing from Repository
 **************************
 
-If you are using Debian, Raspbian, or Ubuntu, you can install the Sonos module from the repository. Please run the following command as root::
+If you are using Debian, Raspbian, or Ubuntu, you can install the Nanoleaf module from the repository. Please run the following command as root::
 
-	apt-get install homegear-sonos
+	apt-get install homegear-nanoleaf
 
 
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the Sonos package (homegear-sonos) from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. Then install the package as root using dpkg::
+Download the Nanoleaf package (homegear-nanoleaf) from the `Homegear nightly download page <https://downloads.homegear.eu/nightlies/>`_ or the `APT repository <https://apt.homegear.eu/>`_. Then install the package as root using dpkg::
 
-	dpkg -i homegear-sonos_*.deb
+	dpkg -i homegear-nanoleaf_*.deb
 	apt-get -f install
 
 The command ``apt-get -f install`` installs any missing dependencies.
@@ -32,8 +32,8 @@ Compiling Current GitHub Source Using Docker Image
 See the Homegear documentation.
 
 
-Manually Compiling Homegear-Sonos
-===========================================
+Manually Compiling Homegear-Nanoleaf
+====================================
 
 
 Prerequisites
@@ -66,15 +66,15 @@ On openSUSE Leap, run the following::
 Compiling
 ---------
 
-Next, you need to download Homegear-Sonos and extract it::
+Next, you need to download Homegear-Nanoleaf and extract it::
 
-	wget https://github.com/Homegear/Homegear-Sonos/archive/master.zip
+	wget https://github.com/Homegear/Homegear-Nanoleaf/archive/master.zip
 	unzip master.zip
 	rm master.zip
 
 Change into the extracted directory and run ``makeRelease.sh`` or ``makeDebug.sh``. You can pass the number of build threads to the script to speed up the compilation process::
 
-	cd Homegear-Sonos-master
+	cd Homegear-Nanoleaf-master
 	./makeRelease.sh 4
 
 
@@ -87,12 +87,12 @@ Installing Configuration Files
 
 Install the default configuration file::
 
-	cp -R misc/Config\ Directory/sonos.conf /etc/homegear/families
+	cp -R misc/Config\ Directory/nanoleaf.conf /etc/homegear/families
 
 Install the device description files::
 
-	mkdir /etc/homegear/devices/6
-	cp misc/Device\ Description\ Files/* /etc/homegear/devices/6
+	mkdir /etc/homegear/devices/22
+	cp -R misc/Device\ Description\ Files/* /etc/homegear/devices/22
 
 
 First Start
