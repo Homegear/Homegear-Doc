@@ -255,7 +255,7 @@ Run the following commands to start and enable the homegear server with systemd:
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the proper packages from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. At the very least, you need the packages ``libhomegear-base`` and ``homegear``. Additionally, you should download all family module packages you want to use. Then, as root, install the packages using dpkg::
+Download the proper packages from the `Homegear nightly download page <https://downloads.homegear.eu/nightlies/>`_ or the `APT repository <https://apt.homegear.eu/>`_. At the very least, you need the packages ``libhomegear-base`` and ``homegear``. Additionally, you should download all family module packages you want to use. Then, as root, install the packages using dpkg::
 
 	dpkg -i libhomegear-base_XXX.deb
 	​apt-get -f install

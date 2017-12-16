@@ -14,7 +14,7 @@ If you are using Debian, Raspbian, or Ubuntu, you can install the HomeMatic BidC
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the HomeMatic BidCoS package (homegear-homematicbidcos) from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. Then install the package as root using dpkg::
+Download the HomeMatic BidCoS package (homegear-homematicbidcos) from the `Homegear nightly download page <https://downloads.homegear.eu/nightlies/>`_ or the `APT repository <https://apt.homegear.eu/>`_. Then install the package as root using dpkg::
 
 	dpkg -i homegear-homematicbidcos_*.deb
 	apt-get -f install

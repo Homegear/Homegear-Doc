@@ -16,7 +16,7 @@ If you are using Debian, Raspbian, or Ubuntu, you can install the HomeMatic Wire
 Manually Install Debian/Raspbian/Ubuntu Package
 ***********************************************
 
-Download the HomeMatic Wired package (homegear-homematicwired) from the `Homegear download page <https://www.homegear.eu/downloads.html>`_. Then install the package as root using dpkg::
+Download the HomeMatic Wired package (homegear-homematicwired) from the `Homegear nightly download page <https://downloads.homegear.eu/nightlies/>`_ or the `APT repository <https://apt.homegear.eu/>`_. Then install the package as root using dpkg::
 
 	dpkg -i homegear-homematicwired_*.deb
 	apt-get -f install
