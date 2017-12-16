@@ -19,4 +19,5 @@ Table of Contents
    configuration
    adding_devices
    encryption
+   variables
    legal_notice

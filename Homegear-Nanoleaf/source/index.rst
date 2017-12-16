@@ -18,4 +18,5 @@ Table of Contents
    configuration
    searching_nanoleafs
    removing_nanoleafs
+   variables
    legal_notice
