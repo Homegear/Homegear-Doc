@@ -42,7 +42,7 @@ Homegear Gateway
 
 First you need to create certificates for the Gateway service and for authentication. We don't want an insecure gateway so there is no possibility to use it without creating them. Here are the steps to create a certificate authority in Debian or Ubuntu and to create the necessary certificates:
 
-First make sure the date and time are set correctly. Then edit the OpenSSL configuration file and change ::
+First make sure the date and time are set correctly. Then edit the OpenSSL configuration file ``/usr/lib/ssl/openssl.cnf`` and change ::
 
     dir             = ./demoCA
 
@@ -93,6 +93,9 @@ Next lets create the client certificate your Homegear system uses to login to th
     openssl genrsa -aes256 -out private/homegearclient.enc.key 2048
     openssl req -new -key private/homegearclient.enc.key -out newcert.csr
     openssl ca -in newcert.csr -out certs/homegearclient.crt
+
+
+.. warning:: The common name needs to be unique. When you get the error ``TXT_DB error number 2`` open the file ``index.txt`` and remove the line with the common name of the certificate you just tried to create. Then create the certificate again.
 
 
 Now all certificates are created.
