@@ -88,6 +88,9 @@ Now we can create and sign certificates. First lets create the certificates for 
     openssl ca -in newcert.csr -out certs/homegeargateway.crt
 
 
+.. important:: You need to set the correct hostname for ``COMMON NAME`` and also use this hostname to connect to the gateway (not the IP)!
+
+
 Next lets create the client certificate your Homegear system uses to login to the gateway. Again don't set the "challenge password". ::
 
     openssl genrsa -aes256 -out private/homegearclient.enc.key 2048
