@@ -400,12 +400,12 @@ HomeMatic Wireless Module for Raspberry Pi (HM-MOD-RPI-PCB)
 Free Up Serial Line and Enable UART
 -----------------------------------
 
-Raspberry Pi 1 and 2
-^^^^^^^^^^^^^^^^^^^^
+All Raspberry Pis
+^^^^^^^^^^^^^^^^^
 
-On the Raspberry Pi 1 and 2 ttyAMA0 might be used by the serial console. To free it up do the following.
+ttyAMA0 or serial0 might be used by the serial console. To free it up do the following.
 
-Remove any references to ttyAMA0 from /etc/inittab and /boot/cmdline.txt.
+Remove any references to ttyAMA0 and serial0 from /etc/inittab and /boot/cmdline.txt.
 
 Our /boot/cmdline.txt looks like this::
 

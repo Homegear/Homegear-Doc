@@ -30,11 +30,62 @@ To tell Homegear to use the module, insert the following lines into ``enocean.co
 
 	[TCM310]
     id = TCM310
-    deviceType = usb300
-    device = /dev/ttyS0
-
+    deviceType = tcm310
+    device = /dev/ttyUSB0
 
 Of course, you can use multiple communication modules with Homegear.
+
+For USB devices this is all. In case you are using a UART device like the EnOcean Pi, additionally follow these steps::
+
+
+Free Up Serial Line and Enable UART
+-----------------------------------
+
+All Raspberry Pis
+^^^^^^^^^^^^^^^^^
+
+ttyAMA0 or serial0 might be used by the serial console. To free it up do the following.
+
+Remove any references to ttyAMA0 and serial0 from /etc/inittab and /boot/cmdline.txt.
+
+Our /boot/cmdline.txt looks like this::
+
+    dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+
+
+Raspberry Pi 3
+^^^^^^^^^^^^^^
+
+On the Raspberry Pi 3 /dev/ttyAMA0 is used by the Wifi and Bluetooth module. There is a "mini UART" available on /dev/ttyS0 by default. It is better though, to use the hardware UART and switch the Wifi/Bluetooth module to mini UART. To do that, add this line at the end of ``/boot/config.txt``::
+
+    dtoverlay=pi3-miniuart-bt
+
+Additionally remove any references to ttyAMA0 from ``/boot/cmdline.txt``. Our file looks like this::
+
+    dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+
+
+All Raspberry Pis
+^^^^^^^^^^^^^^^^^
+
+Make sure ``enable_uart=1`` is in ``/boot/config.txt``. Our file looks like this::
+
+    .
+    .
+    .
+    enable_uart=1
+    dtparam=spi=on
+    dtparam=i2c_arm=on
+
+Disable the serial interface in Raspbian Jessie::
+
+    systemctl disable serial-getty@ttyAMA0.service
+    systemctl disable serial-getty@serial0.service
+    systemctl disable serial-getty@ttyS0.service
+
+Reboot the Raspberry Pi.
+
+.. warning:: If you're using the official Raspbian, you need to comment the lines containing "gpio" in file ``/etc/udev/rules.d/99-com.rules`` (place a "#" at the beginning of the lines) for Homegear to be able to access the GPIOs.
 
 
 Homegear Gateway
