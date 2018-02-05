@@ -17,11 +17,17 @@ Overview
 
 The EnOcean module supports all communication modules using the TCM310:
 
-	* EnOcean USB 300
-	* EnOcean Pi Wireless Module
+	* :ref:`EnOcean USB 300 <config-tcm310>`
+	* :ref:`EnOcean Pi Wireless Module <config-tcm310>`
+
+The TCM310 can also be connected to additional SBCs using the Homegear Gateway service:
+
+    * :ref:`Homegear Gateway <config-homegear-gateway>`
 
 We recommend using a module with a good antenna as this greatly increases the range. The chip antenna on the USB 300 is definitely not recommended.
 
+
+.. _config-tcm310:
 
 TCM310
 ======
@@ -87,6 +93,8 @@ Reboot the Raspberry Pi.
 
 .. warning:: If you're using the official Raspbian, you need to comment the lines containing "gpio" in file ``/etc/udev/rules.d/99-com.rules`` (place a "#" at the beginning of the lines) for Homegear to be able to access the GPIOs.
 
+
+.. _config-homegear-gateway:
 
 Homegear Gateway
 ================

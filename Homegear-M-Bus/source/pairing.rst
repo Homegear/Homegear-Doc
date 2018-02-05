@@ -42,4 +42,4 @@ If you want to disable pairing, call ``setInstallMode()`` with ``false`` as seco
 
     homegear -e rc '$hg->setInstallMode(23, false);'
 
-Of course you can use all other RPC protocols supported by Homegear to call this method.
+Of course you can use all other RPC protocols supported by Homegear to call the above methods.
