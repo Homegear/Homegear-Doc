@@ -8,8 +8,10 @@ Homegear Core
 =============
 
 +----------------------------------------------------------+-----------------------------------------+
-| `Homegear 0.8 <https://doc.homegear.eu/data/homegear/>`_ | Documentation of the Homegear 0.8 core. |
+| Name                                                     | Description                             |
 +==========================================================+=========================================+
+| `Homegear 0.8 <https://doc.homegear.eu/data/homegear/>`_ | Documentation of the Homegear 0.8 core. |
++----------------------------------------------------------+-----------------------------------------+
 
 
 Family Modules
