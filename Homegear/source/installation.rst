@@ -551,7 +551,7 @@ This creates a CA in ``/etc/homegear/ca`` in background. To check if the command
 
     homegear -e rc 'print_v($hg->managementGetCommandStatus());'
 
-This returns the command output and the exit code. The command has finished if the exit code other than ``256``. On success the exit code is ``0``.
+This returns the command output and the exit code. The command has finished if the exit code is other than ``256``. On success the exit code is ``0``.
 
 Next create the client certificate to login into gateways::
 
