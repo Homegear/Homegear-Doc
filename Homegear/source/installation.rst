@@ -32,7 +32,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -48,7 +48,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -70,7 +70,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -86,7 +86,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Raspbian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -108,7 +108,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -124,7 +124,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -140,7 +140,7 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Ubuntu/ bionic/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core
+	apt install homegear homegear-nodes-core homegear-management
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
@@ -467,6 +467,14 @@ And the core nodes::
 	​cd homegear-nodes-core-master
 	​./makeRelease.sh 4
 
+You can also compile the optional Homegear Management service::
+
+	wget https://github.com/Homegear/homegear-management/archive/master.zip
+	​unzip master.zip
+	​rm master.zip
+	​cd homegear-management-master
+	​./makeRelease.sh 4
+
 Repeat these steps for all family modules you want to compile.
 
 
@@ -477,15 +485,27 @@ First, add a user named homegear::
 
 	useradd --system -U --no-create-home homegear
 
-Copy the default configuration files::
+Copy the default configuration files from the directory containing the files of Homegear's main project::
 
+	cd ../Homegear-master
 	cp -R misc/Config\ Directory /etc/homegear
+
+Also copy the Homegear Management configuration files (if Homegear Management was compiled)::
+
+    cd ../homegear-management-master
+    cp -R misc/Config\ Directory/* /etc/homegear
 
 Now setup all necessary directories::
 
 	mkdir /var/log/homegear
 	​chmod 750 /var/log/homegear
 	​chown homegear:homegear /var/log/homegear
+	
+	mkdir /var/log/homegear-management
+	​chmod 750 /var/log/homegear-management
+	​chown homegear:homegear /var/log/homegear-management
+	
+	mkdir /var/lib/homegear
 	​chmod 750 /var/lib/homegear
 	​chown homegear:homegear /var/lib/homegear
 
@@ -520,10 +540,32 @@ Clients Without SSL Support
 If you want to connect a client that doesn't support SSL, we strongly recommend setting up an SSH tunnel or using a VPN (such as OpenVPN) to encrypt your connection.
 
 
+Create Homegear's Certificate Authority
+***************************************
+
+If you want to use Homegear Gateways or the Homegear Gateway service, you need to create a certificate authority to create gateway and client certificates. The easiest way to do that is by using Homegear's Managament service. Note that creating the CA this way changes your `/etc/ssl/openssl.cnf`::
+
+    homegear -e rc 'print_v($hg->managementCreateCa());'
+
+This creates a CA in background. To check if the command has finished, execute::
+
+    homegear -e rc 'print_v($hg->managementGetCommandStatus());'
+
+This returns the command output and the exit code. The command has finished if the exit code other than ``256``. On success the exit code is ``0``.
+
+Next create the client certificate to login into gateways::
+
+    homegear -e rc 'print_v($hg->managementCreateCert("gateway-client"));'
+
+Again this command runs in background and you can check if the command has finished with::
+
+    homegear -e rc 'print_v($hg->managementGetCommandStatus());'
+
+
 Install a User Interface
 ************************
 
-Homegear does not have a web user interface yet. Until it does, you can use::
+Homegear does not have a web user interface yet. Until it does, you can use:
 
 * `HomeMatic Manager <https://github.com/hobbyquaker/homematic-manager>`_
 * `HomeMatic Configuration Tool coming with the BidCoS Service (in German only)  <http://www.eq-3.de/Downloads/Software/Konfigurationsadapter/Konfigurationsadapter_LAN/HM-CFG-LAN_Usersoftware_V1_520_eQ-3_151207.zip>`_
