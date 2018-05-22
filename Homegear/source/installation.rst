@@ -543,11 +543,11 @@ If you want to connect a client that doesn't support SSL, we strongly recommend 
 Create Homegear's Certificate Authority
 ***************************************
 
-If you want to use Homegear Gateways or the Homegear Gateway service, you need to create a certificate authority to create gateway and client certificates. The easiest way to do that is by using Homegear's Managament service. Note that creating the CA this way changes your `/etc/ssl/openssl.cnf`::
+If you want to use Homegear Gateways or the Homegear Gateway service, you need to create a certificate authority to create gateway and client certificates. The easiest way to do that is by using Homegear's Managament service. Note that creating the CA this way changes your `/usr/lib/ssl/openssl.cnf`::
 
     homegear -e rc 'print_v($hg->managementCreateCa());'
 
-This creates a CA in ``/etc/homegear/ca`` in background. To check if the command has finished, execute::
+This creates a CA in ``/etc/homegear/ca`` in background. It can only be executed once and returns ``true`` on success. To check if the command has finished, execute::
 
     homegear -e rc 'print_v($hg->managementGetCommandStatus());'
 
