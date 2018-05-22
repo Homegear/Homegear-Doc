@@ -212,7 +212,7 @@ Check ``/var/log/homegear-gateway/homegear-gateway.log`` for errors. If everythi
 Homegear
 --------
 
-Copy the certificates ``cacert.pem``, ``homegearclient.enc.key`` and ``homegearclient.crt`` to ``/etc/homegear/`` on the gateway system. Decrypt the private key and set appropriate permissions::
+Copy the certificates ``cacert.pem``, ``homegearclient.enc.key`` and ``homegearclient.crt`` to ``/etc/homegear/`` on the Homegear system. Decrypt the private key and set appropriate permissions::
 
     cd /etc/homegear
     openssl rsa -in homegearclient.enc.key -out homegearclient.key
