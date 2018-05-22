@@ -547,7 +547,7 @@ If you want to use Homegear Gateways or the Homegear Gateway service, you need t
 
     homegear -e rc 'print_v($hg->managementCreateCa());'
 
-This creates a CA in background. To check if the command has finished, execute::
+This creates a CA in ``/etc/homegear/ca`` in background. To check if the command has finished, execute::
 
     homegear -e rc 'print_v($hg->managementGetCommandStatus());'
 
