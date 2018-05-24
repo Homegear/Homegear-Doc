@@ -333,7 +333,7 @@ Restart the gateway service.
 
 Check ``/var/log/homegear-gateway/homegear-gateway.log`` for errors. If everything is working, the logfile should say ``Startup complete`` and print a warning that the gateway is unconfigured.
 
-.. note:: To reset a gateway, delete the files ``<dataPath>/ca.crt``, ``<dataPath>/gateway.crt`` and ``<dataPath>/gateway.key``. ``dataPath`` is configured in ``/etc/homegear/gateway.conf``.
+.. note:: To reset a gateway (make it "unconfigured"), delete the files ``<dataPath>/ca.crt``, ``<dataPath>/gateway.crt`` and ``<dataPath>/gateway.key``. ``dataPath`` is configured in ``/etc/homegear/gateway.conf``.
 
 
 Homegear
