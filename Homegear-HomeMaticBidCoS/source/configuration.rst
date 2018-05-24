@@ -255,139 +255,112 @@ Of course, you can use multiple CUNXs.
 Homegear Gateway
 ================
 
-First you need to create certificates for the Gateway service and for authentication. We don't want an insecure gateway so there is no possibility to use it without creating them. Here are the steps to create a certificate authority in Debian or Ubuntu and to create the necessary certificates:
+Certificate Generation
+----------------------
 
-First make sure the date and time are set correctly. Then edit the OpenSSL configuration file ``/usr/lib/ssl/openssl.cnf`` and change ::
+First you need to create certificates for the Gateway service. We don't want an insecure gateway so there is no possibility to use it without creating them. If not done already, start by following the instructions `to create a certificate authority in the Homegear manual <https://doc.homegear.eu/data/homegear/installation.html#create-homegear-s-certificate-authority>`_.
 
-    dir             = ./demoCA
+First create the gateway certificates using Homegear Management::
 
+    homegear -e rc 'print_v($hg->managementCreateCert("my-gateway"));'
 
-in section ``[ CA_default ]`` to ::
+Replace ``my-gateway`` with an arbitrary name (it doesn't need to be the hostname of the gateway). The name will be used to set the field ``COMMON NAME`` of the certificate. It has to be the same as set to the setting ``id`` in ``homematicbidcos.conf`` (see below).
 
-    dir             = /root/ca
+The output of the command looks similar to::
 
+    (Struct length=5)
+    {
+      [caPath]
+      {
+        (String) /etc/homegear/ca/cacert.pem
+        {
+          [certPath]
+          {
+            (String) /etc/homegear/ca/certs/homematic-gateway-02.crt
+          }
+          [commonNameUsed]
+          {
+            (String) homematic-gateway-02
+          }
+          [filenamePrefix]
+          {
+            (String) homematic-gateway-02
+          }
+          [keyPath]
+          {
+            (String) /etc/homegear/ca/private/homematic-gateway-02.key
+          }
+        }
+      }
+    }
 
-Create the directory ``/root/ca``::
+In case your chosen name contained invalid characters, ``commonNameUsed`` returns the corrected name that will be used in the certificate. ``certPath`` is the path Homegear tries to create the certificate in, ``keyPath`` the path to the private key file. The actual certificate generation starts in background. To check if the command has finished, execute::
 
-    mkdir /root/ca
+    homegear -e rc 'print_v($hg->managementGetCommandStatus());'
 
-
-and create some necessary subfolders::
-
-    cd /root/ca
-    mkdir newcerts certs crl private requests
-
-
-Create the files ``index.txt`` and ``serial``::
-
-    touch index.txt
-    echo "1000" > serial
-
-
-Now generate the CA's private key::
-
-    openssl genrsa -aes256 -out private/cakey.pem 4096
-
-
-Create the CA certificate. Set common name to e. g. ``Homegear CA``::
-
-    openssl req -new -x509 -key /root/ca/private/cakey.pem -out cacert.pem -days 10958 -set_serial 0
-
-
-The certificate is saved to ``/root/ca/cacert.pem`` and is valid for 30 years.
-
-Now we can create and sign certificates. First lets create the certificates for the gateway. Enter the correct hostname for common name. This name is verified when Homegear connects to the gateway, so the gateway must be reachable under that name from your Homegear installation. If the hostname can't be resolved using DNS, you can create an entry for the gateway in ``/etc/hosts`` (e. g. ``192.168.178.11   homegeargateway``) on your system running Homegear. Don't set the "challenge password". ::
-
-    openssl genrsa -aes256 -out private/homegeargateway.enc.key 2048
-    openssl req -new -key private/homegeargateway.enc.key -out newcert.csr
-    openssl ca -in newcert.csr -out certs/homegeargateway.crt
+This returns the command output and the exit code. The command has finished if the exit code is other than ``256``. On success the exit code is ``0``.
 
 
-.. important:: You need to set the correct hostname for ``COMMON NAME`` and also use this hostname to connect to the gateway (not the IP)!
+Find Gateways
+-------------
+
+If you don't know the IP address of your gateway, you can search and print all unconfigured gateways with the following command::
+
+    homegear -e rc '$devices=$hg->ssdpSearch("urn:schemas-upnp-org:device:basic:1", 5000);foreach($devices as $device){if(!array_key_exists("additionalFields", $device) || !array_key_exists("hg-family-id", $device["additionalFields"]) || !array_key_exists("hg-gateway-configured", $device["additionalFields"])) continue; if($device["additionalFields"]["hg-family-id"] != "0" || $device["additionalFields"]["hg-gateway-configured"] != "0") continue; print($device["ip"].PHP_EOL);}'
 
 
-Next lets create the client certificate your Homegear system uses to login to the gateway. Again don't set the "challenge password". ::
-
-    openssl genrsa -aes256 -out private/homegearclient.enc.key 2048
-    openssl req -new -key private/homegearclient.enc.key -out newcert.csr
-    openssl ca -in newcert.csr -out certs/homegearclient.crt
-
-
-.. warning:: The common name needs to be unique. When you get the error ``TXT_DB error number 2`` open the file ``index.txt`` and remove the line with the common name of the certificate you just tried to create. Then create the certificate again.
-
-
-Now all certificates are created.
-
-
-Homegear Gateway
+Homegear Gateway Service
 ----------------
 
-Setup the gateway computer with Debian, Raspbian or Ubuntu first and connect a serial communication module or USB stick with culfw (e. g. CUL, COC, SCC, ...).
+If you have a preconfigured Homegear Gateway you can skip this section. This section covers the installation of the Homegear Gateway service. First setup a computer with Debian, Raspbian or Ubuntu and connect a serial communication module or USB stick with culfw (e. g. CUL, COC, SCC, ...) or a TI CC1101 SPI module.
 
-Then install Homegear Gateway::
+Add the Homegear APT repository and install Homegear Gateway::
 
-    apt install apt-transport-https
-    curl https://apt.homegear.eu/Release.key | sudo apt-key add -
-    echo 'deb https://apt.homegear.eu/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
-    apt update
     apt install homegear-gateway
 
 
-Copy the certificates ``cacert.pem``, ``homegeargateway.enc.key`` and ``homegeargateway.crt`` to ``/etc/homegear/`` on the gateway system. Decrypt the private key and set appropriate permissions::
-
-    cd /etc/homegear
-    openssl rsa -in homegeargateway.enc.key -out homegeargateway.key
-    chmod 400 homegeargateway.key
-    chown homegear:homegear homegeargateway.key
-
-
-Create the Diffie-Hellman parameter file::
-
-    openssl dhparam -check -text -5 -out dh1024.pem 1024
-
-
-Open ``/etc/homegear/gateway.conf`` and set the following settings::
-
-    caFile = /etc/homegear/cacert.pem
-    certPath = /etc/homegear/homegeargateway.crt
-    keyPath = /etc/homegear/homegeargateway.key
-    dhPath = /etc/homegear/dh1024.pem
+Open ``/etc/homegear/gateway.conf`` and set the settings for your communication module, e. g. for a CUL on device ``ttyACM0``::
 
     family = HomeMaticCulfw
     device = /dev/ttyACM0
 
+Note the ``configurationPassword``, we need below.
 
-Set ``device`` to the serial device the communication module is connected to. Now restart the gateway service::
+Restart the gateway service.
 
     service homegear-gateway restart
 
 
-Check ``/var/log/homegear-gateway/homegear-gateway.log`` for errors. If everything is working, the logfile should say ``Startup complete``.
+Check ``/var/log/homegear-gateway/homegear-gateway.log`` for errors. If everything is working, the logfile should say ``Startup complete`` and print a warning that the gateway is unconfigured.
+
+.. note:: To reset a gateway, delete the files ``<dataPath>/ca.crt``, ``<dataPath>/gateway.crt`` and ``<dataPath>/gateway.key``. ``dataPath`` is configured in ``/etc/homegear/gateway.conf``.
 
 
 Homegear
 --------
 
-Copy the certificates ``cacert.pem``, ``homegearclient.enc.key`` and ``homegearclient.crt`` to ``/etc/homegear/`` on the gateway system. Decrypt the private key and set appropriate permissions::
+To configure a gateway, execute::
 
-    cd /etc/homegear
-    openssl rsa -in homegearclient.enc.key -out homegearclient.key
-    chmod 400 homegearclient.key
-    chown homegear:homegear homegearclient.key
+    homegear -e rc '$hg->configureGateway("<IP>", 2018, file_get_contents("/etc/homegear/ca/cacert.pem"), file_get_contents("/etc/homegear/ca/certs/<your-cert>.crt"), file_get_contents("/etc/homegear/ca/private/<your-cert>.key"), "<your-configuration-password>");'
 
+Replace ``<your-cert>`` with the value of ``commonNameUsed`` from above, ``<IP>`` with the IP address of your gateway and ``<your-configuration-password>`` with ``configurationPassword`` from the ``gateway.conf`` of the gateway service or the password printed on your gateway.
 
-Open ``/etc/homegear/families/homematicbidcos.conf`` and add the following lines to the bottom of the file::
+This command transmits the certificates to the gateway encrypted with the configuration password. If no error occurs, the gateway is immediately usable.
+
+Open ``/etc/homegear/families/homematicbidcos.conf`` on your Homegear server and add the following lines to the bottom of the file::
 
     [Homegear Gateway]
-    id = My-Gateway
+    id = <commonNameUsed>
     deviceType = homegeargateway
-    # The host name of the Homegear gateway
-    host = homegeargateway
+    host = <IP>
     port = 2017
-    caFile = /etc/homegear/cacert.pem
-    certFile = /etc/homegear/homegearclient.crt
-    keyFile = /etc/homegear/homegearclient.key
+    caFile = /etc/homegear/ca/cacert.pem
+    certFile = /etc/homegear/ca/certs/gateway-client.crt
+    keyFile = /etc/homegear/ca/private/gateway-client.key
+    responseDelay = 98
+    useIdForHostnameVerification = true
 
+Replace ``commonNameUsed`` with the value from above (used for certificate verification) and ``<IP>`` with the IP address of your gateway.
 
 Now restart Homegear and check ``/var/log/homegear/homegear.log`` or ``homegear.err`` for errors.
 
