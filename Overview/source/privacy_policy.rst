@@ -78,8 +78,10 @@ Controller for the purposes of the General Data Protection Regulation (GDPR), ot
 | Am Schützenplatz 3
 | 24211 Preetz
 | Germany
+|
 | Phone: +49 4342 7899785
 | Email: contact (at) homegear.email
+| 
 
 3. Collection of general data and information
 *********************************************
