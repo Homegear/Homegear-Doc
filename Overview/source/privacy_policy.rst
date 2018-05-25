@@ -75,11 +75,17 @@ Consent of the data subject is any freely given, specific, informed and unambigu
 Controller for the purposes of the General Data Protection Regulation (GDPR), other data protection laws applicable in Member states of the European Union and other provisions related to data protection is:
 
 Homegear GmbH
+
 Am Schützenplatz 3
+
 24211 Preetz
+
 Germany
+
 Phone: +49 4342 7899785
+
 Email: contact (at) homegear.email
+
 
 3. Collection of general data and information
 *********************************************
