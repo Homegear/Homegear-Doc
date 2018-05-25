@@ -4,8 +4,7 @@ Imprint
 Contact
 *******
 
-**Homegear GmbH**
-
+| **Homegear GmbH**
 | Am Schützenplatz 3
 | 24211 Preetz
 | Germany
