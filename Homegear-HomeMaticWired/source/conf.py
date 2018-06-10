@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Homegear HomeMatic Wired Manual'
-copyright = u'2017, Sathya Laufer'
+copyright = u'2016-2018, Homegear GmbH'
 author = u'Sathya Laufer'
 
 # The version info for the project you're documenting, acts as replacement for
