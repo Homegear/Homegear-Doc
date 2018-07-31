@@ -18,6 +18,6 @@ Table of Contents
    installation
    configuration
    adding_devices
+   removing_devices
    encryption
-   variables
    legal_notice
