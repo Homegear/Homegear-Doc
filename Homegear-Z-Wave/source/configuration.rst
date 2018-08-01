@@ -3,11 +3,12 @@ Configuration
 
 .. highlight:: bash
 
+.. note:: If you used the communication module with some other software and added devices to it, you might need first to unpair the devices with that software and maybe even reset the communication module. Alternatively you may reset the devices manually and also reset the communication device from homegear. Homegear might be able to recognize and create the devices already added, at startup, but if they are added securely with a different key, that will not work.
+
 z-wave.conf
 ***********
 
-The configuration file for the Z-Wave module, ``z-wave.conf``, can be found in Homegear's family configuration directory (default: /etc/homegear/families). In this file, you can configure the communication modules used to communicate with Z-Wave devices.
-
+The configuration file for the Z-Wave module, ``z-wave.conf``, can be found in Homegear's family configuration directory (default: ``/etc/homegear/families``). In this file, you can configure the communication modules used to communicate with Z-Wave devices.
 
 Communication Modules
 *********************
@@ -24,10 +25,10 @@ The Z-Wave module can also connect to a remote usb stick or gpio communication m
     * :ref:`Homegear Gateway <config-homegear-gateway>`
 
 
-.. usb sticks:
+.. serial:
 
-USB
-===
+Serial
+======
 
 To tell Homegear to use the usb module, insert the following lines into ``z-wave.conf``::
 
@@ -44,7 +45,7 @@ To tell Homegear to use the usb module, insert the following lines into ``z-wave
 
 Of course, you can use multiple communication modules with Homegear. We recommend to use the gateway (see below) in such a case, but you could use more than one local device. The downsize is that you have to pull out the usb devices except one when you add a z-wave node, because pairing activates all interfaces.
 
-For USB devices this is all. In case you are using a UART device on the Raspberry Pi, additionally follow these steps:
+For USB devices this is all. In case you are using an UART device on the Raspberry Pi, additionally follow these steps:
 
 
 Free Up Serial Line and Enable UART
@@ -209,9 +210,29 @@ Open ``/etc/homegear/families/z-wave.conf`` on your Homegear server and add the 
     caFile = /etc/homegear/ca/cacert.pem
     certFile = /etc/homegear/ca/certs/gateway-client.crt
     keyFile = /etc/homegear/ca/private/gateway-client.key
+    
+    #use your own 16 bytes hexadecimal key!
+    password = 16CFA1797F981EC8651DDD45F8BF0FC6
+
     responseDelay = 98
     useIdForHostnameVerification = true
 
 Replace ``commonNameUsed`` with the value from above (used for certificate verification) and ``<IP>`` with the IP address of your gateway.
 
 Now restart Homegear and check ``/var/log/homegear/homegear.log`` or ``homegear.err`` for errors.
+
+
+Device configuration values
+***************************
+
+Devices supporting the configuration class will have some default values when paired. Sometimes you might want to have those values changed to your own default values. Those configuration values can be changed by using xml configuration files placed in the z-wave devices configuration directory, ``conf`` subdirectory (default: ``/etc/homegear/devices/17/conf``).
+
+For devices you want homegear to set configuration values, you will need to have xml files with names like ``conf-86-2-64.xml``, with values in hexadecimal encoding representing in order: manufacturer id for the device, product type and product id. You may find the values with ``config print`` for the peer in CLI.
+
+Here is an example of such file::
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<config_values>
+	  <config_value index="3">60</config_value>
+	  <config_value index="5">2</config_value>
+	</config_values>

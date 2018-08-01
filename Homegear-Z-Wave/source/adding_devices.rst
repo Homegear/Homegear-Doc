@@ -33,5 +33,7 @@ Before you start, make sure the device to pair is factory reset if it has been u
 
 5. After a few seconds ``ls`` should show the device.
 
-.. note:: You can pair a device also by using the command: ``homegear -e rc '$hg->setInstallMode(17, true, 60);'``
+.. note:: You can also pair a device by using the command: ``homegear -e rc '$hg->setInstallMode(17, true, 60);'``
+
+.. note:: By default devices are added in low power mode, this is a security measure, important when you add devices in secure mode. You should have the added device as close as possible to the communication device. If that is not possible, you can enable 'high power' mode from CLI.
 
