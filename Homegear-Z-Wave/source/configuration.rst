@@ -227,7 +227,7 @@ Device configuration values
 
 Devices supporting the configuration class will have some default values when paired. Sometimes you might want to have those values changed to your own default values. Those configuration values can be changed by using xml configuration files placed in the z-wave devices configuration directory, ``conf`` subdirectory (default: ``/etc/homegear/devices/17/conf``).
 
-For devices you want homegear to set configuration values, you will need to have xml files with names like ``conf-86-2-64.xml``, with values in hexadecimal encoding representing in order: manufacturer id for the device, product type and product id. You may find the values with ``config print`` for the peer in CLI.
+For devices you want homegear to set configuration values, you will need to have xml files with names like ``conf-86-2-64.xml``, with values in hexadecimal encoding, with no leading zeros, representing in order: manufacturer id for the device, product type and product id. You may find the values with ``config print`` for the peer in CLI.
 
 Here is an example of such file::
 
