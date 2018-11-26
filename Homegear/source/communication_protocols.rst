@@ -165,7 +165,8 @@ REST
 
 With Representational State Transfer (REST) you can easily access your Homegear devices using HTTP. Homegear's REST API features:
 
-* Setting variables and configuration parameters
+* Set/get variables and configuration parameters
+* List families, devices, channels and parameter sets
 * TLS support
 * Support for authentication with username and password
 * Support for certificate authentication
@@ -174,6 +175,63 @@ Configuration
 =============
 
 The configuration is done in ``rpcservers.conf`` in Homegear's configuration directory. To enable REST, set ``restServer`` to ``true``.
+
+List Families
+-------------
+
+The URI path to list all available families is::
+
+    api/v1/families
+
+and needs to be accessed using ``GET``.
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/families
+
+
+List Devices
+------------
+
+The URI path to list all available devices is::
+
+    api/v1/devices
+
+and needs to be accessed using ``GET``.
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/devices
+
+
+List Channels
+-------------
+
+The URI path to list all available channels is::
+
+    api/v1/channels
+
+and needs to be accessed using ``GET``.
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/channels
+
+
+Get Channel Info
+----------------
+
+The URI path to list channel information including information about the containing variables::
+
+    api/v1/channelinfo/PEERID/CHANNEL
+
+and needs to be accessed using ``GET``. Let's say the peer ID is ``155`` and the channel is ``3``. Then the path is::
+
+    api/v1/channelinfo/155/3
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/channelinfo/155/3
 
 
 Get Variable
