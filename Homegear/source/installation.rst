@@ -96,24 +96,7 @@ After installing Homegear, you can install any family modules you like. To insta
 Ubuntu
 ======
 
-Packages are provided for Ubuntu 14.04 (Trusty Tahr) and Ubuntu 15.10 (Wily Werewolf).
-
-
-Ubuntu 14.04 (Trusty Tahr)
---------------------------
-
-Please run the following commands as root::
-
-	apt install apt-transport-https
-	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://apt.homegear.eu/Ubuntu/ trusty/' >> /etc/apt/sources.list.d/homegear.list
-	apt update
-	apt install homegear homegear-nodes-core homegear-management
-
-After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
-
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu2 homegear-mbus homegear-influxdb
-
+Packages are provided for Ubuntu 16.04 (Xenial Xerus) and Ubuntu 18.04 (Bionic Beaver).
 
 Ubuntu 16.04 (Xenial Xerus)
 ----------------------------
@@ -305,7 +288,7 @@ Compiling from Source
 Compiling Current GitHub Source Using Docker Image
 ==================================================
 
-The easiest way to compile Homegear from the source is by using Docker. Docker images are provided for Debian 8 (Jessie; amd64, i386, armhf, arm64, armel), Debian 9 (Stretch; amd64, i386, armhf, arm64), Raspbian Jessie, Raspbian Stretch, Ubuntu 14.04 (Trusty Tahr; amd64, i386, armhf, arm64), and Ubuntu 15.10 (Wily Werewolf; amd64, i386, armhf, arm64). Start the Docker image by running the following command::
+The easiest way to compile Homegear from the source is by using Docker. Docker images are provided for Debian 8 (Jessie; amd64, i386, armhf, arm64, armel), Debian 9 (Stretch; amd64, i386, armhf, arm64), Raspbian Jessie, Raspbian Stretch, Ubuntu 16.04 (Xenial Xerus; amd64, i386, armhf, arm64), and Ubuntu 18.04 (Bionic Beaver; amd64, i386, armhf, arm64). Start the Docker image by running the following command::
 
 	docker run -it -e HOMEGEARBUILD_SHELL=1 homegear/build:TAG
 

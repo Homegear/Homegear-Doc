@@ -165,7 +165,8 @@ REST
 
 With Representational State Transfer (REST) you can easily access your Homegear devices using HTTP. Homegear's REST API features:
 
-* Setting variables and configuration parameters
+* Set/get variables and configuration parameters
+* List families, devices, channels and parameter sets
 * TLS support
 * Support for authentication with username and password
 * Support for certificate authentication
@@ -175,21 +176,78 @@ Configuration
 
 The configuration is done in ``rpcservers.conf`` in Homegear's configuration directory. To enable REST, set ``restServer`` to ``true``.
 
+List Families
+-------------
+
+The URI path to list all available families is::
+
+    api/v1/families
+
+and needs to be accessed using ``GET``.
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/families
+
+
+List Devices
+------------
+
+The URI path to list all available devices is::
+
+    api/v1/devices
+
+and needs to be accessed using ``GET``.
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/devices
+
+
+List Channels
+-------------
+
+The URI path to list all available channels is::
+
+    api/v1/channels
+
+and needs to be accessed using ``GET``.
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/channels
+
+
+Get Channel Info
+----------------
+
+The URI path to list channel information including information about the containing variables::
+
+    api/v1/channelinfo/PEERID/CHANNEL
+
+and needs to be accessed using ``GET``. Let's say the peer ID is ``155`` and the channel is ``3``. Then the path is::
+
+    api/v1/channelinfo/155/3
+
+There is no payload. Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/channelinfo/155/3
+
 
 Get Variable
 ------------
 
 The URI path to get a variable is::
 
-	api/v1/get/PEERID/CHANNEL/VARIABLE_NAME
+	api/v1/variable/PEERID/CHANNEL/VARIABLE_NAME
 
 and needs to be accessed using ``GET``. Let's say the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE``. Then the path is::
 
-	api/v1/get/155/3/STATE
+	api/v1/variable/155/3/STATE
 
 There is no payload. Here's a cURL example::
 
-    curl -X GET http://localhost:2001/api/v1/get/155/3/STATE
+    curl -X GET http://localhost:2001/api/v1/variable/155/3/STATE
 
 
 Set Variable
@@ -197,15 +255,31 @@ Set Variable
 
 The URI path to set a variable is::
 
-	api/v1/set/PEERID/CHANNEL/VARIABLE_NAME
+	api/v1/variable/PEERID/CHANNEL/VARIABLE_NAME
 
 and needs to be accessed using ``PUT``. Let's say the peer ID is ``155``, the channel is ``3``, the variable name is ``STATE`` and you want to change the value to ``true``. Then the path is::
 
-	api/v1/set/155/3/STATE
+	api/v1/variable/155/3/STATE
 
 The payload needs to be a JSON object with the key ``value``: ``{ "value": true }``. Here's a cURL example::
 
-    curl -H "Content-Type: application/json" -X PUT -d '{"value":true}' http://localhost:2001/api/v1/set/155/3/STATE
+    curl -H "Content-Type: application/json" -X PUT -d '{"value":true}' http://localhost:2001/api/v1/variable/155/3/STATE
+
+
+Get Configuration Parameters
+----------------------------
+
+The URI path to get configuration parameters is::
+
+	api/v1/config/PEERID/CHANNEL/PARAMETERSET_TYPE
+
+and needs to be accessed using ``GET``. Let's say the peer ID is ``155``, the channel is ``0``, the parameter set type is ``MASTER``. Then path is::
+
+	api/v1/config/155/0/MASTER
+
+Here's a cURL example::
+
+    curl -X GET http://localhost:2001/api/v1/config/155/0/MASTER
 
 
 Set Configuration Parameters
@@ -215,7 +289,7 @@ The URI path to set configuration parameters is::
 
 	api/v1/config/PEERID/CHANNEL/PARAMETERSET_TYPE
 
-The payload needs to be the JSON-encoded value object containing the key value pairs of the configuration parameters to set. Let's say ``prefix`` is ``homegear``, ``homegearId`` is ``0123-4567``, the peer ID is ``155``, the channel is ``0``, the parameter set type is ``MASTER`` and you want to change the parameters ``LANGUAGE_CODE`` to ``EN`` and ``CITY_ID`` to ``London``. Then path is::
+The payload needs to be the JSON-encoded value object containing the key value pairs of the configuration parameters to set. The URI needs to be accessed using ``PUT``. Let's say the peer ID is ``155``, the channel is ``0``, the parameter set type is ``MASTER`` and you want to change the parameters ``LANGUAGE_CODE`` to ``EN`` and ``CITY_ID`` to ``London``. Then path is::
 
 	api/v1/config/155/0/MASTER
 
