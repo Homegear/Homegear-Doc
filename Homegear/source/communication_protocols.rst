@@ -158,7 +158,7 @@ Then the result Homegear publishes to ``<prefix>/<homegearId>/rpcResult`` is::
 As you can see, ``id`` is set to ``124`` as defined in the request.
 
 
-.. _mqtt:
+.. _rest:
 
 REST
 ****
