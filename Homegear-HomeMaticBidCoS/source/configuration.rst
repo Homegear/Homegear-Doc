@@ -310,7 +310,7 @@ If you don't know the IP address of your gateway, you can search and print all u
 
 
 Homegear Gateway Service
-----------------
+------------------------
 
 If you have a preconfigured Homegear Gateway you can skip this section. This section covers the installation of the Homegear Gateway service. First setup a computer with Debian, Raspbian or Ubuntu and connect a serial communication module or USB stick with culfw (e. g. CUL, COC, SCC, ...) or a TI CC1101 SPI module.
 

@@ -1,0 +1,21 @@
+.wy-side-nav-search {
+	background-color: #EEEEEE;
+}
+
+.wy-side-nav-search > a {
+	color: #1B1464;
+}
+
+.wy-side-nav-search > div.version {
+	color: #333333;
+}
+
+.wy-nav-content {
+	max-width: 1200px;
+}
+
+@media only screen and (min-width: 1105px) {
+	.wy-table-responsive table td, .wy-table-responsive table th {
+		white-space: normal;
+	}
+}

@@ -1,14 +1,18 @@
-Homegear Philips Hue Manual
+Homegear Philips hue Manual
 ===========================
 
-This document describes how to install, upgrade, condigure, and maintain Homegear's Philips Hue module on your system.
+**Edition 0.8 - The Homegear Team**
 
-Tabel of Contents
+This document describes how to install, upgrade, configure, and maintain Homegear's Philips hue module on your system.
+
+Table of Contents
 =================
 
 .. toctree::
    :maxdepth: 2
    :numbered:
 
+   feedback
    installation
    configuration
+   legal_notice

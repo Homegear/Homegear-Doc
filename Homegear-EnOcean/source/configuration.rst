@@ -41,7 +41,7 @@ To tell Homegear to use the module, insert the following lines into ``enocean.co
 
 Of course, you can use multiple communication modules with Homegear.
 
-For USB devices this is all. In case you are using a UART device like the EnOcean Pi, additionally follow these steps::
+For USB devices this is all. In case you are using a UART device like the EnOcean Pi, additionally follow these steps:
 
 
 Free Up Serial Line and Enable UART
@@ -154,7 +154,7 @@ If you don't know the IP address of your gateway, you can search and print all u
 
 
 Homegear Gateway Service
-----------------
+------------------------
 
 If you have a preconfigured Homegear Gateway you can skip this section. This section covers the installation of the Homegear Gateway service. First setup a computer with Debian, Raspbian or Ubuntu and connect a serial communication module or USB stick.
 

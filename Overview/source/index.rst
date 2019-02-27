@@ -34,6 +34,8 @@ Family Modules
 +------------------------------------------------------------------------------+---------------------------------------------------------------+
 | `Nanoleaf <https://doc.homegear.eu/data/homegear-nanoleaf/>`_                | Documentation of the Homegear Nanoleaf family module.         |
 +------------------------------------------------------------------------------+---------------------------------------------------------------+
+| `Philips hue <https://doc.homegear.eu/data/homegear-philipshue/>`_           | Documentation of the Homegear Philips hue family module.      |
++------------------------------------------------------------------------------+---------------------------------------------------------------+
 | `Sonos <https://doc.homegear.eu/data/homegear-sonos/>`_                      | Documentation of the Homegear Sonos family module.            |
 +------------------------------------------------------------------------------+---------------------------------------------------------------+
 | `Z-Wave <https://doc.homegear.eu/data/homegear-z-wave/>`_                    | Documentation of the Homegear Z-Wave family module.           |
