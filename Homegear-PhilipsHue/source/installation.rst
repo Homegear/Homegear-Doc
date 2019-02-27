@@ -5,14 +5,14 @@ Installation
 Installation on Debian-based systems
 ************************************
 
-On Debian, Raspbian and Ubuntu, the Philips Hue module can be installed using apt-get::
+On Debian, Raspbian and Ubuntu, the Philips hue module can be installed using apt::
 
-  sudo apt-get install homegear-philipshue
-  
+	apt install homegear-philipshue
+
 
 Installation on Arch Linux
 **************************
 
-It exists a package in the Arch Linux User Repository (AUR). Thus, you may use trizen to install the Philips Hue module::
+There is a package in the Arch Linux User Repository (AUR). Thus, you may use trizen to install the Philips hue module::
 
     trizen -Sa homegear-philipshue
