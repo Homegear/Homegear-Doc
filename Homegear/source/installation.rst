@@ -207,7 +207,7 @@ With these lines, the homegear server will run by the user homegear and they pro
 
 **Configure the communication hardware**
 
-Follow the instructions described here: `<https://doc.homegear.eu/data/homegear-homematicbidcos/configuration.html#config-coc>`_
+Follow the instructions described here: `<https://doc.homegear.eu/homegear-homematicbidcos/configuration.html#config-coc>`_
 
 If you are planning to use a COC device, some further configurations are necessary in Arch Linux. The user homegear has to be member of the group uucp to use /dev/ttyAMA0::
 

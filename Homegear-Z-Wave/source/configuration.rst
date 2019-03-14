@@ -111,7 +111,7 @@ Homegear Gateway
 Certificate Generation
 ----------------------
 
-First you need to create certificates for the Gateway service. We don't want an insecure gateway so there is no possibility to use it without creating them. If not done already, start by following the instructions `to create a certificate authority in the Homegear manual <https://doc.homegear.eu/data/homegear/installation.html#create-homegear-s-certificate-authority>`_.
+First you need to create certificates for the Gateway service. We don't want an insecure gateway so there is no possibility to use it without creating them. If not done already, start by following the instructions `to create a certificate authority in the Homegear manual <https://doc.homegear.eu/homegear/installation.html#create-homegear-s-certificate-authority>`_.
 
 First create the gateway certificates using Homegear Management::
 
