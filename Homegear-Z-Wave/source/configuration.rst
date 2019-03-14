@@ -210,7 +210,7 @@ Open ``/etc/homegear/families/z-wave.conf`` on your Homegear server and add the 
     caFile = /etc/homegear/ca/cacert.pem
     certFile = /etc/homegear/ca/certs/gateway-client.crt
     keyFile = /etc/homegear/ca/private/gateway-client.key
-    
+
     #use your own 16 bytes hexadecimal key!
     password = 16CFA1797F981EC8651DDD45F8BF0FC6
 
@@ -236,3 +236,10 @@ Here is an example of such file::
 	  <config_value index="3">60</config_value>
 	  <config_value index="5">2</config_value>
 	</config_values>
+
+ If you know the size of the value in the configuration packet (might be 1, 2 or 4), you may specify it with the ``length`` or ``size`` attribute.
+
+Device variables configuration
+******************************
+
+When a device is added, it is queried for supported command classes. Homegear generates variables for the supported command classes, but does that in a generic way that might not be so convenient. For example, one might want to have the configuration values for specific devices easily accessible. There are cases when the generated variables are not sufficient. For such cases, Homegear provides the possibility of using xml configuration files for devices (default, installed in: ``/etc/homegear/devices/17/``). Currently we provide xml files for several devices, but the list can be extended relatively easy.

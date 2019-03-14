@@ -20,4 +20,5 @@ Table of Contents
    adding_devices
    removing_devices
    encryption
+   variables
    legal_notice
