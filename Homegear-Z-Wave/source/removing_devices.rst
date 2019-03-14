@@ -14,7 +14,7 @@ To remove a device with Homegear's CLI, start it by calling ``homegear -r``. The
 	families select 17
 	remove on
 
-You'll have to put the device you want to remove in removal mode, this is dependant upon device, please consult the device manual. It might be a triple-click or just a single-click on a button of the device.
+You'll have to put the device you want to remove in removal mode, this is dependent upon device, please consult the device manual. It might be a triple-click or just a single-click on a button of the device. Sometimes you have to push and hold several buttons of the device.
 
 
 Remove a Failed Device Using CLI
