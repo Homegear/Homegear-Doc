@@ -237,7 +237,7 @@ Here is an example of such file::
 	  <config_value index="5">2</config_value>
 	</config_values>
 
- If you know the size of the value in the configuration packet (might be 1, 2 or 4), you may specify it with the ``length`` or ``size`` attribute.
+If you know the size of the value in the configuration packet (might be 1, 2 or 4), you may specify it with the ``length`` or ``size`` attribute.
 
 Device variables configuration
 ******************************
