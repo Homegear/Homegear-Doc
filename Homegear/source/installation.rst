@@ -500,7 +500,7 @@ Finally, create the certificates required for SSL/TLS encryption::
 	​rm /etc/homegear/homegear.csr
 	​chown homegear:homegear /etc/homegear/homegear.key
 	​chmod 400 /etc/homegear/homegear.key
-	​openssl dhparam -check -text -5 1024 -out /etc/homegear/dh1024.pem
+	​openssl dhparam -out /etc/homegear/dh1024.pem -check -text -5 1024
 	​chown homegear:homegear /etc/homegear/dh1024.pem
 	​chmod 400 /etc/homegear/dh1024.pem
 
