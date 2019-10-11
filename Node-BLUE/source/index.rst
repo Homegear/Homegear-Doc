@@ -16,7 +16,5 @@ Table of Contents
    feedback
    installation
    configuration
-   searching_nanoleafs
-   removing_nanoleafs
-   variables
+   first_start
    legal_notice
