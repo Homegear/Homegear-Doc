@@ -1,9 +1,9 @@
-Homegear Nanoleaf Manual
-========================
+Node-BLUE Manual
+================
 
 **Edition 0.8 - The Homegear Team**
 
-This document describes how to install, upgrade, configure, and maintain Homegear's Nanoleaf module on your system.
+This document describes how to configure and use Node-BLUE.
 
 Table of Contents
 =================
