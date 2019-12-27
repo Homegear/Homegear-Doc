@@ -370,6 +370,8 @@ Now restart Homegear and check ``/var/log/homegear/homegear.log`` or ``homegear.
 HomeMatic Wireless Module for Raspberry Pi (HM-MOD-RPI-PCB)
 ===========================================================
 
+..warning:: Please make sure firmware version 1.4.1 is installed. Older or newer firmware versions won't work.
+
 Free Up Serial Line and Enable UART
 -----------------------------------
 
