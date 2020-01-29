@@ -261,7 +261,7 @@ This will change the default reporting values for the attribute 0x0 for cluster 
 
 It is also possible to change the value of an attribute, if it's writeable, when pairing::
 
-	<attr cluster="cluster_id" attr="attr_id" type="attr_type" value="value/>
+	<attr cluster="cluster_id" attr="attr_id" type="attr_type" value="value"/>
 
 Device variables configuration
 ******************************
