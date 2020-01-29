@@ -29,13 +29,13 @@ Before you start, make sure the device to pair is factory reset if it has been u
 
  The device must support S0 security for the later case.
 
- If you want the device paired in S2 mode, use either:
+ If you want the device paired in S2 mode, use either::
 
- sec2pairing3 on
+	sec2pairing3 on
 
- where 3 may be replaced with the maximum security level you want to grant, or:
+ where 3 may be replaced with the maximum security level you want to grant, or::
 
- sec2pairing3e on
+	sec2pairing3e on
 
  in which case only one security level is granted (if the device supports it). Of course, the device must support the S2 security levels in order to be able to grant them. Please check the encryption section for more details about security modes.
 

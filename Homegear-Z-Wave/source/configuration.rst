@@ -179,7 +179,7 @@ Open ``/etc/homegear/gateway.conf`` and set the settings for your communication 
 
 Note the ``configurationPassword``, we need below.
 
-Restart the gateway service.
+Restart the gateway service::
 
     service homegear-gateway restart
 

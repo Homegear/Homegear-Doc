@@ -179,7 +179,7 @@ Open ``/etc/homegear/gateway.conf`` and set the settings for your communication 
 
 Note the ``configurationPassword``, we need below.
 
-Restart the gateway service.
+Restart the gateway service::
 
     service homegear-gateway restart
 
@@ -229,12 +229,14 @@ The following configuration parameters are optional, but you might want to set t
 
     panId = "68A3"
 
-This allows setting the PAN ID. If it's not set, a random value will be used. Please use your own value here.
+This allows setting the PAN ID. If it's not set, a random value will be used. Please use your own value here::
 
     channelsMask = "1FFE"
 
 This is a channels mask indicating channels to scan when the network is commissioned. Without specifying this setting, the zigbee module will use 0x2000. Network commissioning happens either when a 'reset' command is issued, to reset the communication device, or the first time the communication device is initialized, if a network wasn't already commissioned with it.
 Please reset such a device from homegear if it was initialized with some other software.
+
+A lot of devices do not support Zigbee 3. For those, you may use the following setting::
 
     linkKeyExchange = "no"
 
