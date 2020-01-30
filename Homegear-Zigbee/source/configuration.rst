@@ -3,12 +3,12 @@ Configuration
 
 .. highlight:: bash
 
-.. note:: If you used the communication module with some other software and added devices to it, you might need first to unpair the devices with that software and maybe even reset the communication module. Alternatively you may reset the devices manually and also reset the communication device from homegear. Homegear might be able to recognize and create the devices already added, at startup, but if they are added securely with a different key, that will not work.
+.. note:: If you used the communication module with some other software and added devices to it, you need first to unpair the devices with that software and maybe even reset the communication module. Alternatively you may reset the devices manually and also reset the communication device from homegear.
 
-z-wave.conf
+zigbee.conf
 ***********
 
-The configuration file for the Z-Wave module, ``z-wave.conf``, can be found in Homegear's family configuration directory (default: ``/etc/homegear/families``). In this file, you can configure the communication modules used to communicate with Z-Wave devices.
+The configuration file for the Zigbee module, ``zigbee.conf``, can be found in Homegear's family configuration directory (default: ``/etc/homegear/families``). In this file, you can configure the communication modules used to communicate with Zigbee devices.
 
 Communication Modules
 *********************
@@ -16,11 +16,11 @@ Communication Modules
 Overview
 ========
 
-The Z-Wave module supports all communication modules using the USB interface.
+The Zigbee module supports TI Z-Stack 3.0.x communication modules using the USB interface.
 
-On Raspberry Pi it also supports communication modules that use the gpio interface.
+On Raspberry Pi it also supports communication modules that use the uart interface.
 
-The Z-Wave module can also connect to a remote usb stick or gpio communication module using the Homegear Gateway service:
+The Zigbee module can also connect to a remote usb stick or uart communication module using the Homegear Gateway service:
 
     * :ref:`Homegear Gateway <config-homegear-gateway>`
 
@@ -30,7 +30,7 @@ The Z-Wave module can also connect to a remote usb stick or gpio communication m
 Serial
 ======
 
-To tell Homegear to use the usb module, insert the following lines into ``z-wave.conf``::
+To tell Homegear to use the usb module, insert the following lines into ``zigbee.conf``::
 
 	[Serial]
 
@@ -40,10 +40,10 @@ To tell Homegear to use the usb module, insert the following lines into ``z-wave
 	#use your own 16 bytes hexadecimal key!
 	password = 16CFA1797F981EC8651DDD45F8BF0FC6
 
-	device = /dev/serial/by-id/usb-0658_0200-if00
+	device = /dev/ttyUSB1
 
 
-Of course, you can use multiple communication modules with Homegear. We recommend to use the gateway (see below) in such a case, but you could use more than one local device. The downsize is that you have to pull out the usb devices except one when you add a z-wave node, because pairing activates all interfaces.
+Of course, you can use multiple communication modules with Homegear. We recommend to use the gateway (see below) in such a case, but you could use more than one local device. The downsize is that you have to pull out the usb devices except one when you add a zigbee node, because pairing activates all interfaces.
 
 For USB devices this is all. In case you are using an UART device on the Raspberry Pi, additionally follow these steps:
 
@@ -117,7 +117,7 @@ First create the gateway certificates using Homegear Management::
 
     homegear -e rc 'print_v($hg->managementCreateCert("my-gateway"));'
 
-Replace ``my-gateway`` with an arbitrary name (it doesn't need to be the hostname of the gateway). The name will be used to set the field ``COMMON NAME`` of the certificate. It has to be the same as set to the setting ``id`` in ``z-wave.conf`` (see below).
+Replace ``my-gateway`` with an arbitrary name (it doesn't need to be the hostname of the gateway). The name will be used to set the field ``COMMON NAME`` of the certificate. It has to be the same as set to the setting ``id`` in ``zigbee.conf`` (see below).
 
 The output of the command looks similar to::
 
@@ -129,19 +129,19 @@ The output of the command looks similar to::
         {
           [certPath]
           {
-            (String) /etc/homegear/ca/certs/z-wave-gateway-01.crt
+            (String) /etc/homegear/ca/certs/zigbee-gateway-01.crt
           }
           [commonNameUsed]
           {
-            (String) z-wave-gateway-01
+            (String) zigbee-gateway-01
           }
           [filenamePrefix]
           {
-            (String) z-wave-gateway-01
+            (String) zigbee-gateway-01
           }
           [keyPath]
           {
-            (String) /etc/homegear/ca/private/z-wave-gateway-01.key
+            (String) /etc/homegear/ca/private/zigbee-gateway-01.key
           }
         }
       }
@@ -172,10 +172,10 @@ Add the Homegear APT repository and install Homegear Gateway::
     apt install homegear-gateway
 
 
-Open ``/etc/homegear/gateway.conf`` and set the settings for your communication module, e. g. for an USB stick on device ``/dev/serial/by-id/usb-0658_0200-if00``::
+Open ``/etc/homegear/gateway.conf`` and set the settings for your communication module, e. g. for an USB stick on device ``/dev/ttyUSB1``::
 
-    family = z-wave
-    device = /dev/serial/by-id/usb-0658_0200-if00
+    family = zigbee
+    device = /dev/ttyUSB1
 
 Note the ``configurationPassword``, we need below.
 
@@ -200,7 +200,7 @@ Replace ``<your-cert>`` with the value of ``commonNameUsed`` from above, ``<IP>`
 
 This command transmits the certificates to the gateway encrypted with the configuration password. If no error occurs, the gateway is immediately usable.
 
-Open ``/etc/homegear/families/z-wave.conf`` on your Homegear server and add the following lines to the bottom of the file::
+Open ``/etc/homegear/families/zigbee.conf`` on your Homegear server and add the following lines to the bottom of the file::
 
     [Gateway]
     id = <commonNameUsed>
@@ -222,27 +222,50 @@ Replace ``commonNameUsed`` with the value from above (used for certificate verif
 Now restart Homegear and check ``/var/log/homegear/homegear.log`` or ``homegear.err`` for errors.
 
 
+Additional configuration parameters
+***********************************
+
+The following configuration parameters are optional, but you might want to set them::
+
+    panId = "68A3"
+
+This allows setting the PAN ID. If it's not set, a random value will be used. Please use your own value here::
+
+    channelsMask = "1FFE"
+
+This is a channels mask indicating channels to scan when the network is commissioned. Without specifying this setting, the zigbee module will use 0x2000. Network commissioning happens either when a 'reset' command is issued, to reset the communication device, or the first time the communication device is initialized, if a network wasn't already commissioned with it.
+Please reset such a device from homegear if it was initialized with some other software.
+
+A lot of devices do not support Zigbee 3. For those, you may use the following setting::
+
+    linkKeyExchange = "no"
+
+Without this setting, only Zigbee 3 devices will be allowed to join. Set this to "no" (notice the double quotes) in order to allow legacy devices to join the network.
+
+
 Device configuration values
 ***************************
 
-Devices supporting the configuration class will have some default values when paired. Sometimes you might want to have those values changed to your own default values. Those configuration values can be changed by using xml configuration files placed in the z-wave devices configuration directory, ``conf`` subdirectory (default: ``/etc/homegear/devices/17/conf``).
+Devices will have some default values, for attributes and reporting, when paired. Sometimes you might want to have those values changed to your own default values. Those configuration values can be changed by using xml configuration files placed in the zigbee devices configuration directory, ``conf`` subdirectory (default: ``/etc/homegear/devices/26/conf``).
 
-For devices you want homegear to set configuration values, you will need to have xml files with names like ``conf-86-2-64.xml``, with values in hexadecimal encoding (use capital letters), with no leading zeros, representing in order: manufacturer id for the device, product type and product id. You may find the values with ``config print`` for the peer in CLI.
+For devices you want homegear to set configuration values, you will need to have xml files with names like ``conf-100bZG9101SAC-HP1.xml``, with values in hexadecimal encoding (use capital letters), with no leading zeros, representing in order: manufacturer code for the device, model identifier and endpoint id. You may find the values with ``config print`` for the peer in CLI.
 
 Here is an example of such file::
 
-	<?xml version="1.0" encoding="utf-8"?>
+	<?xml version="1-0" encoding="utf-8"?>
 	<config_values>
-	  <config_value index="3">60</config_value>
-	  <config_value index="5">2</config_value>
+		<report cluster="0x8" attr="0x0" type="uint8" minReportingInterval="0x0" maxReportingInterval="300" reportableChange="0x32"/>
 	</config_values>
 
-If you know the size of the value in the configuration packet (might be 1, 2 or 4), you may specify it with the ``length`` or ``size`` attribute.
+This will change the default reporting values for the attribute 0x0 for cluster 0x8, when pairing.
+
+It is also possible to change the value of an attribute, if it's writeable, when pairing::
+
+	<attr cluster="cluster_id" attr="attr_id" type="attr_type" value="value"/>
 
 Device variables configuration
 ******************************
 
-When a device is added, it is queried for supported command classes. Homegear generates variables for the supported command classes, but does that in a generic way that might not be so convenient. For example, one might want to have the configuration values for specific devices easily accessible. There are cases when the generated variables are not sufficient.
-One example would be for example a multi-sensor device that sends values using notification reports. Using a 'pull' method, only the last value would be available, which would make hard of getting the values for all measured quantities. Of course, you could register for events and receive all values, but by using an xml configuration file, you can map the different notification types to different values in Homegear, making all measured values available without the need to watch the notification events.
+When a device is added, it is queried for supported end points, clusters, attributes and commands. Homegear generates variables for the supported attributes and commands, but does that in a generic way that might not be so convenient. For example, one might want to have the configuration values for specific devices easily accessible. There are cases when the generated variables are not sufficient, sometimes devices do not offer enough info about what they support. In some cases, you might know the functionality of some manufacturer specific attributes, for example. Such attributes are not exposed by default by the zigbee module.
 
-For such cases, Homegear provides the possibility of using xml configuration files for devices (default, installed in: ``/etc/homegear/devices/17/``). Currently we provide xml files for several devices, but the list can be extended relatively easy. The format of the xml files is very similar with the format of devices xml configuration files from other Homegear modules.
+For such cases, Homegear provides the possibility of using xml configuration files for devices (default, installed in: ``/etc/homegear/devices/26/``). Currently we provide xml files for several devices, but the list can be extended relatively easy. The format of the xml files is very similar with the format of devices xml configuration files from other Homegear modules.

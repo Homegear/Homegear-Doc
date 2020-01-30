@@ -113,44 +113,27 @@
             {% endif %}
           {% endif %}
 
-          <!-- Searchbox removed by Sathya -->
+          {% include "searchbox.html" %}
 
           {% endblock %}
         </div>
 
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           <!-- ((( Inserted by Sathya -->
-          <p class="caption"><span class="caption-text">Core</span></p>
           <ul>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear">Homegear</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/node-blue">Node-BLUE</a></li>
+            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu">Homegear Documentation - Home</a></li>
           </ul>
-          <p class="caption"><span class="caption-text">Family Modules</span></p>
-          <ul>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-enocean">EnOcean</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-homematicbidcos">HomeMatic BidCoS</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-homematicwired">HomeMatic Wired</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-intertechno">Intertechno</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-knx">KNX</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-nanoleaf">Nanoleaf</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-philipshue">Philips hue</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-sonos">Sonos</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-z-wave">Z-Wave</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/homegear-zigbee">Zigbee</a></li>
-          </ul>
-          <p class="caption"><span class="caption-text">Homegear Locations</span></p>
-          <ul>
-            <li class="toctree-l1"><a class="reference external" href="https://homegear.eu/">Homegear Homepage</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://ref.homegear.eu/">Homegear Reference</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://forum.homegear.eu/">Homegear Forum</a></li>
-          </ul>
-          <p class="caption"><span class="caption-text">&nbsp;</span></p>
-          <ul>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/overview/imprint.html">Imprint</a></li>
-            <li class="toctree-l1"><a class="reference external" href="https://doc.homegear.eu/overview/privacy_policy.html">Privacy Policy</a></li>
-          </ul>
+          <p class="caption"><span class="caption-text">Table of Contents</span></p>
           <!-- ))) -->
-          <!-- TOC removed by Sathya -->
+          {% block menu %}
+            {% set toctree = toctree(maxdepth=4, collapse=theme_collapse_navigation, includehidden=True) %}
+            {% if toctree %}
+                {{ toctree }}
+            {% else %}
+                <!-- Local TOC -->
+                <div class="local-toc">{{ toc }}</div>
+            {% endif %}
+          {% endblock %}
         </div>
       </div>
     </nav>
