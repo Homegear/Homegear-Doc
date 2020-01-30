@@ -18,25 +18,25 @@ If you are using Debian, Raspbian, or Ubuntu, you can install Homegear from the 
 Debian
 ======
 
-Packages are provided for Debian 8 (Jessie) and Debian 9 (Stretch). Supported architectures are i386, amd64, armel, and armhf.
+Packages are provided for Debian 10 (Buster) and Debian 9 (Stretch). Supported architectures are i386, amd64, armel, and armhf.
 
 .. warning:: Don't use the Debian repositories for Raspbian. Use the Raspbian repository instead.
 
 
-Debian 8 (Jessie)
+Debian 10 (Buster)
 -----------------
 
 Please run the following commands as root::
 
 	apt install apt-transport-https
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://apt.homegear.eu/Debian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
+	echo 'deb https://apt.homegear.eu/Debian/ buster/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core homegear-management
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-influxdb
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 
 Debian 9 (Stretch)
@@ -48,33 +48,33 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Debian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core homegear-management
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-influxdb
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 
 Raspbian
 ========
 
-Packages are provided for Raspbian 8 (Jessie) and Raspbian 9 (Stretch).
+Packages are provided for Raspbian 10 (Buster) and Raspbian 9 (Stretch).
 
 
-Raspbian 8 (Jessie)
+Raspbian 10 (Buster)
 -------------------
 
 Please run the following commands as root::
 
 	apt install apt-transport-https
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://apt.homegear.eu/Raspbian/ jessie/' >> /etc/apt/sources.list.d/homegear.list
+	echo 'deb https://apt.homegear.eu/Raspbian/ buster/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core homegear-management
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-influxdb
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 
 Raspbian 9 (Stretch)
@@ -86,33 +86,17 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Raspbian/ stretch/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core homegear-management
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-influxdb
+	apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 
 Ubuntu
 ======
 
-Packages are provided for Ubuntu 16.04 (Xenial Xerus) and Ubuntu 18.04 (Bionic Beaver).
-
-Ubuntu 16.04 (Xenial Xerus)
-----------------------------
-
-Please run the following commands as root::
-
-	apt install apt-transport-https
-	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://apt.homegear.eu/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
-	apt update
-	apt install homegear homegear-nodes-core homegear-management
-
-After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
-
-	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-influxdb
-
+Packages are provided for Ubuntu 18.04 (Bionic Beaver) and Ubuntu 16.04 (Xenial Xerus).
 
 Ubuntu 18.04 (Bionic Beaver)
 ----------------------------
@@ -123,11 +107,27 @@ Please run the following commands as root::
 	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
 	echo 'deb https://apt.homegear.eu/Ubuntu/ bionic/' >> /etc/apt/sources.list.d/homegear.list
 	apt update
-	apt install homegear homegear-nodes-core homegear-management
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
 
 After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
 
-	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-influxdb
+	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
+
+
+Ubuntu 16.04 (Xenial Xerus)
+----------------------------
+
+Please run the following commands as root::
+
+	apt install apt-transport-https
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
+	apt update
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
+
+After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
+
+	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 
 Arch Linux
@@ -543,13 +543,3 @@ Next create the client certificate to login into gateways::
 Again this command runs in background and you can check if the command has finished with::
 
     homegear -e rc 'print_v($hg->managementGetCommandStatus());'
-
-
-Install a User Interface
-************************
-
-Homegear does not have a web user interface yet. Until it does, you can use:
-
-* `HomeMatic Manager <https://github.com/hobbyquaker/homematic-manager>`_
-* `HomeMatic Configuration Tool coming with the BidCoS Service (in German only)  <http://www.eq-3.de/Downloads/Software/Konfigurationsadapter/Konfigurationsadapter_LAN/HM-CFG-LAN_Usersoftware_V1_520_eQ-3_151207.zip>`_
-* `HomegearLib.NET Test Application <https://github.com/Homegear/HomegearLib.NET/releases>`_
