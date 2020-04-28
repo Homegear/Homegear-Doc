@@ -350,22 +350,23 @@ Switch to the subdirectory "ext" within the extracted directory::
 
 	cd php-7.X.X/ext
 
-Clone the current version of pthreads from `GitHub <https://github.com/krakjoe/pthreads/releases>`_::
+Clone the current version of parallel from `GitHub <https://github.com/krakjoe/parallel>`_::
 
-	git clone https://github.com/krakjoe/pthreads.git
+	git clone https://github.com/krakjoe/parallel.git parallel
+	cd parallel
+	git checkout release
 
 Switch to the parent directory::
 
-	cd ..
+	cd ../..
 
 Execute autoconf::
 
 	autoconf
 
-Execute the configure script. The line before the script is also necessary; they get the target system (e. g. ``x86_64-linux-gnu``)::
+Execute the configure script::
 
-	target="$(gcc -v 2>&1)" && strpos="${target%%Target:*}" && strpos=${#strpos} && target=${target:strpos} && target=$(echo $target | cut -d ":" -f 2 | cut -d " " -f 2)
-	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp=/usr/include/$target --enable-fileinfo --enable-filter --enable-ftp --enable-hash --enable-json --enable-pdo --enable-mbregex --enable-mbregex-backtrack --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-libxml --enable-session --enable-simplexml --enable-pthreads --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-zip --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
+	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp --enable-fileinfo --enable-filter --enable-ftp --enable-json --enable-pdo --enable-mbregex --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-session --enable-simplexml --enable-parallel --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
 
 If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if they are not needed. When this is done, run::
 
