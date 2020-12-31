@@ -1,7 +1,7 @@
 Configuration
 #############
 
-Alls of Homegear's configuration files are by default located in "/etc/homegear". There are four general configuration files:
+All of Homegear's configuration files are by default located in "/etc/homegear". There are four general configuration files:
 
 +-----------------+-------------------------------------------------------------------------------------+
 | File            | Description                                                                         |

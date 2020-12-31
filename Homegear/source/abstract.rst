@@ -9,12 +9,31 @@ Homegear is a free and open source program that you can use to interface your ho
 * MQTT
 * WebSockets with PHP session authentication
 * HTTP (GET and POST)
+* REST
 * IPC Socket (Unix Domain Socket)
 
 If needed, new interfaces can easily be added to the source code. Homegear also features:
 
-* A built-in, rich-featured web server with PHP 7 and IP cam proxy support. Together with WebSockets and the script engine, you can easily create web pages to bidirectionally interact with all devices known to Homegear.
-* A built-in script engine using PHP 7:
+* A built-in, rich-featured web server with PHP 8 and IP cam proxy support. Together with WebSockets and the script engine, you can easily create web pages to bidirectionally interact with all devices known to Homegear.
+* The logic engine "Node-BLUE":
+
+    * Frontend based on Node-RED but with additional features:
+
+    	* Multiple inputs are supported
+    	* Debug features like settings inputs to fixed values and an input history
+	* Backend written in C++:
+
+		* Really, really fast
+		* Multithread support so one node can't block the whole logic
+		* Full Node-RED node support
+		* Nodes can be writtin in any programming language as long as Unix IPC sockets are supported. Currently implemented are:
+
+			* C++
+			* PHP
+			* Python
+			* JavaScript
+    	
+* A built-in script engine using PHP 8:
 
 	* All devices and device functions are directly accessible.
 	* All PHP modules can be used:

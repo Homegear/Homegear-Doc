@@ -14,7 +14,6 @@ Table of Contents
 
    abstract
    feedback
-   changelog
    requirements
    installation
    updating
@@ -24,7 +23,6 @@ Table of Contents
    configuration
    cli
    communication_protocols
-   events
    scripting
    troubleshooting
    legal_notice

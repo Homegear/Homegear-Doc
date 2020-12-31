@@ -308,7 +308,7 @@ Here's a cURL example::
 Binary RPC
 **********
 
-Homegear supports a Binary RPC protocol originally used by software systems from eQ-3. The Binary RPC protocol is the fastest of the protocols supported by Homegear. It is used by HomegearLib.NET, the OpenHAB binding, ioBroker and other systems. Homegear uses an improved version of the Binary RPC protocol and features:
+Homegear supports a Binary RPC protocol originally used by software systems from eQ-3. The Binary RPC protocol is the fastest of the protocols supported by Homegear. It is used by Homegear itself, HomegearLib.NET, the OpenHAB binding, ioBroker and other systems. Homegear uses an improved version of the Binary RPC protocol and features:
 
 * Call of all RPC methods and reception of all RPC events
 * TLS support

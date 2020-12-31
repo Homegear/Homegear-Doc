@@ -18,7 +18,7 @@ If you are using Debian, Raspbian, or Ubuntu, you can install Homegear from the 
 Debian
 ======
 
-Packages are provided for Debian 10 (Buster) and Debian 9 (Stretch). Supported architectures are i386, amd64, armel, and armhf.
+Packages are provided for Debian 10 (Buster) and Debian 9 (Stretch). Supported architectures are amd64, armhf and arm64.
 
 .. warning:: Don't use the Debian repositories for Raspbian. Use the Raspbian repository instead.
 
@@ -96,7 +96,22 @@ After installing Homegear, you can install any family modules you like. To insta
 Ubuntu
 ======
 
-Packages are provided for Ubuntu 18.04 (Bionic Beaver) and Ubuntu 16.04 (Xenial Xerus).
+Packages are provided for Ubuntu 20.04 (Focal Fossa) and Ubuntu 18.04 (Bionic Beaver).
+
+Ubuntu 20.04 (Focal Fossa)
+----------------------------
+
+Please run the following commands as root::
+
+	apt install apt-transport-https
+	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
+	echo 'deb https://apt.homegear.eu/Ubuntu/ focal/' >> /etc/apt/sources.list.d/homegear.list
+	apt update
+	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
+
+After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
+
+	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 Ubuntu 18.04 (Bionic Beaver)
 ----------------------------
@@ -114,29 +129,13 @@ After installing Homegear, you can install any family modules you like. To insta
 	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
 
 
-Ubuntu 16.04 (Xenial Xerus)
-----------------------------
-
-Please run the following commands as root::
-
-	apt install apt-transport-https
-	wget https://apt.homegear.eu/Release.key && apt-key add Release.key && rm Release.key
-	echo 'deb https://apt.homegear.eu/Ubuntu/ xenial/' >> /etc/apt/sources.list.d/homegear.list
-	apt update
-	apt install homegear homegear-nodes-core homegear-management homegear-adminui homegear-ui
-
-After installing Homegear, you can install any family modules you like. To install all available family modules, run the following::
-
-	​apt install homegear-homematicbidcos homegear-homematicwired homegear-insteon homegear-max homegear-philipshue homegear-sonos homegear-ipcam homegear-kodi homegear-beckhoff homegear-knx homegear-enocean homegear-intertechno homegear-nanoleaf homegear-ccu homegear-mbus homegear-velux-klf200 homegaer-zwave homegear-zigbee homegear-influxdb homegear-management homegear-webssh
-
-
 Arch Linux
 ==========
 
 Packages for Arch Linux are provided in the `Arch User Repository (AUR) <https://aur.archlinux.org>`_. Use wget or your preferred `AUR helper <https://wiki.archlinux.org/index.php/AUR_helpers>`_ for downloading these base packages:
 
 * homegear-git
-* php7-homegear
+* php8-homegear
 * libhomegear-base-git
 * termcap
 
@@ -310,19 +309,18 @@ Manually Compiling Homegear
 Compiling PHP
 -------------
 
-
 Debian / Ubuntu / Raspbian
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Homegear is available for all systems as a Debian package. You can get the required PHP library and header files by installing "php7-homegear-dev" using apt::
+Homegear's PHP 8 library is available for all systems as a Debian package. You can get the required PHP library and header files by installing "php8-homegear-dev" using apt from Homegear's stable repository::
 
-	apt-get install php7-homegear-dev
+	apt-get install php8-homegear-dev
 
 
 Prerequisites
 ^^^^^^^^^^^^^
 
-For all other systems, you need to compile PHP 7 from the source. But first of all, you need to install the prerequisites.
+For all other systems, you need to compile PHP 8 from the source. First of all, you need to install the prerequisites.
 
 
 openSUSE Leap
@@ -336,19 +334,19 @@ Execute::
 Compiling
 ^^^^^^^^^
 
-.. warning:: Homegear requires at least PHP 7.2 as ZTS is broken in PHP 7.0 and 7.1.
+.. warning:: Homegear requires at least PHP 7.2 as ZTS is broken in PHP 7.0 and 7.1. Recommended is PHP 8.
 
 Download the PHP source code from the `PHP download page <http://php.net/downloads.php>`_. Then extract the package::
 
-	tar -zxf php-7.X.X.tar.gz
+	tar -zxf php-8.X.X.tar.gz
 
 or::
 
-	tar -jxf php-7.X.X.tar.bz2
+	tar -jxf php-8.X.X.tar.bz2
 
 Switch to the subdirectory "ext" within the extracted directory::
 
-	cd php-7.X.X/ext
+	cd php-8.X.X/ext
 
 Clone the current version of parallel from `GitHub <https://github.com/krakjoe/parallel>`_::
 
@@ -366,12 +364,42 @@ Execute autoconf::
 
 Execute the configure script::
 
-	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php7-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp --enable-fileinfo --enable-filter --enable-ftp --enable-json --enable-pdo --enable-mbregex --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-session --enable-simplexml --enable-parallel --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
+	​./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php8-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp --enable-fileinfo --enable-filter --enable-ftp --enable-json --enable-pdo --enable-mbregex --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-session --enable-simplexml --enable-parallel --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --disable-cli --disable-cgi --enable-pcntl --enable-maintainer-zts
 
 If dependencies are missing, install them and run the configure script again until it finishes successfully. You can also remove dependencies, if they are not needed. When this is done, run::
 
 	make && make install
-	cp /usr/share/homegear/php/lib/libphp7.a /usr/lib/libphp7-homegear.a
+	cp /usr/share/homegear/php/lib/libphp8.a /usr/lib/libphp8-homegear.a
+
+
+.. _compiling-nodejs:
+
+Compiling Node.js
+-----------------
+
+Debian / Ubuntu / Raspbian
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Homegear's Node.js library is available for all systems as a Debian package. You can get the required PHP library and header files by installing "nodejs-homegear" using apt from Homegear's stable repository::
+
+	apt-get install nodejs-homegear
+
+Compiling
+^^^^^^^^^
+
+For all other systems, you need to compile Node.js from the source::
+
+	mkdir build
+	cd build
+	# Replace with the current version
+	wget https://github.com/nodejs/node/archive/v15.5.0.tar.gz
+	tar -zxf v*.tar.gz
+	cd node*
+	sed -i 's/libnode/libnodejs-homegear/g' node.gyp
+	sed -i 's/libnode/libnodejs-homegear/g' deps/npm/node_modules/node-gyp/lib/configure.js
+	sed -i "s/output_file = 'node'/output_file = 'nodejs-homegear'/g" tools/install.py		
+	./configure --shared --prefix /usr
+	make install
 
 
 Compiling Homegear
@@ -385,7 +413,8 @@ First, install all dependencies:
 
 * Libtool
 * Automake
-* PHP 7 devel and static library (see :ref:`compiling-php`)
+* PHP 8 devel and static library (see :ref:`compiling-php`)
+* Node.js shared library (see :ref:`compiling-nodejs`)
 * SQLite 3 devel
 * Readline 6 devel
 * Libgpg-error devel
