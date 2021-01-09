@@ -12,7 +12,7 @@ Homegear Core
 +=====================================================+========================================+
 | `Homegear 0.8 <https://doc.homegear.eu/homegear/>`_ | Documentation of the Homegear 0.8 core |
 +-----------------------------------------------------+----------------------------------------+
-| `Node-BLUE <https://doc.homegear.eu/node-blue/>`_   | Documentation of Node-BLUE             |
+| `Node-BLUE <https://doc.node-blue.com/>`_           | Documentation of Node-BLUE             |
 +-----------------------------------------------------+----------------------------------------+
 
 
