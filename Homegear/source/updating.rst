@@ -22,11 +22,11 @@ Download the current version of Homegear, the base library (libhomegear-base), a
 Install the following packages::
 	
 	dpkg -i libhomegear-base_XXX.deb
-	​apt-get -f install
-	​dpkg -i homegear_XXX.deb
-	​apt-get -f install
-	​dpkg -i homegear-MODULENAME_XXX.deb
-	​apt-get -f install
+	apt-get -f install
+	dpkg -i homegear_XXX.deb
+	apt-get -f install
+	dpkg -i homegear-MODULENAME_XXX.deb
+	apt-get -f install
 
 ``apt-get -f install`` installs any missing dependencies.
 

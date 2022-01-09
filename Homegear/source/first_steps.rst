@@ -8,7 +8,9 @@ How to Interact with Homegear
 
 There are two ways to interact with Homegear:
 
-* First Homegear offers a Command Line Interface (CLI). Through the CLI you can do some basic things like creating users, pairing devices or execute one line script code.
+* First Homegear offers an administration UI. You can access it using the URL `https://<homegear IP>/admin`.
+* In addition Homegear offers a Command Line Interface (CLI). Through the CLI you can do some basic things like creating users, pairing devices or execute one line script code. You can use it for example to reset your administration UI password.
+* Node-BLUE can by accessed using the URL `https://<homegear IP>/nb`.
 * The second way is to control Homegear using one of supported RPC protocols. By default Homegear's RPC server listen on four ports (defined in /etc/homegear/rpcservers.conf):
 
 +------+--------------------------------------------------------------------+
