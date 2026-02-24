@@ -519,7 +519,6 @@ See the figure explaining how to connect the CC1101 to the Raspberry Pi. You can
 
 	Thanks to Qnerd.
 
-.. note:: See `this forum post <https://forum.homegear.eu/viewtopic.php?f=16&t=10>`_ for more detailed information.
 
 .. warning:: On the raspberry pi make sure SPI is enabled. You can enable SPI with ``raspi-config`` under ``Advanced Options => SPI`` or by setting ``dtparam=spi=on`` in ``/boot/config.txt``.
 
@@ -571,4 +570,3 @@ Follow the instructions for the CC1101 above. Then insert these lines into ``hom
 	# Set to 0x27, if high gain mode is enabled. That is the maximum legally allowed setting.
 	txPowerSetting = 0x27
 
-.. note:: See the `Homegear forum <https://forum.homegear.eu/viewtopic.php?f=16&t=499>`_ for more detailed information.
